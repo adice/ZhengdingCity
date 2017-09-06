@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>360全景</title>
+    <script src="../../jquery.js"></script>
+</head>
+<body onload="showvalf()">
+	
+    <embed id="asEmbed" src="" class="a_360"></embed>
+    <script>    
+	  var thisURL = document.URL;    
+	  var  getval =thisURL.split('?')[1];  
+	  var showval= getval.split("=")[1];  
+	  document.getElementById('asEmbed').src=showval;  
+	</script>
+</body>
+<script>
+var width1=$(window).width()-20;
+var height1=$(window).height()-20;
+$(".a_360").attr('width',width1);
+$(".a_360").attr('height',height1);
+</script>
+</html>

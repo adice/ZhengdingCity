@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+音频
+</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function searchAudio(){
+		var condition="channelId=${channelId}&culContentType=${culContentType}";
+		condition=condition+"&audioTime="+$(audioTime).val()+"&audioPlace="+$(audioPlace).val();
+		condition=condition+"&audioTitle="+$(audioTitle).val()+"&audioEvent="+$(audioEvent).val();
+		window.location.href=encodeURI("${base}/audio/index.jhtml?"+condition);
+	}
+</script>
+</head>
+<body>
+	<div class="all">
+		<!--顶部-->
+		[#include "../include/hcozd/header.html"/]
+		<!--中间-->
+		<!--background:灰色-->
+		[@cms_content_page count='9' orderBy='2' channelId=channelId channelOption='0' typeId=culContentType
+		title=audioTitle s_stime=audioTime o_stime='like' s_splace=audioPlace o_splace='like'
+		s_event=audioEvent o_event='like']
+		<div class="middle">
+        <!--背景：白色-->
+        <div class="middle_1">
+            <!--模块-->
+            <div class="middle_content">
+                <!--左侧-->
+                <div class="middle_left_search">
+                    <!--标题-->
+                    <div class="search_title">
+                        <img src="${resSys}/www/hcozd/img/left.png">
+                        <p style="font-size:39px;font-family: '隶书'">
+                        	[#if culContentType == '1']县府文化[/#if]
+							[#if culContentType == '2']乡土文化[/#if]
+							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '4']民俗风貌[/#if]
+							[#if culContentType == '1,2,3,4']音频[/#if]
+                        </p>
+                        <p>查询条件</p>
+                    </div>
+                    <!--检索条件-->
+                    <div class="search_condition">
+                        <table cellspacing="8px">
+                            <tr><td>时间：</td><td><input type="text" id="audioTime" value="${audioTime}" /></td></tr>
+                            <tr><td>地点：</td><td><input type="text" id="audioPlace" value="${audioPlace}" /></td></tr>
+                            <tr><td>人物：</td><td><input type="text" id="audioTitle" value="${audioTitle}" /></td></tr>
+                            <tr><td>事件：</td><td><input type="text" id="audioEvent" value="${audioEvent}" /></td></tr>
+                        </table>
+                        <div class="search_button"><a href="javascript:searchAudio()">检索</a></div>
+                    </div>
+                </div>
+                <!--右侧-->
+                <div class="middle_right_search">
+                    <!--面包屑-->
+                    <div class="search_bread">
+                        <div class="bread_word"> <ul><li><a href="${base}">首页></a></li>
+                        <li>
+	                        [#if culContentType == '1']县府文化[/#if]
+							[#if culContentType == '2']乡土文化[/#if]
+							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '4']民俗风貌[/#if]
+							[#if culContentType == '1,2,3,4']音频[/#if]
+                        </li></ul></div>
+                        <div>当前位置：</div>
+                    </div>
+                    <!--s搜索结果-->
+                    <div class="search_result">
+                        <div><p>共计<span>${tag_pagination.totalCount}</span>条搜索结果</p></div>
+                        <div>
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                        </div>
+                    </div>
+                    <!--content-->
+                    <div class="search_content">
+                        <div class="house_middle">
+                            <div><a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112">古籍文献</a></div>
+                            <div><a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118">拓片</a></div>
+                            <div><a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117">照片</a></div>
+                            <div class="now"><a href="#">音频</a></div>
+                            <div><a href="${base}/video/index.jhtml?culContentType=${culContentType}&channelId=115">视频</a></div>
+                            <div><a href="${base}/allscene/index.jhtml?culContentType=${culContentType}&channelId=113">360全景</a></div>
+                            <div><a href="${base}/3d/index.jhtml?culContentType=${culContentType}&channelId=114">3D虚拟</a></div>
+                        </div>
+                        <div class="house_center">
+                            <div class="list show tapian">
+                            [#list tag_pagination.list as audio]
+                            <div class="tapian_1">
+	                            <div class="taian_img"><a href="${audio.url}" target="_blank">
+	                            [#if audio.attr.cover?? && audio.attr.cover?length > 0]<img src="${audio.attr.cover}" />
+	                            [#else]<img src="${resSys}/www/hcozd/img/nfaudio.png" />
+	                            [/#if]
+	                            </a></div>
+	                            <div class="tapian_info_2"><a href="${audio.url}" target="_blank">
+	                                <p class="search_tapian_name">
+	                                <span>[#if audio.attr.stime??]${audio.attr.stime}[/#if]</span>
+	                                <span> [#if audio.attr.splace??]${audio.attr.splace}[/#if]</span>
+	                                <span> ${audio.title}</span>
+	                                <span> [#if audio.attr.event??]${audio.attr.event}[/#if]</span></p></a>
+	                            </div>
+	                        </div>
+                            [/#list]
+                        </div>
+                    </div>
+                </div>
+                <!--分页-->
+                <div class="page">
+					<div>[#if tag_pagination.list?size > 0]
+				[@cms_pagination sysPage='1' /] [/#if]</div>
+			</div>
+            </div>
+        </div>
+    </div>
+    [/@cms_content_page]
+	<div class="kong2" style="background: #e4e5e9"></div>
+	<!--底部-->
+	[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+<script>
+$(".house_middle>div").click(
+function() {
+	$(this).addClass("now").siblings().removeClass("now");
+	console.log(222);
+	$('.house_center>.list').eq($(this).index()).addClass('show')
+			.siblings().removeClass('show');
+});
+</script>
+<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
+</html>

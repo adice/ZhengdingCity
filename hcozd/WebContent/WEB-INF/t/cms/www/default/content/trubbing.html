@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>拓片内容</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<link rel="stylesheet" href="css/bootstrap.css">-->
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/app.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="all">
+	<!--顶部-->
+	[#include "../include/hcozd/header.html"/]
+	<!--中间-->
+    <!--background:灰色-->
+	    <div class="middle">
+	        <!--背景：白色-->
+	        <div class="middle_1">
+	            <!--模块-->
+	            <div class="middle_content">
+	                <!--左侧-->
+	                <div class="middle_left_search">
+	                    <div>
+	                        <div class="book_top">
+		                        <img src="${resSys}/www/hcozd/img/nfrubbing.png" class="book_top1">
+	                            <p>${content.title}</p>
+	                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
+	                        </div>
+	                        <div class="book_middle">
+	                            <table>
+	                                <tr><td>年代：</td><td>${content.attr.rubbingTime}</td></tr>
+	                                <tr><td>责任者：</td><td><span>${content.attr.authorDynasty}</span><span>${content.attr.authorName}</span></td></tr>
+	                                <tr><td>规格：</td><td><span>${content.attr.width}</span>*<span>${content.attr.height}</span></td></tr>
+	                                <tr><td>拓片类型：</td><td><span>${content.attr.rubbingType}</span></td></tr>
+	                            </table>
+	                        </div>
+	                    </div>
+	                    <div class="book_info_img1"><img src="${resSys}/www/hcozd/img/bookinfo.png" ></div>
+	                    <div class="book_info_img2"><img src="${resSys}/www/hcozd/img/bookinfo2.png" ></div>
+	                </div>
+	                <!--右侧-->
+	                <div class="middle_right_search">
+	                    <!--面包屑-->
+	                    <div class="search_bread">
+	                        <div class="bread_word"> <ul><li><a href="${base}">首页></a></li><li><a href="">拓片内容</a></li></ul></div>
+	                        <div>当前位置：</div>
+	                    </div>
+	                    <!--拓片原图-->
+	                    <div>
+	                    	<div class="certificates_2">
+                                <div style="font-size: 20px">拓片</div>
+                                <div class="certificates_img_1">
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                </div>
+                            </div>
+	                        <div>
+	                        <iframe src="${base}/thirdparty/pdf/viewer.html?file=${content.attr.rubPath}" id="iframepage" width="100%" height="700px" frameborder="0" scrolling="no"></iframe>
+	                        </div>
+	                        [#if content.txt??]
+	                        <div>
+	                            <div class="certificates_2">
+	                                <div style="font-size: 20px">摘要</div>
+	                                <div class="certificates_img_1">
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                </div>
+	                            </div>
+	                            <div class="tapian_content_2">
+	                                <p>${content.txt}</p>
+	                            </div>
+	                        </div>
+	                        [/#if]
+	                    </div>
+	                    <!--拓片内容-->
+	                    <div></div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="kong2" style="background:#e4e5e9"></div>
+    <!--底部-->
+	[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
+</html>

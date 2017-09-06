@@ -1,0 +1,34 @@
+.search_check  {
+    margin-left:50px;
+}
+.search_check form{font-size: 16px}
+.search_check_right {margin:5px 0 0 39px;overflow: hidden}
+.search_check_right div{margin-top:7px;}
+.search_check_right input{width:120px}
+.search_check_right input, .search_check_right select{margin-right:3px;border:1px solid rgba(159, 136, 65, 0.86);height:25px
+}
+.search_check_right div label{text-align: right;width:72px;float: left;margin-right: 7px}
+.cong{display: inline;}
+.time{display: none}
+.type_1{display: inline;width:122px}
+
+.search_check_1{overflow: hidden;margin-right: 15px}
+.search_check_1 div{width:40px;float:right;margin:10px 0 0 0;cursor:pointer;font-size: 13px;text-align: center}
+
+.search_check_top{width:220px;float: left;margin-right: 50px}
+.search_check_right2{width:600px;margin-top:36px}
+.search_check_top table{margin-left:90px}
+.search_new{overflow: hidden}
+.search_new div{}
+
+.sub{cursor:pointer;font-size:14px;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(208, 198, 159, 0.92)), to(#614e47));
+background: -ms-linear-gradient(top, rgba(208, 198, 159, 0.92),  #614e47);
+background:-moz-linear-gradient(top, rgba(208, 198, 159, 0.92), #614e47);
+background: -o-linear-gradient(top, rgba(208, 198, 159, 0.92), #614e47);
+width:60px;height:30px;float:right;text-align: center;color:white;line-height: 30px;margin:50px 50px 0 0;border-radius: 5px}
+.sub a{color: white}
+.list{overflow: hidden}
+.book2{margin:0 0 0 0.3rem !important;}
+.tapian_info_1_2{height:160px !important}
+.name_1{width:64px;}

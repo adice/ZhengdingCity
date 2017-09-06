@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>3D虚拟</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<link rel="stylesheet" href="css/bootstrap.css">-->
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/app.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<link rel="shortcut icon" href="${resSys}/www/hcozd/3d/TemplateData/favicon.ico">
+<link rel="stylesheet" href="${resSys}/www/hcozd/3d/TemplateData/style2.css">
+<script src="${resSys}/www/hcozd/3d/TemplateData/UnityProgress.js"></script>
+<script src="${content.attachments[0].path?substring(0,content.attachments[0].path?length-4)}/UnityLoader.js"></script>
+<script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "${content.attachments[0].path?substring(0,content.attachments[0].path?length-4)}/publish.json", {onProgress: UnityProgress});
+</script>
+</head>
+<body>
+	<div class="all">
+	<!--顶部-->
+	[#include "../include/hcozd/header.html"/]
+	<!--中间-->
+    <!--background:灰色-->
+	    <div class="middle">
+	        <!--背景：白色-->
+	        <div class="middle_1">
+	            <!--模块-->
+	            <div class="middle_content">
+	                <!--左侧-->
+	                <div class="middle_left_search">
+                    <div>
+                        <div class="book_top">
+                            [#if content.attr.cover?? && content.attr.cover?length > 0]
+                            	<img src="${content.attr.cover}" class="book_top1" />
+                                [#else]<img src="${resSys}/www/hcozd/img/nf3d.png" class="book_top1" />
+                            [/#if]
+                            <p><span>${content.title}</span></p>
+                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
+                        </div>
+                    </div>
+                    <div class="book_info_img1"><img src="${resSys}/www/hcozd/img/bookinfo.png" ></div>
+                    <div class="book_info_img2"><img src="${resSys}/www/hcozd/img/bookinfo2.png" ></div>
+                </div>
+	                <!--右侧-->
+	                <div class="middle_right_search">
+	                    <!--面包屑-->
+	                    <div class="search_bread">
+	                        <div class="bread_word"> <ul><li><a href="${base}">首页></a></li><li><a href="">3D虚拟</a></li></ul></div>
+	                        <div>当前位置：</div>
+	                    </div>
+	                    <!--拓片原图-->
+	                    <div>
+	                        <div>
+	                            <div class="certificates_2">
+	                                <div style="font-size: 20px">3D虚拟</div>
+	                                <div class="certificates_img_1">
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                </div>
+	                            </div>
+	                            <div class="vr_content">
+                                <div class="webgl-content">
+                                    <div id="gameContainer" style="width: 600px; height: 500px"></div>
+                                    <div class="footer2">
+                                        <div class="webgl-logo"></div>
+                                        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+                                    </div>
+                                </div>
+                            	</div>
+	                        </div>
+	                        <div style="margin-top: -200px">
+	                            <div class="certificates_2">
+	                                <div style="font-size: 20px">摘要</div>
+	                                <div class="certificates_img_1">
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                    <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                </div>
+	                            </div>
+	                            <div class="tapian_content_2">
+	                                <p>${content.txt}</p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!--拓片内容-->
+	                    <div></div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="kong2" style="background:#e4e5e9"></div>
+    <!--底部-->
+	[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
+</html>

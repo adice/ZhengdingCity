@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+综合检索
+</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style_new.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<style type="text/css">
+.search_condition table input{border-color: rgba(161, 156, 136, 0.75);width:10.3rem;height:1.9rem;border-radius: .3rem}
+</style>
+<script type="text/javascript">
+	$(function() {
+		Cms.siteFlow("${base}", location.href, document.referrer,
+				"${site.config.flowSwitch?string}");
+		$.cookie("_site_id_cookie", "${site.id!}", {
+			path : '${base}'
+		});
+		var channelIds=[#if channelIds??]"${channelIds}"[#else]""[/#if];
+		if(channelIds!=""){
+			var cs=channelIds.split(',');
+			$('input[name="se"]').each(function(){    
+				for(var i=0;i<cs.length;i++){
+					if($(this).val()==cs[i]){
+						$(this).attr({checked:'checked'});
+					}
+				}
+			});
+		}
+		
+		[#if classification?? && classification!=""]$("#classification").val("${classification}");[/#if]
+		[#if authoringMode?? && authoringMode!=""]$("#authoringMode").val("${authoringMode}");[/#if]
+        [#if authorLogic?? && authorLogic!=""]$("#authorLogic").val("${authorLogic}");[/#if]
+        [#if publishLogic?? && publishLogic!=""]$("#publishLogic").val("${publishLogic}");[/#if]
+	});
+	function search(){
+		var channelIds="";    
+		$('input[name="se"]:checked').each(function(){    
+			channelIds=channelIds+$(this).val()+",";    
+		});
+		channelIds=channelIds.substring(0,channelIds.length-1);
+		if(channelIds==""){
+			alert("请选择资源类型！");
+			return;
+		}
+		var condition="channelId=${channelId}&culContentType=${culContentType}";
+		condition=condition+"&channelIds="+channelIds;
+		
+		condition=condition+"&title="+$('#title').val()+"&seriesName="+$('#seriesName').val();
+		condition=condition+"&authorName="+$('#authorName').val()+"&authorDynasty="+$('#authorDynasty').val();
+		condition=condition+"&authoringMode="+$('#authoringMode').val();
+		condition=condition+"&publishDynasty="+$('#publishDynasty').val()+"&publishreignPeriod="+$('#publishreignPeriod').val();
+		condition=condition+"&publisher="+$('#publisher').val()+"&engraving="+$('#engraving').val();
+		condition=condition+"&classification="+$('#classification').val()+"&stype="+$('#stype').val();
+		condition=condition+"&stime="+$('#stime').val();
+		condition=condition+"&splace="+$('#splace').val()+"&sevent="+$('#sevent').val();
+		condition=condition+"&authorLogic="+$('#authorLogic').val()+"&publishLogic="+$('#publishLogic').val();
+
+		window.location.href=encodeURI("${base}/assearch/index.jhtml?isSearch=true&"+condition);
+	}
+</script>
+</head>
+<body>
+	<div class="all">
+		<!--顶部-->
+		[#include "../include/hcozd/header.html"/]
+		<!--中间-->
+		<!--background:灰色-->
+		<div class="middle">
+        <!--背景：白色-->
+        <div class="middle_1">
+            <!--模块-->
+            <div class="middle_content">
+                <!--左侧-->
+                <div class="middle_left_search" style="background-color: white;width: 240px;margin-right:10px">
+                    <div class="search_bread">
+                    </div>
+                    <div style="border:1px solid rgba(202, 202, 202, 0.61)">
+                    	<!--标题-->
+	                    <div class="search_title2" style="height:24px">
+	                        <div class="search_result">
+	                            <div style="font-size: 19px">资源分类</div>
+	                            <div style="margin-top:6px">
+	                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+	                            </div>
+	                        </div>
+	                    </div>
+                    	<!--检索条件-->
+                    	<div class="search_check" >
+                        	<div class="search_check_1">
+                            <div onclick="selectAllNullorReserve('se','取消');">取消</div>
+                            <div onclick="selectAllNullorReserve('se','全选');">全选</div>
+                        	</div>
+	                        <form >
+	                        	<table cellspacing="8px">
+	                           		<tr><td><input type="checkbox" name="se" value="112"></td><td>古籍文献</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="113"></td><td>360全景</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="118"></td><td>拓片</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="117"></td><td>照片</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="116"></td><td>音频</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="115"></td><td>视频</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="114"></td><td>3D虚拟</td></tr>
+	                        	</table>
+	                        </form >
+                    	</div>
+                   </div>
+                </div>
+                <!--右侧-->
+                <div class="middle_right_search" style="width: 740px;">
+                    <!--s搜索结果-->
+                    <div style="border:1px solid rgba(202, 202, 202, 0.61)">
+                    <div class="search_result" >
+                        <div style="font-size: 19px">检索条件</div>
+                        <div style="margin-top:6px">
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                        </div>
+                    </div>
+                    <!--检索条件-->
+                    <div class="search_check_right">
+                        <form>
+                            <!--书名-->
+                            <div class="name">
+                            	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            	<label>主题：</label>
+                                <input type="text" id="title" name="name" placeholder="书名或题名" value="${title}" />
+                                <input type="text" id="seriesName" name="cong" value="${seriesName}" placeholder="丛书名" class="cong"/>
+                            <!--责任者-->
+                            <div>
+                            	<label><select id="authorLogic">
+	                                <option value="like_and">并且</option>
+	                                <option value="like_or">或者</option>
+                            	</select>
+                            	</label>
+                                <label >责任者:</label>
+                                <input type="text" id="authorName" name="author" value="${authorName}" placeholder="名字" />
+                                <input type="text" id="authorDynasty" name="dy" value="${authorDynasty}" placeholder="朝代"/>
+                            	<select id="authoringMode" class="type_1">
+	                                <option value="">著作方式</option>
+	                                <option value="著">著</option>
+	                                <option value="编">编</option>
+	                                <option value="修">修</option>
+	                            </select>
+                            </div>
+                            <!--版本-->
+                            <div>
+                            	<label><select id="publishLogic">
+	                                <option value="like_and">并且</option>
+	                                <option value="like_or">或者</option>
+                            	</select>
+                            	</label>
+                                <label >版本:</label>
+                                <input type="text" id="publishDynasty" name="dynasty" value="${publishDynasty}" placeholder="朝代" />
+                                <input type="text" id="publishreignPeriod" name="year" value="${publishreignPeriod}" placeholder="年代"/>
+                                <input type="text" id="publisher" name="publisher" value="${publisher}" placeholder="出版者"/>
+                            	<input type="text" id="engraving" name="engraving" value="${engraving}" placeholder="版刻形式"/>
+                            </div>
+                            <!--类别-->
+                            <div>
+                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <label class="type_1">类别:</label>
+                            <select id="classification" class="type_1">
+                                <option value="">请选择</option>
+                                <option value="经">经</option>
+                                <option value="史">史</option>
+                                <option value="子">子</option>
+                                <option value="集">集</option>
+                                <option value="丛">丛</option>
+                            </select>
+                            </div>
+                            <div>
+                            	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>拓片类型:</label>
+                            	<input id="stype" value="${stype}" type="text" />
+                            </div>
+                            <!--题名-->
+                            <div>
+                            	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label >题名:</label>
+                                <input type="text" id="stime" name="cong" value="${stime}" placeholder="时间" />
+                                <input type="text" id="splace" name="cong" value="${splace}" placeholder="地点" />
+                                <input type="text" id="sevent" name="cong" value="${sevent}" placeholder="事件" />
+                            </div>
+                        </form>
+                           <a href="javascript:search();"><div class="sub">检索</div></a>
+                    </div>
+                    </div>
+                    <!--s搜索结果-->
+                    <div  style="border:1px solid rgba(202, 202, 202, 0.61);margin-top:10px;">
+                    <div class="search_result">
+                        <div style="font-size: 19px">检索结果</div>
+                        <div style="margin-top:6px">
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                        </div>
+                    </div>
+                    [#if isSearch == 'true']
+					[@cms_content_page count='10' orderBy='2' channelId=channelIds channelOption='0' typeId=culContentType
+					title=title s_seriesName=seriesName o_seriesName='like'
+					s_authorName=authorName o_authorName=authorLogic s_authorDynasty=authorDynasty o_authorDynasty=authorLogic 
+					s_authoringMode=authoringMode o_authoringMode=authorLogic
+					s_publishDynasty=publishDynasty o_publishDynasty=publishLogic s_publishreignPeriod=publishreignPeriod o_publishreignPeriod=publishLogic
+					s_publisher=publisher o_publisher=publishLogic s_engraving=engraving o_engraving=publishLogic
+					s_classification=classification o_classification='like'
+					s_stime=stime o_stime='like' s_splace=splace o_splace='like' s_event=sevent o_event='like'
+					s_rubbingStyle=stype o_rubbingStyle='like']
+                    <div class="search_content">
+                        <div class="house_center">
+                            <div class="all_list">
+                            [#list tag_pagination.list as s]
+                                [#if s.ctgName == '古籍文献']
+                                <!--古籍文献-->
+                                <div class="all_book">
+				                <div class="all_book2">
+				                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+				                    [#if s.pictures?size > 0]<img src="${s.pictures[0].imgPath}">
+				                    [#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
+				                    </a></div>
+				                    <div class="all_book_word">
+				                        <a href="${s.url}" target="_blank">
+				                            <p class="book_title">${s.title}</p>
+				                            <p>丛书名：<span>[#if s.attr.seriesName??]${s.attr.seriesName}[/#if]</span></p>
+				                            <p>责任者：<span>${s.attr.authorDynasty} </span>
+				                            <span>${s.attr.authorName} </span>
+				                            <span>${s.attr.authoringMode} </span></p>
+				                            <p>版本：<span>${s.attr.publishDynasty} </span>
+				                            <span>${s.attr.publishreignPeriod} </span>
+				                            <span>${s.attr.publisher} </span></p>
+				                            <p>类别：<span>${s.attr.classification} </span></p>
+				                        </a>
+				                    </div>
+				                </div>
+				                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+				            	</div>
+            					[/#if]
+                                [#if s.ctgName == '拓片']
+                                <!--拓片-->
+					            	<div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title">${s.title}</p>
+					                            <p>责任者：<span>${s.attr.authorDynasty} </span>
+					                            <span>${s.attr.authorName} </span>
+					                            <span>${s.attr.rubbingStyle} </span></p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            	</div>
+					            [/#if]
+					            [#if s.ctgName == '图片']
+					            <!--照片-->
+					            	<div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.picturePath?? && s.attr.picturePath?length > 0]
+						                     <img src="${s.attr.picturePath}" />
+						               	[/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title">
+					                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
+					                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span>
+					                            <span>${s.title}</span>
+					                            <span>[#if s.attr.event??]${s.attr.event}[/#if] </span>
+					                            </p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            	</div>
+					            [/#if]
+					            [#if s.ctgName == '视频']
+					            <!--视频-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover}" />
+					                    [#else]<img src="${resSys}/www/hcozd/img/nfvideo.png" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title">
+					                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
+					                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span>
+					                            <span>${s.title}</span>
+					                            <span>[#if s.attr.event??]${s.attr.event}[/#if] </span>
+					                            </p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '音频']
+					            <!--音频-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover}" />
+					                    [#else]<img src="${resSys}/www/hcozd/img/nfaudio.png" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title">
+					                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
+					                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span>
+					                            <span>${s.title}</span>
+					                            <span>[#if s.attr.event??]${s.attr.event}[/#if] </span>
+					                            </p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '360全景图']
+					            <!--360全景-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover}" />
+					                    [#else]<img src="${resSys}/www/hcozd/img/nfallscene.png" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title">${s.title}</p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '3D']
+					            <!--3D-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover}" />
+					                    [#else]<img src="${resSys}/www/hcozd/img/nf3d.png" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title">${s.title}</p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					        [/#list]
+                            </div>
+                       </div>
+                    </div>
+                    <!--分页-->
+	                <div class="page">
+	                    <div>
+	                        [#if tag_pagination.list?size > 0]
+							[@cms_pagination sysPage='1' /] [/#if]
+	                    </div>
+	                </div>
+                    [/@cms_content_page]
+					[#else]
+					<div class="search_content">
+                        <div class="house_center">
+                            <div class="all_list">
+           					<div class="all_book">
+				                <div class="all_book2">
+				                    <div class="all_book_img"></div>
+				                    <div class="all_book_word">
+				                    	<p class="book_title">&nbsp;</p>
+				                    </div>
+				                </div>
+					        </div>                 
+                            </div>
+                        </div>
+                    </div>
+					[/#if]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="kong2" style="background: #e4e5e9"></div>
+	<!--底部-->
+	[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
+<script src="${resSys}/www/hcozd/js/style_new.js" type="text/javascript"></script>
+<script>
+    $(".house_middle>div").click(function(){
+        $(this).addClass("now").siblings().removeClass("now");
+        $('.house_center>.list').eq($(this).index()).addClass('show').siblings().removeClass('show');
+    });
+    var c=$(".middle_right_search").css("height");
+    var b=$(".middle_left_search").css("height");
+    var c_1=parseInt(c);
+    var b_1=parseInt(b);
+    if(c_1>b_1){
+        $(".middle_left_search").css("height",c_1+58);
+    }
+    else {
+        $(".middle_right_search").css("height",b_1-58);
+    }
+</script>
+</html>

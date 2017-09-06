@@ -1,0 +1,228 @@
+*{margin:0;padding:0 !important;font-family: "微软雅黑"}
+a{text-decoration: none}
+/*首页*/
+.top{background:url("../img/header_bg.jpg");overflow: hidden}
+.nav{overflow: hidden;margin:10% auto 0 auto;width:1000px}
+
+/*.nav ul{margin:10% auto 0 auto}*/
+.nav ul li{float:left;list-style: none;margin:0 2rem 0}
+.nav a{text-decoration: none;color:#392919;font-size:1.25rem}
+.nav a:hover{color: #876235}
+.search{float:right;margin:8rem 13rem 1rem 0}
+.search_input{float:left}
+.search_input input{border-radius: .3rem;width:12rem;height:1.7rem;float:left}
+.search_img{float:left}
+.search_img div{margin:-2rem 0 0 2.1rem}
+.search_img div a{color:white;text-decoration: none}
+
+.kong{height:3rem}
+.kong2{height:5rem}
+.kong3{height:1rem}
+.middle{background-color: #e4e5e9;}
+.middle_1{background-color: white;box-shadow: lightgrey 0 0 1rem;width:990px;margin:0 auto;}
+.middle_content{overflow: hidden;}
+.middle_left{width:30%;margin-left:5%;float:left}
+
+.middle_left_top{overflow: hidden;border-bottom: 1px solid black;padding-left: 10px}
+.middle_left_top div:nth-of-type(1){float:left;}
+.middle_left_top div:nth-of-type(2){float:left;font-family: "华文行楷";font-size:1.18rem;margin:.8rem 0 0 1rem}
+.more{float:right;margin:.5rem 1rem  0 0}
+.middle_left_bottom img{width:5.1rem;height:5rem}
+.middle_left_bottom_1{overflow: hidden;margin:1rem 0 0 0 }
+.middle_left_bottom_1 a{text-decoration: none;color:black}
+.middle_left_bottom_1 div:nth-of-type(1){float:left;width:28%}
+.middle_left_bottom_1 div:nth-of-type(2){float:left;width:66%;margin-left:1rem}
+.middle_left_bottom_1 div:nth-of-type(2) span{font-weight: bold;font-size: 1.05rem;}
+
+.middle_right{width:56%;float:right;margin-right:5%}
+.middle_right a{text-decoration: none;color:black}
+.middle_right_footer1{overflow: hidden}
+.middle_right_footer1 div{width:28%;margin:1rem 1.8rem 0 0;float:left}
+
+.middle_right_footer1 div img{width:10rem;height:6rem}
+.tit{font-weight: bold;font-size: 1.05rem;}
+
+.middle_right_footer{margin-top:3rem}
+
+.search_top{width:90%;margin-left:5%;margin-top:2rem}
+
+.search_four_1{background-color: #ebe6e2;width:90%;margin-left:5%;margin-top:1rem}
+.search_four_1 img{width:21%;margin:1rem  0.5rem 1rem 0.5rem }
+.search_four_1 img:nth-of-type(1){margin-left:1.3rem}
+
+.footer{border-top:5px solid rgb(212, 158, 61);text-align: center;background-color: rgb(8,20,70)}
+.footer img{margin-top:-1.5rem}
+.footer div {margin-top:3rem}
+.footer p{color:rgb(100,104,131)}
+
+/*古籍搜索*/
+.middle_content{overflow: hidden}
+.middle_left_search{float:left;width:18.1rem;background-color: #d1c79e;overflow: hidden}
+.search_title{text-align: center;border-bottom: 1px dashed rgb(115,93,57)}
+.search_left_img{margin-top: 32.8rem}
+.search_left_img img{width:18.1rem}
+.search_title img{margin-top:3rem;margin-bottom:.5rem}
+.search_title p{font-size: 1.38rem;font-family: "隶书";color:rgb(115,93,57);margin-bottom: 1.5rem}
+.search_condition{margin:2rem 0 0 .9rem;}
+.search_condition table tr td:nth-of-type(1){text-align: right;font-size: 0.8rem;color:#333}
+/*.search_condition table tr td:nth-of-type(2) input{width:10.4rem;height:1.9rem;border-color: rgba(187, 182, 162, 0.79);border-radius: .3rem}*/
+.search_condition table tr td:nth-of-type(2) select{width:10.6rem;height:1.9rem;border-color: #a19c88;border-radius: .3rem}
+.search_left_img {float:right}
+.search_button{border:1px solid rgb(115,93,57);margin:1.3rem 0 2rem 6rem}
+.search_button a{text-decoration: none;color:#333}
+.search_button{text-align: center;border-color: #a39179;width:3.7rem;height:1.7rem;line-height:1.7rem;border-radius: .1rem;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#f4f3ec), to(#e6dcbd));
+background: -ms-linear-gradient(top, #f4f3ec,  #e6dcbd);
+background:-moz-linear-gradient(top, #f4f3ec, #e6dcbd);
+background: -o-linear-gradient(top, #f4f3ec, #e6dcbd);
+font-size: .8rem}
+
+.middle_right_search{width:43.77rem;overflow: hidden}
+.search_bread{background:url("../img/bread.png");overflow: hidden;height:1.8rem;line-height: 1.8rem}
+.search_bread div{float:right;font-size: .8rem}
+.search_bread div a{text-decoration: none;color:black}
+.search_bread ul{overflow: hidden}
+.search_bread ul li{list-style: none;float:left}
+.bread_word{margin-right:1rem}
+
+.search_result{overflow:hidden;font-size: .9rem;font-weight: 600;color:#735c3a;margin-left:2rem;margin-top:1rem}
+.search_result div{float:left;margin-right:.5rem}
+.search_result div img{float:left}
+
+.house_middle{border-bottom: 2px solid rgb(222,210,196);width:40rem;margin:1rem 0 0 1.4rem}
+.house_middle div{float: left;background-color: #e8dccd;width:4.3rem;height:1.8rem;margin:0 1rem 0 0;border-radius: .3rem;text-align: center;line-height: 1.8rem;color:#b2997f}
+.house_middle a{color:#b2997f}
+.house_middle div:nth-of-type(1){margin-left:1.4rem}
+.now {background-color: #b19b7f !important;}
+.now a{color:#fff !important;}
+.list{display:none}
+.show{display: block}
+.house_middle{overflow: hidden}
+.search_book{width:600px;float:left;margin:1rem 1.9rem 0 0;border-bottom: 1px dashed rgba(185, 153, 81, 0.84);}
+.search_book a{text-decoration: none;font-size:13px;color:black}
+.search_book img{width:100px;height:100px;}
+.search_book p{line-height: 1.3rem}
+.search_book span{margin:.2rem}
+.search_book_name{font-size:15px;color: rgba(189, 138, 80, 0.73)
+}
+.search_book{overflow: hidden}
+.search_book div{float:left}
+.search_book div:nth-of-type(1){margin-right:.9rem}
+.book{margin:1rem 0 0 1.3rem}
+
+.page{float:left; margin-left:200px; margin-top:20px; width:1000px;}
+.page ul {overflow: hidden;margin-top:1.3rem;margin-left:45rem}
+.page ul li{list-style: none;float:left;margin:.5rem}
+.page a{text-decoration: none;color:black}
+
+.search_tapian a{text-decoration: none;color:black;font-size: 13px}
+.search_tapian_2{border:1px solid }
+
+/*古籍详情*/
+.book_top{text-align: center}
+.book_top p{font-size: 20px;margin:.3rem 0 .2rem 0}
+.book_top1{width:80px;height:90px;margin-top:5rem}
+.book_middle{margin:1.8rem 0 0 3rem}
+.book_middle table tr td:nth-of-type(1){text-align: right;width:100px}
+.book_middle table{font-size:14px}
+.book_middle table span{margin-right:.3rem}
+
+.book_info_img1{margin-top:10rem}
+.book_info_img2{margin-top:10rem;margin-left: 12rem}
+
+.certificates{margin:1.2rem 0 0 1.5rem;}
+.certificates_1{overflow: hidden}
+.certificates_1 div{float:left;margin-right:.2rem}
+.certificates_img_1 img{vertical-align: middle}
+
+.slider{width:600px;height:400px}
+.slider img{width:600px;height:400px}
+
+.search_condition table input{border-color: rgba(161, 156, 136, 0.75);width:10.3rem;height:1.9rem;border-radius: .3rem}
+.search_left_img_2{margin-top:8.6rem}
+.search_left_img_2 img{width:18.1rem}
+
+/*拓片搜索*/
+.tapian{overflow: hidden}
+.tapian_info{border:1px solid lightgrey;width:198px;height:160px;background-color: #fcfcfc}
+.tapian_1{margin:2rem 0 0 1.5rem;float:left}
+.taian_img{width:200px;height:130px;}
+.taian_img img{width:200px;height:130px}
+.tapian_info{font-size: 13px}
+.tapian_info p{line-height: 24px;margin-left: 5px}
+.tapian_info a{text-decoration: none;color:#333}
+.search_tapian_name{font-size: 15px;color:#886e43;font-weight: 500;margin:10px 0 0 0}
+
+.tapian_info_1{border:1px solid lightgrey;width:198px;height:130px;background-color: #fcfcfc}
+.tapian_info_1{font-size: 13px}
+.tapian_info_1 p{line-height: 24px;margin-left: 5px}
+.tapian_info_1 a{text-decoration: none;color:#333}
+
+/*全文检索*/
+.all_search{overflow: hidden;margin:0 0 0 3rem}
+.all_search div{float:left;margin-right: 1rem}
+.num{font-weight: 600}
+.all_book{margin-top: 1.2rem;border-bottom:1px solid lightgrey;}
+.all_book2{overflow: hidden}
+.all_book img{width:8rem;height:6rem}
+.all_book_img{float:left;margin:0 1rem 0 2rem}
+
+.all_book_word a{color:black}
+.all_book_word{float:left;}
+.book_title{font-size: 1.1rem;color:#333;}
+.all_type{font-size:.8rem;margin:0 0 0 2.5rem;margin-bottom: .8rem}
+.all_book_word div{width:720px;font-size: .9rem;}
+.all_book_word div p{line-height: 1.1rem; }
+
+/*拓片详情*/
+.certificates_2{overflow: hidden;margin:1rem 0 0 1rem}
+.certificates_2 div{float:left;margin-right:.2rem}
+.tapian_content img{width:36rem;height:27rem;margin:2rem 0 0 3rem}
+.tapian_content_2{width:36rem; margin-left:24px; margin-top:20px; }
+.tapian_content_2 p{text-indent: 2rem}
+.search_left_img_3{margin-top:10rem}
+
+.shufflingPic{width:600px;height:400px;margin:0 0 0 2rem}
+.shufflingPic img{height:400px;width:600px}
+
+.tapian_info_2{width:198px;height:30px;background-color: #fcfcfc}
+.tapian_info_2{font-size: 13px}
+.tapian_info_2 p{line-height: 24px;margin-left: 5px}
+.tapian_info_2 a{text-decoration: none;color:#333}
+
+.shipin_content{margin:2rem 0 0 2rem}
+.vr_content{margin:18rem 0 0 17rem}
+
+.index_audio{width:55.5rem;margin-left: 3rem;margin-top: 2.5rem}
+.index_audio a{color:black}
+.middle_right_footer2{overflow: hidden;}
+.middle_right_footer2 div{width:12.7rem;margin:1rem 1.1rem 0 0;float:left}
+.middle_right_footer2 div img{width:12rem;height:8rem}
+.index_p{overflow: hidden;margin:2.5rem 0 0 3rem}
+.index_p a{color:black}
+.index_p div{float:left}
+.index_pic{width:45%;margin-right:2rem}
+.index_rub{width:45%}
+.middle_right_footer3{overflow: hidden;}
+.middle_right_footer3 div{width:7.9rem;margin:1rem .8rem 0 0;float:left}
+.middle_right_footer3 div img{width:7.9rem;height:6rem}
+.middle_left_top2{overflow: hidden;border-bottom: 1px solid black;padding-left: 10px;width:27rem}
+.middle_left_top2 div:nth-of-type(1){float:left;}
+.middle_left_top2 div:nth-of-type(2){float:left;font-family: "华文行楷";font-size:1.18rem;margin:.8rem 0 0 1rem}
+.more2{float:right;margin:.5rem 0  0 18rem}
+.kong4{height:5rem;background-color:#e4e5e9;}
+.kong5{height:4rem;background-color:white;width:990px;margin: 0 auto;}
+
+.header{width:100%; border-bottom:1px solid #cfcfcf; height:80px; box-sizing:border-box; background-color:#fff;}
+.header .logo{display:inline-block; float:left; width:230px; height:32px; margin-top:24px; background-image:url(../images/tubiao.png); background-position:-286px -10px;}
+.rel{position:relative;}
+.header-jf{position:absolute; top:8px; right:0;}
+.header-rss{position:absolute; top:29px; right:0;}
+.header-jf .jf-btn, .header-rss .rss-btn{width:36px; height:16px; line-height:16px; display:inline-block; background-color:#24a5ff; border:1px solid #24a5ff; font-size:12px; color:#fff; text-align:center; border-top-left-radius:9px; -moz-border-top-left-radius:9px; -o-border-top-left-radius:9px; -webkit-border-top-left-radius:9px; border-bottom-left-radius:9px; -moz-border-bottom-left-radius:9px; -o-border-bottom-left-radius:9px; -webkit-border-bottom-left-radius:9px;}
+.header-rss .rss-btn{background-color:#ff9000; border:1px solid #ff9000;}
+.header-jf .jf-btn:hover{background-color:#fff; color:#24a5ff;}
+.header-rss .rss-btn:hover{background-color:#fff; color:#ff9000;}
+.shufflingPic{width:600px;height:400px;margin:0 0 0 2rem;}
+.shufflingPic img{height:400px;width:600px}
+.pageSearch a{color: black;}
+.book_middle  table tr td{vertical-align:top}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<!--<link rel="stylesheet" href="css/bootstrap.css">-->
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		Cms.siteFlow("${base}", location.href, document.referrer,
+				"${site.config.flowSwitch?string}");
+	});
+</script>
+</head>
+<body>
+	<div class="all">
+		<!--顶部-->
+		[#include "../include/hcozd/header.html"/]
+		<!--中间-->
+		<!--background:灰色-->
+		<div class="middle">
+			<!--背景：白色-->
+			<div class="middle_1">
+				<div class="kong"></div>
+				<!--模块-->
+				<div class="middle_content">
+					<!--左侧-->
+					<div class="middle_left">
+						<!--左侧上-->
+						<div class="middle_left_top">
+							<div>
+								<img src="${resSys}/www/hcozd/img/channelico/book.png" width="36" height="36" />
+							</div>
+							<div>古籍文献</div>
+							<div class="more">
+								<a href="${base}/gjwx/index.jhtml?culContentType=1,2,3,4&channelId=112">
+									<img src="${resSys}/www/hcozd/img/more.png">
+								</a>
+							</div>
+						</div>
+						<!--左侧下-->
+						<div class="middle_left_bottom">
+							[@cms_content_list count='4' orderBy='2' channelId='112' channelOption='0']
+							[#list tag_list as book]
+							<div class="middle_left_bottom_1">
+								<div>
+									<a href="${book.url}"> [#if book.pictures?? && book.pictures?size > 0]
+									<img src="${book.pictures[0].imgPath}" width="81" height="80" />
+									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80" />[/#if]
+									</a>
+								</div>
+								<div>
+									<a href="${book.url}"><span title="${book.title }">
+									[@text_cut s=book.title len='10' append='...' /]</span>
+										<p>
+										[#if book.attr.authorDynasty??](${book.attr.authorDynasty })[/#if]
+										[#if book.attr.authorName??]${book.attr.authorName }[/#if]
+										[#if book.attr.authoringMode??]${book.attr.authoringMode }[/#if]</p></a>
+								</div>
+							</div>
+							[/#list] [/@cms_content_list]
+						</div>
+					</div>
+					<!--右侧-->
+					<div class="middle_right">
+						<!--右上-->
+						<div class="middle_right_top">
+							<!--右侧上上-->
+							<div class="middle_left_top">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/360.png" width="36" height="36" />
+								</div>
+								<div>360全景</div>
+								<div class="more">
+									<a href="${base}/allscene/index.jhtml?culContentType=1,2,3,4&channelId=113">
+										<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<!--右侧上下-->
+							<div class="middle_right_footer1">
+								[@cms_content_list count='3' orderBy='2' channelId='113' channelOption='0'] [#list tag_list as allscene]
+								<div>
+									<a href="${allscene.url}">
+									[#if allscene.attr.allPath??]
+									<img src="${allscene.attr.allPath}" width="160" height="96" />
+									[#else]<img src="${resSys}/www/hcozd/img/nfallscene.png" width="160" height="96" />[/#if]
+									</a> <a href="${allscene.url}"><p class="tit">
+									[@text_cut s=allscene.title len='10' append='...' /]</p>
+										<p>
+										[#if allscene.tagStr??]
+											[#list allscene.tagStr?split(",") as singleTag]
+											<a href="${base}/search.jspx?q=${singleTag}" target="_blank">${singleTag}</a>[/#list]
+										[/#if]
+										</p></a>
+								</div>
+								[/#list]
+								[/@cms_content_list]
+							</div>
+						</div>
+						<!--右下-->
+						<div class="middle_right_footer">
+							<!--右侧上上-->
+							<div class="middle_left_top">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/3D.png" width="36" height="36" />
+								</div>
+								<div>3D虚拟</div>
+								<div class="more">
+									<a href="${base}/3d/index.jhtml?culContentType=1,2,3,4&channelId=114">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<!--右侧上下-->
+							<div class="middle_right_footer1">
+								[@cms_content_list count='3' orderBy='2' channelId='114' channelOption='0']
+								[#list tag_list as view3d]
+								<div>
+									<a href="${view3d.url}">
+									[#if view3d.attr.allPath??]
+									<img src="${view3d.attr.allPath}" width="160" height="96" />
+									[#else]<img src="${resSys}/www/hcozd/img/nf3d.png" width="160" height="96" />[/#if]
+									</a> <a href="${view3d.url}">
+									<p class="tit">[@text_cut s=view3d.title len='10' append='...' /]</p>
+									[#if view3d.tagStr??]
+									[#list view3d.tagStr?split(",") as singleTag]
+									<a href="${base}/search.jspx?q=${singleTag}" target="_blank">${singleTag}</a>[/#list]
+									[/#if]
+									</p></a>
+								</div>
+								[/#list] [/@cms_content_list]
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<!--音频-->
+					<div class="index_audio">
+						<!--右侧上上-->
+						<div class="middle_left_top">
+							<div>
+								<img src="${resSys}/www/hcozd/img/channelico/audio.png" width="36" height="36" />
+							</div>
+							<div>音频</div>
+							<div class="more">
+								<a href="${base}/audio/index.jhtml?culContentType=1,2,3,4&channelId=116">
+								<img src="${resSys}/www/hcozd/img/more.png">
+								</a>
+							</div>
+						</div>
+						<!--右侧上下-->
+						<div class="middle_right_footer2">
+						[@cms_content_list count='4' orderBy='2' channelId='116' channelOption='0']
+						[#list tag_list as audio]
+							<div>
+								<a href="${audio.url}">
+								[#if audio.attr.cover?? && audio.attr.cover?length > 0]<img src="${audio.attr.cover}" />
+	                            [#else]<img src="${resSys}/www/hcozd/img/nfaudio.png" />
+	                            [/#if]
+								</a>
+								<a href="${audio.url}"><p class="tit">
+								<span>[#if audio.attr.stime??]${audio.attr.stime}[/#if]</span>
+								<span> [#if audio.attr.splace??]${audio.attr.splace}[/#if]</span>
+	                            <span> [#if audio.title??]${audio.title}[/#if]</span>
+	                            <span> [#if audio.attr.event??]${audio.attr.event}[/#if]</span>
+								</p></a>
+							</div>
+						[/#list] [/@cms_content_list]
+						</div>
+					</div>
+					<!--视频-->
+					<div class="index_audio">
+						<!--右侧上上-->
+						<div class="middle_left_top">
+							<div>
+								<img src="${resSys}/www/hcozd/img/channelico/video.png" width="36" height="36" />
+							</div>
+							<div>视频</div>
+							<div class="more">
+								<a href="${base}/video/index.jhtml?culContentType=1,2,3,4&channelId=115">
+								<img src="${resSys}/www/hcozd/img/more.png">
+								</a>
+							</div>
+						</div>
+						<!--右侧上下-->
+						<div class="middle_right_footer2">
+						[@cms_content_list count='4' orderBy='2' channelId='115' channelOption='0']
+						[#list tag_list as video]
+							<div>
+								<a href="${video.url}">
+								[#if video.attr.cover?? && video.attr.cover?length > 0]
+	                            <img src="${video.attr.cover}" />
+	                            [#else]<img src="${resSys}/www/hcozd/img/nfvideo.png" />
+	                            [/#if]</a>
+	                            <a href="">
+	                            <p class="tit">
+	                            <span>[#if video.attr.audioTime??]${video.attr.audioTime}[/#if]</span>
+								<span> [#if video.attr.audioPlace??]${video.attr.audioPlace}[/#if]</span>
+	                            <span> [#if video.title??]${video.title}[/#if]</span>
+	                            <span> [#if video.attr.event??]${video.attr.event}[/#if]</span>
+	                            </p></a>
+							</div>
+						[/#list] [/@cms_content_list]
+						</div>
+					</div>
+					<!--照片 &拓片-->
+					<div class="index_p">
+						<div class="index_pic">
+							<!--右侧上上-->
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/pic.png" width="36" height="36" />
+								</div>
+								<div>照片</div>
+								<div class="more2">
+									<a href="${base}/pic/index.jhtml?culContentType=1,2,3,4&channelId=117">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<!--右侧上下-->
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='117' channelOption='0']
+							[#list tag_list as pic]
+								<div>
+									<a href="${pic.url}">
+									<img src="${pic.attr.picturePath}"></a>
+									<a href="${pic.url}">
+									<p class="tit">
+									<span>[#if pic.attr.audioTime??]${pic.attr.audioTime}[/#if]</span>
+									<span> [#if pic.attr.audioPlace??]${pic.attr.audioPlace}[/#if]</span>
+		                            <span> [#if pic.title??]${pic.title}[/#if]</span>
+		                            <span> [#if pic.attr.event??]${pic.attr.event}[/#if]</span>
+									</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
+						</div>
+						<div class="index_rub">
+							<!--右侧上上-->
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/rub.png" width="36" height="36" />
+								</div>
+								<div>拓片</div>
+								<div class="more2">
+									<a href="${base}/rubbing/index.jhtml?culContentType=1,2,3,4&channelId=118">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<!--右侧上下-->
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='118' channelOption='0']
+							[#list tag_list as rubbing]
+								<div>
+									<a href="${rubbing.url}">
+                                    <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+									</a>
+									<a href="${rubbing.url}">
+									<p class="tit">${rubbing.title}</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--检索-->
+				<div class="search_four">
+					<div class="search_top">
+						<div class="middle_left_top">
+							<div>
+								<img src="${resSys}/www/hcozd/img/channelico/search.png"  width="36" height="36" />
+							</div>
+							<div>分类检索</div>
+						</div>
+					</div>
+					<!--四张图片-->
+					<div class="search_four_1">
+						<a href="${base}/gjwx/index.jhtml?culContentType=1&channelId=112">
+							<img src="${resSys}/www/hcozd/img/home_36.png">
+						</a> <a href="${base}/gjwx/index.jhtml?culContentType=2&channelId=112">
+							<img src="${resSys}/www/hcozd/img/home_35.png">
+						</a> <a href="${base}/gjwx/index.jhtml?culContentType=3&channelId=112">
+							<img src="${resSys}/www/hcozd/img/home_41.png">
+						</a> <a href="${base}/gjwx/index.jhtml?culContentType=4&channelId=112">
+							<img src="${resSys}/www/hcozd/img/home_43.png">
+						</a>
+					</div>
+				</div>
+				<div class="kong2"></div>
+			</div>
+			<div class="kong5"></div>
+		</div>
+		<div class="kong4"></div>
+		<!--底部-->
+		[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+</html>

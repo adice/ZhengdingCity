@@ -1,0 +1,42 @@
+<script>
+function qkeypress(){
+	var q=$("input[name=q]");
+	if(q.val().trim()!=""){
+		$("input[name=q]").autocomplete("enable");
+	}else{
+		$("input[name=q]").autocomplete("disable");
+	}
+}
+
+function submitSearch(){
+	document.searchForm.submit();
+}
+</script>
+<div class="top">
+  <div class="header-jf"><a class="jf-btn" name="gb2big5" id="gb2big5">繁</a></div>
+  <Script Language=Javascript Src="${resSys}/gb2big5.js"></Script>
+  <div class="header-rss"><a class="rss-btn" href="${base}/rss.jspx" target="_blank" title="RSS订阅">RSS</a></div>
+    <!--导航栏-->
+    <div class="nav">
+        <ul>
+            <li><a href="${base}">首页</a></li>
+            <li><a  href="${base}/gjwx/index.jhtml?culContentType=1&channelId=112">县府文化</a></li>
+            <li><a  href="${base}/gjwx/index.jhtml?culContentType=2&channelId=112">乡土文化</a></li>
+            <li><a  href="${base}/gjwx/index.jhtml?culContentType=3&channelId=112">古代建筑及文化</a></li>
+            <li><a  href="${base}/gjwx/index.jhtml?culContentType=4&channelId=112">民俗风貌</a></li>
+            <li><a  href="${base}/assearch/index.jhtml?isSearch=false&channelId=119" style="color:#da7919">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;综合检索</a></li>
+        </ul>
+    </div>
+    <!--搜索框-->
+    <div class="search">
+        <div class="search_input">
+        <form action="${base}/search.jspx" target="_blank" id="searchForm" name="searchForm">
+        <input id="searchTxt" type="text" name="q" value="${q!}" maxlength="50" autocomplete="off" style="width:202px;">
+        </form>
+        </div>
+        <div class="search_img">
+        <img src="${resSys}/www/hcozd/img/search/search2.png">
+        <div style="margin-left: 20px;"><a href="javascript:submitSearch()">全文检索</a></div></div>
+    </div>
+</div>

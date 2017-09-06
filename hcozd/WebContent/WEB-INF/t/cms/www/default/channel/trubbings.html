@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+拓片
+</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<style type="text/css">
+.search_condition table input{border-color: rgba(161, 156, 136, 0.75);width:10.3rem;height:1.9rem;border-radius: .3rem}
+</style>
+<script type="text/javascript">
+	$(function() {
+		Cms.siteFlow("${base}", location.href, document.referrer,
+				"${site.config.flowSwitch?string}");
+		$.cookie("_site_id_cookie", "${site.id!}", {
+			path : '${base}'
+		});
+	});
+	function searchRubbing(){
+		var condition="channelId=${channelId}&culContentType=${culContentType}";
+		condition=condition+"&rubbingTitle="+$(rubbingTitle).val()+"&authorName="+$(authorName).val();
+		condition=condition+"&authorDynasty="+$(authorDynasty).val()+"&rubbingType="+$(rubbingType).val();
+		window.location.href=encodeURI("${base}/rubbing/index.jhtml?"+condition);
+	}
+</script>
+</head>
+<body>
+	<div class="all">
+		<!--顶部-->
+		[#include "../include/hcozd/header.html"/]
+		<!--中间-->
+		<!--background:灰色-->
+		[@cms_content_page count='9' orderBy='2' channelId=channelId channelOption='0' typeId=culContentType
+		title=rubbingTitle s_authorName=authorName o_authorName='like' s_authorDynasty=authorDynasty o_authorDynasty='like'
+		s_rubbingType=rubbingType o_rubbingType='like']
+		<div class="middle">
+        <!--背景：白色-->
+        <div class="middle_1">
+            <!--模块-->
+            <div class="middle_content">
+                <!--左侧-->
+                <div class="middle_left_search">
+                    <!--标题-->
+                    <div class="search_title">
+                        <img src="${resSys}/www/hcozd/img/left.png">
+                        <p style="font-size:39px;font-family: '隶书'">
+                        	[#if culContentType == '1']县府文化[/#if]
+							[#if culContentType == '2']乡土文化[/#if]
+							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '4']民俗风貌[/#if]
+							[#if culContentType == '1,2,3,4']拓片[/#if]
+                        </p>
+                        <p>查询条件</p>
+                    </div>
+                    <!--检索条件-->
+                    <div class="search_condition">
+                        <table cellspacing="8px">
+                            <tr><td>题名：</td><td><input type="text" id="rubbingTitle" value="${rubbingTitle}"></td></tr>
+                            <tr><td>责任者：</td><td><input type="text" id="authorName" value="${authorName}"></td></tr>
+                            <tr><td>责任者朝代：</td><td><input type="text" id="authorDynasty" value="${authorDynasty}"></td></tr>
+                            <tr><td>拓片类型：</td><td><input type="text" id="rubbingType" value="${rubbingType}"></td></tr>
+                        </table>
+                        <div class="search_button"><a href="javascript:searchRubbing()">检索</a></div>
+                    </div>
+                </div>
+                <!--右侧-->
+                <div class="middle_right_search">
+                    <!--面包屑-->
+                    <div class="search_bread">
+                        <div class="bread_word"> <ul><li><a href="${base}">首页></a></li>
+                        <li>
+	                        [#if culContentType == '1']县府文化[/#if]
+							[#if culContentType == '2']乡土文化[/#if]
+							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '4']民俗风貌[/#if]
+							[#if culContentType == '1,2,3,4']拓片[/#if]
+                        </li></ul></div>
+                        <div>当前位置：</div>
+                    </div>
+                    <!--s搜索结果-->
+                    <div class="search_result">
+                        <div><p>共计<span>${tag_pagination.totalCount}</span>条搜索结果</p></div>
+                        <div>
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                        </div>
+                    </div>
+                    <!--content-->
+                    <div class="search_content">
+                        <div class="house_middle">
+                            <div><a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112">古籍文献</a></div>
+                            <div class="now"><a href="#">拓片</a></div>
+                            <div><a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117">照片</a></div>
+                            <div><a href="${base}/audio/index.jhtml?culContentType=${culContentType}&channelId=116">音频</a></div>
+                            <div><a href="${base}/video/index.jhtml?culContentType=${culContentType}&channelId=115">视频</a></div>
+                            <div><a href="${base}/allscene/index.jhtml?culContentType=${culContentType}&channelId=113">360全景</a></div>
+                            <div><a href="${base}/3d/index.jhtml?culContentType=${culContentType}&channelId=114">3D虚拟</a></div>
+                        </div>
+                        <div class="house_center">
+                            <div class="list show tapian">
+                            [#list tag_pagination.list as rubbing]
+                                <div class="tapian_1">
+                                    <div class="taian_img">
+                                    <a href="${rubbing.url}" target="_blank">
+                                    <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+                                    </a></div>
+                                    <div class="tapian_info"><a href="${rubbing.url}" target="_blank">
+                                        <p class="search_tapian_name">${rubbing.title}</p>
+                                        <p>年代：<span>${rubbing.attr.rubbingTime}</span></p>
+                                        <p>责任者：<span>(${rubbing.attr.authorDynasty})</span>
+                                        <span>${rubbing.attr.authorName}</span>
+                                        <span>${rubbing.attr.rubbingStyle}</span></p>
+                                        <p>拓片类型：<span>${rubbing.attr.rubbingType}</span></p>
+                                        <p>规格：<span>${rubbing.attr.width}</span>*<span>${rubbing.attr.height}</span></p></a>
+                                	</div>
+	                            </div>
+                             [/#list]
+                        </div>
+                    </div>
+                </div>
+                <!--分页-->
+                <div class="page">
+					<div>[#if tag_pagination.list?size > 0]
+					[@cms_pagination sysPage='1' /] [/#if]</div>
+				</div>
+            </div>
+        </div>
+    </div>
+    [/@cms_content_page]
+	<div class="kong2" style="background: #e4e5e9"></div>
+	<!--底部-->
+	[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+<script>
+$(".house_middle>div").click(
+function() {
+	$(this).addClass("now").siblings().removeClass("now");
+	console.log(222);
+	$('.house_center>.list').eq($(this).index()).addClass('show')
+			.siblings().removeClass('show');
+});
+</script>
+<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
+</html>

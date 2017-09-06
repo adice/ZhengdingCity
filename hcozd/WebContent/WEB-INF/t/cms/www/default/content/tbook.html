@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>古籍内容</title>
+<meta http-equiv="keywords" content="${site.keywords!}" />
+<meta http-equiv="description" content="${site.description!}" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<link rel="stylesheet" href="css/bootstrap.css">-->
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
+<link rel="stylesheet" href="${resSys}/www/hcozd/css/swiper-3.4.2.css">
+<script src="${resSys}/jquery.js" type="text/javascript"></script>
+<script src="${resSys}/front.js" type="text/javascript"></script>
+<script src="${resSys}/www/hcozd/js/swiper-3.4.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+  Cms.checkPerm("${base}","${content.id}");
+  Cms.collectCsi("${base}","collectCsiDiv","collect_csi","${content.id}");
+  Cms.siteFlow("${base}", location.href, document.referrer,"${site.config.flowSwitch?string}");
+  Cms.viewCount("${base}","${content.id}");
+});
+</script>
+</head>
+<body>
+	<div class="all">
+	<!--顶部-->
+	[#include "../include/hcozd/header.html"/]
+	<!--中间-->
+    <!--background:灰色-->
+    <div class="middle">
+        <!--背景：白色-->
+        <div class="middle_1">
+            <!--模块-->
+            <div class="middle_content">
+                <!--左侧-->
+                <div class="middle_left_search">
+                    <div>
+                        <div class="book_top">
+                        [#if content.pictures?size > 0]
+                            <img src="${content.pictures[0].imgPath}" class="book_top1">
+                        [#else]
+                        	<img src="${resSys}/www/hcozd/img/nfbook.png" class="book_top1">
+                        [/#if]
+                            <p>${content.title}</p>
+                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
+                        </div>
+                        <div class="book_middle">
+                          <table>
+                          	  [#if content.attr.seriesName?? && content.attr.seriesName?length>0]
+                              <tr><td>丛书名：</td><td>${content.attr.seriesName}</td></tr>
+                              [/#if]
+                              [#if content.volumeCount??]
+                              <tr><td>卷数：</td><td>${content.attr.volumeCount}</td></tr>
+                              [/#if]
+                              <tr><td>责任者：</td><td><span>(${content.attr.authorDynasty})</span><span>${content.attr.authorName}</span><span>${content.attr.authoringMode}</span></td></tr>
+                              <tr><td>版本：</td><td><span>${content.attr.publishDynasty}</span><span>${content.attr.publishreignPeriod}</span><span>${content.attr.publisher}</span><span>${content.attr.engraving}</span></td></tr>
+                              <tr><td>分类：</td><td><span>${content.attr.classification}</span></td></tr>
+                              [#if content.attr.collectionHall1?length>0]
+                              <tr><td>收藏馆：</td><td><span>${content.attr.collectionHall1}</span></td></tr>
+                              [/#if]
+                              [#if content.attr.collectionHall2?length>0]
+                              <tr><td>收藏馆：</td><td><span>${content.attr.collectionHall2}</span></td></tr>
+                              [/#if]
+                              [#if content.attr.collectionHall3?length>0]
+                              <tr><td>收藏馆：</td><td><span>${content.attr.collectionHall3}</span></td></tr>
+                              [/#if]
+                              [#if content.tagStr??]
+                              <tr><td>标签：</td><td>
+                              [#list content.tagStr?split(",") as singleTag]
+                                     <a href="${base}/search.jspx?q=${singleTag}" target="_blank">${singleTag}</a>
+                              [/#list]
+                              </td></tr>
+                              [/#if]
+                          </table>
+                        </div>
+                    </div>
+                    <div class="book_info_img1"><img src="${resSys}/www/hcozd/img/bookinfo.png" ></div>
+                    <div class="book_info_img2"><img src="${resSys}/www/hcozd/img/bookinfo2.png" ></div>
+                </div>
+                <!--右侧-->
+                <div class="middle_right_search">
+                    <!--面包屑-->
+                    <div class="search_bread">
+                        <div class="bread_word"> <ul><li><a href="${base }">首页></a></li> <li><a href="">古籍文献</a></li></ul></div>
+                        <div>当前位置：</div>
+                    </div>
+                    <!--书影-->
+                    [#if content.pictures?size > 0]
+                    <div class="certificates" >
+                      <div class="certificates_2">
+                        <div style="font-size: 20px">书影</div>
+                        <div class="certificates_img_1">
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                      </div>
+                      </div>
+                        <!--书影的内容-->
+                        <!--轮播图-->
+                        <div class="shufflingPic">
+			            	<div class="swiper-container">
+			               		<div class="swiper-wrapper" style="text-align:center">
+                                    [#list content.pictures as pics]
+                                    <div class="swiper-slide"><img src="${pics.imgPath}"></div>
+		                        	[/#list]
+			                   </div>
+			                   <div class="swiper-button-prev" style="color:gray"></div>
+			                   <div class="swiper-button-next"></div>
+			               </div>
+			           </div>
+                     </div>
+                     [/#if]
+                    <!--书籍-->
+                    <div class="certificates">
+                        <div class="certificates_1">
+                            <div style="font-size: 20px">古籍</div>
+                            <div class="certificates_img_1">
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            </div>
+                        </div>
+                        <!--书籍内容div-->
+                        <div>
+                        <script type="text/javascript">
+                        	function changePdf(){
+                        		$('#iframepage').attr("src","${base}/thirdparty/pdf/viewer.html?file="+$('#pdfPath').val());
+                        		$('#zoomPdf').attr("href","${base}/thirdparty/pdf/viewer.html?file="+$('#pdfPath').val());
+                        	}
+                        </script>
+                        <select id="pdfPath" onchange="changePdf()" style="margin: 10px;">
+                        	[#list content.attachments as pdf]
+                        	<option value="${pdf.path}">${pdf.name?substring(0,pdf.name?length-4)}</option>
+                        	[/#list]
+                        </select>
+                        <iframe src="${base}/thirdparty/pdf/viewer.html?file=${content.attachments[0].path}" id="iframepage" width="100%" height="700px" frameborder="0" scrolling="no"></iframe>
+                        <div style="width:100px;margin:10px 0 0 560px">
+                        <a id="zoomPdf" href="${base}/thirdparty/pdf/viewer.html?file=${content.attachments[0].path}" target="_blank">
+                        <img src="${resSys}/www/hcozd/3d/TemplateData/fullscreen.png" id="fu"></a></div>
+                        </div>
+                        [#if content.txt??]
+                       	<div>
+                        <div class="certificates_2">
+                        	<div style="font-size: 20px">摘要</div>
+                        	<div class="certificates_img_1">
+                            	<img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            	<img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                                <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
+                            </div>
+                      	</div>
+                        <div class="tapian_content_2">
+                             <p>${content.txt}</p>
+                        </div>
+                        </div>
+                        [/#if]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kong2" style="background:#e4e5e9"></div>
+    <!--底部-->
+	[#include "../include/hcozd/footer.html"/]
+	</div>
+</body>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    })
+</script>
+<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
+</html>
