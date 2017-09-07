@@ -14,8 +14,7 @@
 	function searchPic(){
 		var condition="channelId=${channelId}&culContentType=${culContentType}";
 		condition=condition+"&pictureTime="+$(pictureTime).val()+"&picturePlace="+$(picturePlace).val();
-		condition=condition+"&pictureTitle="+$(pictureTitle).val()+"&pictureEvent="+$(pictureEvent).val();
-		condition=condition+"&pictureType="+$(pictureType).val();
+		condition=condition+"&pictureTitle="+$(pictureTitle).val();
 		window.location.href=encodeURI("${base}/pic/index.jhtml?"+condition);
 	}
 </script>
@@ -27,8 +26,7 @@
 		<!--中间-->
 		<!--background:灰色-->
 		[@cms_content_page count='9' orderBy='2' channelId=channelId channelOption='0' typeId=culContentType
-		title=pictureTitle s_stime=pictureTime o_stime='like' s_splace=picturePlace o_splace='like'
-		s_event=pictureEvent o_event='like' s_type=pictureType o_type='like']
+		title=pictureTitle s_stime=pictureTime o_stime='like' s_splace=picturePlace o_splace='like']
 		<div class="middle">
         <!--背景：白色-->
         <div class="middle_1">
@@ -40,9 +38,9 @@
                     <div class="search_title">
                         <img src="${resSys}/www/hcozd/img/left.png">
                         <p style="font-size:39px;font-family: '隶书'">
-                        	[#if culContentType == '1']县府文化[/#if]
+                        	[#if culContentType == '1']府县文化[/#if]
 							[#if culContentType == '2']乡土文化[/#if]
-							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '3']古代建筑[/#if]
 							[#if culContentType == '4']民俗风貌[/#if]
 							[#if culContentType == '1,2,3,4']照片[/#if]
                         </p>
@@ -53,9 +51,7 @@
                         <table cellspacing="8px">
                             <tr><td>时间：</td><td><input type="text" id="pictureTime" value="${pictureTime}" /></td></tr>
                             <tr><td>地点：</td><td><input type="text" id="picturePlace" value="${picturePlace}" /></td></tr>
-                            <tr><td>人物：</td><td><input type="text" id="pictureTitle" value="${pictureTitle}" /></td></tr>
-                            <tr><td>事件：</td><td><input type="text" id="pictureEvent" value="${pictureEvent}" /></td></tr>
-                        	<tr><td>照片类型：</td><td><input type="text" id="pictureType" value="${pictureType}"></td></tr>
+                            <tr><td>呈现内容：</td><td><input type="text" id="pictureTitle" value="${pictureTitle}" /></td></tr>
                         </table>
                         <div class="search_button"><a href="javascript:searchPic()">检索</a></div>
                     </div>
@@ -66,9 +62,9 @@
                     <div class="search_bread">
                         <div class="bread_word"> <ul><li><a href="${base}">首页></a></li>
                         <li>
-	                        [#if culContentType == '1']县府文化[/#if]
+	                        [#if culContentType == '1']府县文化[/#if]
 							[#if culContentType == '2']乡土文化[/#if]
-							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '3']古代建筑[/#if]
 							[#if culContentType == '4']民俗风貌[/#if]
 							[#if culContentType == '1,2,3,4']照片[/#if]
                         </li></ul></div>
@@ -108,13 +104,15 @@
 	                            <img src="${pic.attr.picturePath}"></a></div>
 	                            <div class="tapian_info_1"><a href="${pic.url}" target="_blank">
 	                                <p class="search_tapian_name">
-	                                <span>[#if pic.attr.stime??]${pic.attr.stime}[/#if]</span>
-	                                <span> [#if pic.attr.splace??]${pic.attr.splace}[/#if]</span>
+	                                [#if pic.attr.stime??]<span>${pic.attr.stime}</span>[/#if]
+	                                [#if pic.attr.splace??]<span> ${pic.attr.splace}</span>[/#if]
 	                                <span> ${pic.title}</span>
-	                                <span> [#if pic.attr.event??]${pic.attr.event}[/#if]</span></p>
-	                                <p>责任者：<span>${pic.attr.authorName}</span></p>
+	                                [#if pic.attr.publisher??]<span> ${pic.attr.publisher}</span>[/#if]</p>
+	                                [#if pic.attr.length?? && pic.attr.width??]
 	                                <p>规格：<span>${pic.attr.length}</span>*<span>${pic.attr.width}</span></p>
-	                                <p>类型：<span>${pic.attr.type}</span></p></a>
+	                                [/#if]
+	                                [#if pic.attr.type??]<p>类型：<span>${pic.attr.type}</span></p>[/#if]
+	                                </a>
 	                            </div>
 	                        </div>
                             [/#list]

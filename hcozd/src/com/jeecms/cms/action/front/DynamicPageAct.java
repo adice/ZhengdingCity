@@ -156,13 +156,9 @@ public class DynamicPageAct {
 			String pictureTime=request.getParameter("pictureTime")!=null?request.getParameter("pictureTime"):"";
 			String picturePlace=request.getParameter("picturePlace")!=null?request.getParameter("picturePlace"):"";
 			String pictureTitle=request.getParameter("pictureTitle")!=null?request.getParameter("pictureTitle"):"";
-			String pictureEvent=request.getParameter("pictureEvent")!=null?request.getParameter("pictureEvent"):"";
-			String pictureType=request.getParameter("pictureType")!=null?request.getParameter("pictureType"):"";
 			model.addAttribute("pictureTime",pictureTime);
 			model.addAttribute("picturePlace",picturePlace);
 			model.addAttribute("pictureTitle",pictureTitle);
-			model.addAttribute("pictureEvent",pictureEvent);
-			model.addAttribute("pictureType", pictureType);
 		}else if("115".equals(channelId)){
 			String videoTime=request.getParameter("videoTime")!=null?request.getParameter("videoTime"):"";
 			String videoPlace=request.getParameter("videoPlace")!=null?request.getParameter("videoPlace"):"";
