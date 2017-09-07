@@ -51,9 +51,20 @@ $(function() {
                               [#if content.volumeCount??]
                               <tr><td>卷数：</td><td>${content.attr.volumeCount}</td></tr>
                               [/#if]
-                              <tr><td>责任者：</td><td><span>(${content.attr.authorDynasty})</span><span>${content.attr.authorName}</span><span>${content.attr.authoringMode}</span></td></tr>
-                              <tr><td>版本：</td><td><span>${content.attr.publishDynasty}</span><span>${content.attr.publishreignPeriod}</span><span>${content.attr.publisher}</span><span>${content.attr.engraving}</span></td></tr>
+                              <tr><td>责任者：</td><td>
+                              [#if content.attr.authorDynasty??]<span>(${content.attr.authorDynasty})</span>[/#if]
+                              [#if content.attr.authorName??]<span>${content.attr.authorName}</span>[/#if]
+                              [#if content.attr.authoringMode??]<span>${content.attr.authoringMode}</span>[/#if]
+                              </td></tr>
+                              <tr><td>版本：</td><td>
+                              [#if content.attr.publishDynasty??]<span>${content.attr.publishDynasty}</span>[/#if]
+                              [#if content.attr.publishreignPeriod??]<span>${content.attr.publishreignPeriod}</span>[/#if]
+                              [#if content.attr.publisher??]<span>${content.attr.publisher}</span>[/#if]
+                              [#if content.attr.engraving??]<span>${content.attr.engraving}</span>[/#if]
+                              </td></tr>
+                              [#if content.attr.classification??]
                               <tr><td>分类：</td><td><span>${content.attr.classification}</span></td></tr>
+                              [/#if]
                               [#if content.attr.collectionHall1?length>0]
                               <tr><td>收藏馆：</td><td><span>${content.attr.collectionHall1}</span></td></tr>
                               [/#if]

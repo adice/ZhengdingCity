@@ -341,7 +341,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			Integer inputUserId, ContentStatus status, boolean topLevel,
 			boolean recommend) {
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title");
 			f.setParam("title", "%" + title + "%");
 		}
 		if (typeId != null) {
@@ -583,7 +583,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 		appendSiteIds(f, siteIds);
 		f.append(" and bean.status=" + ContentCheck.CHECKED);
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title)");
 			f.setParam("title", "%" + title + "%");
 		}
 		appendAttr(f, attr);
@@ -638,7 +638,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 		appendTypeIds(f, typeIds);
 		f.append(" and bean.status=" + ContentCheck.CHECKED);
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title)");
 			f.setParam("title", "%" + title + "%");
 		}
 		appendAttr(f, attr);
@@ -681,7 +681,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 		appendTypeIds(f, typeIds);
 		f.append(" and bean.status=" + ContentCheck.CHECKED);
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title)");
 			f.setParam("title", "%" + title + "%");
 		}
 		appendAttr(f, attr);
@@ -710,7 +710,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 		appendSiteIds(f, siteIds);
 		f.append(" and bean.status=" + ContentCheck.CHECKED);
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title)");
 			f.setParam("title", "%" + title + "%");
 		}
 		appendAttr(f, attr);
@@ -752,7 +752,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 		}
 		f.append(" and bean.status=" + ContentCheck.CHECKED);
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title)");
 			f.setParam("title", "%" + title + "%");
 		}
 		appendAttr(f, attr);
@@ -818,10 +818,12 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 				String value=mapValue[0],operate=mapValue[1];
 				/*扩展增加逻辑查询*/
 				String logicOperate="and";
+				String orParam="";
 				String []ops=operate.split("_");
 				if(ops!=null && ops.length>1){
 					operate=ops[0];
 					logicOperate=ops[1];
+					orParam=ops[2];
 				}
 				
 				if(StringUtils.isNotBlank(key)&&StringUtils.isNotBlank(value)){
@@ -830,9 +832,12 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 					}else if(operate.equals(PARAM_ATTR_START)){
 						f.append(" "+logicOperate+" bean.attr[:k"+key+"] like :v"+key).setParam("k"+key, key).setParam("v"+key, value+"%");
 					}else if(operate.equals(PARAM_ATTR_END)){
-						f.append(" "+logicOperate+" bean.attr[:k"+key+"] like :v"+key).setParam("k"+key, key).setParam("v"+key, "%"+value);
+							f.append(" "+logicOperate+" bean.attr[:k"+key+"] like :v"+key).setParam("k"+key, key).setParam("v"+key, "%"+value);
 					}else if(operate.equals(PARAM_ATTR_LIKE)){
-						f.append(" "+logicOperate+" bean.attr[:k"+key+"] like :v"+key).setParam("k"+key, key).setParam("v"+key, "%"+value+"%");
+						if(logicOperate.equals("and"))
+							f.append(" "+logicOperate+" bean.attr[:k"+key+"] like :v"+key).setParam("k"+key, key).setParam("v"+key, "%"+value+"%");
+						else if(logicOperate.equals("or"))
+							f.insert(" "+logicOperate+" bean.attr[:k"+key+"] like :v"+key, orParam).setParam("k"+key, key).setParam("v"+key, "%"+value+"%");
 					}else if(operate.equals(PARAM_ATTR_IN)){
 						if(StringUtils.isNotBlank(value)){
 							f.append(" "+logicOperate+" bean.attr[:k"+key+"] in (:v"+key+")").setParam("k"+key, key);

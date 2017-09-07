@@ -21,15 +21,11 @@
 		$.cookie("_site_id_cookie", "${site.id!}", {
 			path : '${base}'
 		});
-		[#if channelId == '112']
-			$("#classification option[value='${classification}']").attr("selected","selected");
-		[/#if]
 	});
 	function searchBook(){
-		var condition="channelId=${channelId}&culContentType=${culContentType}&bookName="+$('#bookName').val()+"&serialBookName="+$('#serialBookName').val();
-		condition=condition+"&authorDynasty="+$('#authorDynasty').val()+"&authorName="+$('#authorName').val()+"&publishDynasty="+$('#publishDynasty').val();
-		condition=condition+"&authoringMode="+$('#authoringMode').val()+"&classification="+$('#classification').val();
-		condition=condition+"&publishreignPeriod="+$('#publishreignPeriod').val()+"&publisher="+$('#publisher').val()+"&engraving="+$('#engraving').val();
+		var condition="channelId=${channelId}&culContentType=${culContentType}";
+		condition=condition+"&bookName="+$('#bookName').val()+"&authorName="+$('#authorName').val();
+		condition=condition+"&publishreignPeriod="+$('#publishreignPeriod').val()+"&publisher="+$('#publisher').val();
 		window.location.href=encodeURI("${base}/gjwx/index.jhtml?"+condition);
 	}
 </script>
@@ -41,10 +37,8 @@
 		<!--中间-->
 		<!--background:灰色-->
 		[@cms_content_page count='10' orderBy='2' channelId='112' channelOption='0' typeId=culContentType
-		 title=bookName s_seriesName=seriesName o_seriesName='like' s_authorDynasty=authorDynasty o_authorDynasty='like'
-		  s_authorName=authorName o_authorName='like' s_authoringMode=authoringMode o_authoringMode='like'
-		  s_publishDynasty=publishDynasty o_publishDynasty='like' s_publishreignPeriod=publishreignPeriod o_publishreignPeriod='like'
-		  s_publisher=publisher o_publisher='like' s_engraving=engraving o_engraving='like' s_classification=classification o_classification='eq']
+		 title=bookName s_seriesName=bookName o_seriesName='like_or_title' s_authorName=authorName o_authorName='like'
+		 s_publishreignPeriod=publishreignPeriod o_publishreignPeriod='like' s_publisher=publisher o_publisher='like']
 		<div class="middle">
 			<!--背景：白色-->
 			<div class="middle_1">
@@ -56,9 +50,9 @@
 						<div class="search_title">
 							<img src="${resSys}/www/hcozd/img/left.png">
 							<p style="font-size: 39px; font-family: '隶书'">
-							[#if culContentType == '1']县府文化[/#if]
+							[#if culContentType == '1']府县文化[/#if]
 							[#if culContentType == '2']乡土文化[/#if]
-							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '3']古代建筑[/#if]
 							[#if culContentType == '4']民俗风貌[/#if]
 							[#if culContentType == '1,2,3,4']古籍[/#if]
 							</p>
@@ -68,51 +62,20 @@
 						<div class="search_condition">
 							<table cellspacing="8px">
 								<tr>
-									<td>书名：</td>
+									<td>书名/丛书名：</td>
 									<td><input type="text" id="bookName" value="${bookName}"></td>
 								</tr>
 								<tr>
-									<td>丛书名：</td>
-									<td><input type="text" id="serialBookName" value="${serialBookName}"></td>
-								</tr>
-								<tr>
-									<td>责任者朝代或国别：</td>
-									<td><input type="text" id="authorDynasty" value="${authorDynasty}"></td>
-								</tr>
-								<tr>
-									<td>责任者：</td>
+									<td>著者：</td>
 									<td><input type="text" id="authorName" value="${authorName}"></td>
 								</tr>
 								<tr>
-									<td>著作方式：</td>
-									<td><input type="text" id="authoringMode" value="${authoringMode}"></td>
-								</tr>
-								<tr>
-									<td>版本朝代：</td>
-									<td><input type="text" id="publishDynasty" value="${publishDynasty}"></td>
-								</tr>
-								<tr>
-									<td>版本年代：</td>
+									<td>出版年代：</td>
 									<td><input type="text" id="publishreignPeriod" value="${publishreignPeriod}"></td>
 								</tr>
 								<tr>
 									<td>出版者：</td>
 									<td><input type="text" id="publisher" value="${publisher}"></td>
-								</tr>
-								<tr>
-									<td>版刻形式：</td>
-									<td><input type="text" id="engraving" value="${engraving}"></td>
-								</tr>
-								<tr>
-									<td>类别：</td>
-									<td><select id="classification">
-										<option value=''>全部</option>
-										<option value='经'>经</option>
-										<option value='史'>史</option>
-										<option value='子'>子</option>
-										<option value='集'>集</option>
-										<option value='丛'>丛</option>
-									</select></td>
 								</tr>
 							</table>
 							<div class="search_button">
@@ -128,9 +91,9 @@
 								<ul>
 									<li><a href="${base }">首页></a></li>
 									<li><a href="">
-									[#if culContentType == '1']县府文化[/#if]
+									[#if culContentType == '1']府县文化[/#if]
 									[#if culContentType == '2']乡土文化[/#if]
-									[#if culContentType == '3']古代建筑及文化[/#if]
+									[#if culContentType == '3']古代建筑[/#if]
 									[#if culContentType == '4']民俗风貌[/#if]
 									[#if culContentType == '1,2,3,4']古籍[/#if]
 									</a></li>

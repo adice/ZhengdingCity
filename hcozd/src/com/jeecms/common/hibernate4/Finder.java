@@ -33,6 +33,12 @@ public class Finder {
 		hqlBuilder.append(hql);
 		return this;
 	}
+	
+	public Finder insert(String hql, String paramName) {
+		int paramIndex = hqlBuilder.indexOf(paramName, hqlBuilder.indexOf("where"));
+		hqlBuilder.insert(hqlBuilder.indexOf(")", paramIndex), hql);
+		return this;
+	}
 
 	/**
 	 * 获得原始hql语句
