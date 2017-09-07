@@ -66,7 +66,7 @@ a{text-decoration: none}
 .search_condition{margin:2rem 0 0 .9rem;}
 .search_condition table tr td:nth-of-type(1){text-align: right;font-size: 0.8rem;color:#333;}
 /*.search_condition table tr td:nth-of-type(2) input{width:10.4rem;height:1.9rem;border-color: rgba(187, 182, 162, 0.79);border-radius: .3rem}*/
-.search_condition table tr td:nth-of-type(2) select{width:10.6rem;height:1.9rem;border-color: #a19c88;border-radius: .3rem}
+.search_condition table tr td:nth-of-type(2) select{width:8rem;height:1.9rem;border-color: #a19c88;border-radius: .3rem}
 .search_left_img {float:right}
 .search_button{border:1px solid rgb(115,93,57);margin:1.3rem 0 2rem 6rem}
 .search_button a{text-decoration: none;color:#333}

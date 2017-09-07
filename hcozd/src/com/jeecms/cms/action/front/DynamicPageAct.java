@@ -138,34 +138,20 @@ public class DynamicPageAct {
 		//如果是112则查询古籍
 		if("112".equals(channelId)){
 			String bookName=request.getParameter("bookName")!=null?request.getParameter("bookName"):"";
-			String serialBookName=request.getParameter("serialBookName")!=null?request.getParameter("serialBookName"):"";
-			String authorDynasty=request.getParameter("authorDynasty")!=null?request.getParameter("authorDynasty"):"";
 			String authorName=request.getParameter("authorName")!=null?request.getParameter("authorName"):"";
-			String authoringMode=request.getParameter("authoringMode")!=null?request.getParameter("authoringMode"):"";
-			String publishDynasty=request.getParameter("publishDynasty")!=null?request.getParameter("publishDynasty"):"";
 			String publishreignPeriod=request.getParameter("publishreignPeriod")!=null?request.getParameter("publishreignPeriod"):"";
 			String publisher=request.getParameter("publisher")!=null?request.getParameter("publisher"):"";
-			String engravinr=request.getParameter("engraving")!=null?request.getParameter("engraving"):"";
-			String classification=request.getParameter("classification")!=null?request.getParameter("classification"):"";
 			model.addAttribute("bookName",bookName);
-			model.addAttribute("serialBookName",serialBookName);
-			model.addAttribute("authorDynasty", authorDynasty);
 			model.addAttribute("authorName",authorName);
-			model.addAttribute("authoringMode", authoringMode);
-			model.addAttribute("publishDynasty",publishDynasty);
 			model.addAttribute("publishreignPeriod", publishreignPeriod);
 			model.addAttribute("publisher", publisher);
-			model.addAttribute("engraving", engravinr);
-			model.addAttribute("classification",classification);
 		}else if("118".equals(channelId)){
 			String rubbingTitle=request.getParameter("rubbingTitle")!=null?request.getParameter("rubbingTitle"):"";
 			String authorName=request.getParameter("authorName")!=null?request.getParameter("authorName"):"";
 			String authorDynasty=request.getParameter("authorDynasty")!=null?request.getParameter("authorDynasty"):"";
-			String rubbingType=request.getParameter("rubbingType")!=null?request.getParameter("rubbingType"):"";
 			model.addAttribute("rubbingTitle",rubbingTitle);
 			model.addAttribute("authorName",authorName);
 			model.addAttribute("authorDynasty",authorDynasty);
-			model.addAttribute("rubbingType",rubbingType);
 		}else if("117".equals(channelId)){
 			String pictureTime=request.getParameter("pictureTime")!=null?request.getParameter("pictureTime"):"";
 			String picturePlace=request.getParameter("picturePlace")!=null?request.getParameter("picturePlace"):"";

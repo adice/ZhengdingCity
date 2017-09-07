@@ -32,10 +32,18 @@
 	                        </div>
 	                        <div class="book_middle">
 	                            <table>
-	                                <tr><td>年代：</td><td>${content.attr.rubbingTime}</td></tr>
-	                                <tr><td>责任者：</td><td><span>${content.attr.authorDynasty}</span><span>${content.attr.authorName}</span></td></tr>
+	                                [#if content.attr.rubbingTime??]<tr><td>年代：</td><td>${content.attr.rubbingTime}</td></tr>[/#if]
+	                                <tr><td>责任者：</td><td>
+	                                [#if content.attr.authorDynasty??]<span>${content.attr.authorDynasty}</span>[/#if]
+	                                [#if content.attr.authorName??]<span>${content.attr.authorName}</span>[/#if]
+	                                [#if content.attr.rubbingStyle??]<span>${content.attr.rubbingStyle}</span>[/#if]
+	                                </td></tr>
+	                                [#if content.attr.width?? && content.attr.height??]
 	                                <tr><td>规格：</td><td><span>${content.attr.width}</span>*<span>${content.attr.height}</span></td></tr>
+	                                [/#if]
+	                                [#if content.attr.rubbingType??]
 	                                <tr><td>拓片类型：</td><td><span>${content.attr.rubbingType}</span></td></tr>
+	                                [/#if]
 	                            </table>
 	                        </div>
 	                    </div>
@@ -66,7 +74,24 @@
                                 </div>
                             </div>
 	                        <div>
-	                        <iframe src="${base}/thirdparty/pdf/viewer.html?file=${content.attr.rubPath}" id="iframepage" width="100%" height="700px" frameborder="0" scrolling="no"></iframe>
+	                        <div>
+	                        [#if content.attachments[0]??]
+	                        <script type="text/javascript">
+	                        	function changePdf(){
+	                        		$('#iframepage').attr("src","${base}/thirdparty/pdf/viewer.html?file="+$('#pdfPath').val());
+	                        		$('#zoomPdf').attr("href","${base}/thirdparty/pdf/viewer.html?file="+$('#pdfPath').val());
+	                        	}
+	                        </script>
+	                        <select id="pdfPath" onchange="changePdf()" style="margin: 10px;">
+	                        	[#list content.attachments as pdf]
+	                        	<option value="${pdf.path}">${pdf.name?substring(0,pdf.name?length-4)}</option>
+	                        	[/#list]
+	                        </select>
+	                        <iframe src="${base}/thirdparty/pdf/viewer.html?file=${content.attachments[0].path}" id="iframepage" width="100%" height="700px" frameborder="0" scrolling="no"></iframe>
+	                        <div style="width:100px;margin:10px 0 0 560px">
+	                        <a id="zoomPdf" href="${base}/thirdparty/pdf/viewer.html?file=${content.attachments[0].path}" target="_blank">
+	                        <img src="${resSys}/www/hcozd/3d/TemplateData/fullscreen.png" id="fu"></a></div>
+	                        [/#if]
 	                        </div>
 	                        [#if content.txt??]
 	                        <div>
