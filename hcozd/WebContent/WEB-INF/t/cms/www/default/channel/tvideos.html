@@ -14,7 +14,7 @@
 	function searchVideo(){
 		var condition="channelId=${channelId}&culContentType=${culContentType}";
 		condition=condition+"&videoTime="+$(videoTime).val()+"&videoPlace="+$(videoPlace).val();
-		condition=condition+"&videoTitle="+$(videoTitle).val()+"&videoEvent="+$(videoEvent).val();
+		condition=condition+"&videoTitle="+$(videoTitle).val();
 		window.location.href=encodeURI("${base}/video/index.jhtml?"+condition);
 	}
 </script>
@@ -26,8 +26,7 @@
 		<!--中间-->
 		<!--background:灰色-->
 		[@cms_content_page count='9' orderBy='2' channelId=channelId channelOption='0' typeId=culContentType
-		title=videoTitle s_stime=videoTime o_stime='like' s_splace=videoPlace o_splace='like'
-		s_event=videoEvent o_event='like']
+		title=videoTitle s_stime=videoTime o_stime='like' s_splace=videoPlace o_splace='like']
 		<div class="middle">
         <!--背景：白色-->
         <div class="middle_1">
@@ -39,9 +38,9 @@
                     <div class="search_title">
                         <img src="${resSys}/www/hcozd/img/left.png">
                         <p style="font-size:39px;font-family: '隶书'">
-                        	[#if culContentType == '1']县府文化[/#if]
+                        	[#if culContentType == '1']府县文化[/#if]
 							[#if culContentType == '2']乡土文化[/#if]
-							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '3']古代建筑[/#if]
 							[#if culContentType == '4']民俗风貌[/#if]
 							[#if culContentType == '1,2,3,4']视频[/#if]
                         </p>
@@ -52,8 +51,7 @@
                         <table cellspacing="8px">
                             <tr><td>时间：</td><td><input type="text" id="videoTime" value="${videoTime}" /></td></tr>
                             <tr><td>地点：</td><td><input type="text" id="videoPlace" value="${videoPlace}" /></td></tr>
-                            <tr><td>人物：</td><td><input type="text" id="videoTitle" value="${videoTitle}" /></td></tr>
-                            <tr><td>事件：</td><td><input type="text" id="videoEvent" value="${videoEvent}" /></td></tr>
+                            <tr><td>呈现内容：</td><td><input type="text" id="videoTitle" value="${videoTitle}" /></td></tr>
                         </table>
                         <div class="search_button"><a href="javascript:searchVideo()">检索</a></div>
                     </div>
@@ -64,9 +62,9 @@
                     <div class="search_bread">
                         <div class="bread_word"> <ul><li><a href="${base}">首页></a></li>
                         <li>
-	                        [#if culContentType == '1']县府文化[/#if]
+	                        [#if culContentType == '1']府县文化[/#if]
 							[#if culContentType == '2']乡土文化[/#if]
-							[#if culContentType == '3']古代建筑及文化[/#if]
+							[#if culContentType == '3']古代建筑[/#if]
 							[#if culContentType == '4']民俗风貌[/#if]
 							[#if culContentType == '1,2,3,4']视频[/#if]
                         </li></ul></div>
@@ -92,7 +90,7 @@
                         <div class="house_middle">
                             <div><a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112">古籍文献</a></div>
                             <div><a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118">拓片</a></div>
-                            <div><a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=117">照片</a></div>
+                            <div><a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117">照片</a></div>
                             <div><a href="${base}/audio/index.jhtml?culContentType=${culContentType}&channelId=116">音频</a></div>
                             <div class="now"><a href="#">视频</a></div>
                             <div><a href="${base}/allscene/index.jhtml?culContentType=${culContentType}&channelId=113">360全景</a></div>
@@ -112,8 +110,8 @@
 	                                <p class="search_tapian_name">
 	                                <span>[#if video.attr.stime??]${video.attr.stime}[/#if]</span>
 	                                <span> [#if video.attr.splace??]${video.attr.splace}[/#if]</span>
-	                                <span> ${video.title}</span>
-	                                <span> [#if video.attr.event??]${video.attr.event}[/#if]</span></p></a>
+	                                <span> ${video.title}</span></p>
+	                                [#if video.attr.publisher??]<p><span>来源：${video.attr.publisher}</span></p>[/#if]</a>
 	                            </div>
 	                        </div>
                             [/#list]

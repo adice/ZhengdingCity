@@ -163,20 +163,16 @@ public class DynamicPageAct {
 			String videoTime=request.getParameter("videoTime")!=null?request.getParameter("videoTime"):"";
 			String videoPlace=request.getParameter("videoPlace")!=null?request.getParameter("videoPlace"):"";
 			String videoTitle=request.getParameter("videoTitle")!=null?request.getParameter("videoTitle"):"";
-			String videoEvent=request.getParameter("videoEvent")!=null?request.getParameter("videoEvent"):"";
 			model.addAttribute("videoTime",videoTime);
 			model.addAttribute("videoPlace",videoPlace);
 			model.addAttribute("videoTitle",videoTitle);
-			model.addAttribute("videoEvent",videoEvent);
 		}else if("116".equals(channelId)){
 			String audioTime=request.getParameter("audioTime")!=null?request.getParameter("audioTime"):"";
 			String audioPlace=request.getParameter("audioPlace")!=null?request.getParameter("audioPlace"):"";
 			String audioTitle=request.getParameter("audioTitle")!=null?request.getParameter("audioTitle"):"";
-			String audioEvent=request.getParameter("audioEvent")!=null?request.getParameter("audioEvent"):"";
 			model.addAttribute("audioTime",audioTime);
 			model.addAttribute("audioPlace",audioPlace);
 			model.addAttribute("audioTitle",audioTitle);
-			model.addAttribute("audioEvent",audioEvent);
 		}else if("113".equals(channelId)){
 			String allsceneTitle=request.getParameter("allsceneTitle")!=null?request.getParameter("allsceneTitle"):"";
 			model.addAttribute("allsceneTitle",allsceneTitle);

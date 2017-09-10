@@ -40,7 +40,8 @@
                 <div class="all_book">
                 <div class="all_book2">
                     <div class="all_book_img"><a href="${s.url}">
-                    [#if s.pictures?size > 0]<img src="${s.pictures[0].imgPath}">
+                    [#if s.pictures?? && s.pictures?size > 0]
+                    <img src="${s.pictures[0].imgPath}">
                     [#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
                     </a></div>
                     <div class="all_book_word">
@@ -49,9 +50,10 @@
                             [#assign bb=s.title?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
 					        [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
                             </p>
-                            <p>责任者：<span>${s.attr.authorDynasty} </span>
-                            <span>${s.attr.authorName} </span>
-                            <span>${s.attr.authoringMode} </span></p>
+                            <p>责任者：
+                            [#if s.attr.authorDynasty??]<span>${s.attr.authorDynasty}</span>[/#if]
+                            [#if s.attr.authorName??]<span>${s.attr.authorName} </span>[/#if]
+                            [#if s.attr.authoringMode??]<span>${s.attr.authoringMode} </span>[/#if]</p>
                             <div style="margin-top:10px"><p>
                             [#if s.txt??]
                             [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
@@ -77,9 +79,10 @@
                             [#assign bb=s.title?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
 					        [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
                             </p>
-                            <p>责任者：<span>${s.attr.authorDynasty} </span>
-                            <span>${s.attr.authorName} </span>
-                            <span>${s.attr.rubbingStyle} </span></p>
+                            <p>责任者
+                            [#if s.attr.authorDynasty??]<span>${s.attr.authorDynasty}</span>[/#if]
+                            [#if s.attr.authorName??]<span>${s.attr.authorName} </span>[/#if]
+                            [#if s.attr.rubbingStyle??]<span>${s.attr.rubbingStyle} </span>[/#if]</p>
                             <div style="margin-top:10px"><p>
                             [#if s.txt??]
                             [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
@@ -104,12 +107,12 @@
                     <div class="all_book_word">
                         <a href="${s.url}">
                             <p class="book_title">
-                            <span>${s.attr.stime} </span>
-                            <span>${s.attr.splace} </span>
+                            [#if s.attr.stime??]<span>${s.attr.stime} </span>[/#if]
+                            [#if s.attr.splace??]<span>${s.attr.splace} </span>[/#if]
                             [#assign bb=s.title?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
 					        [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
-                            <span>${s.attr.event} </span>
                             </p>
+                            [#if s.attr.publisher??]<span>${s.attr.publisher}</span>[/#if]
                             <div style="margin-top:10px"><p>
                             [#if s.txt??]
                             [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
@@ -135,12 +138,12 @@
                     <div class="all_book_word">
                         <a href="${s.url}">
                             <p class="book_title">
-                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
-                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span>
+                            [#if s.attr.stime??]<span>${s.attr.stime} </span>[/#if]
+                            [#if s.attr.splace??]<span>${s.attr.splace} </span>[/#if]
                             [#assign bb=s.title?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
 					        [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
-                            <span>[#if s.attr.event??]${s.attr.event}[/#if] </span>
                             </p>
+                            [#if s.attr.publisher??]<span>${s.attr.publisher}</span>[/#if]
                             <div style="margin-top:10px"><p>
                             [#if s.txt??]
                             [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
@@ -166,12 +169,12 @@
                     <div class="all_book_word">
                         <a href="${s.url}">
                             <p class="book_title">
-                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
-                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span>
+                            [#if s.attr.stime??]<span>${s.attr.stime} </span>[/#if]
+                            [#if s.attr.splace??]<span>${s.attr.splace} </span>[/#if]
                             [#assign bb=s.title?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
 					        [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
-                            <span>[#if s.attr.event??]${s.attr.event}[/#if] </span>
                             </p>
+                            [#if s.attr.publisher??]<span>${s.attr.publisher}</span>[/#if]
                             <div style="margin-top:10px"><p>
                             [#if s.txt??]
                             [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
@@ -200,6 +203,7 @@
                             [#assign bb=s.title?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
 					        [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
                             </p>
+                            [#if s.attr.publisher??]<span>${s.attr.publisher}</span>[/#if]
                             <div style="margin-top:10px"><p>
                             [#if s.txt??]
                             [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]

@@ -5,7 +5,6 @@
 <meta http-equiv="keywords" content="${site.keywords!}" />
 <meta http-equiv="description" content="${site.description!}" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!--<link rel="stylesheet" href="css/bootstrap.css">-->
 <link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
 <link rel="stylesheet" href="${resSys}/www/hcozd/css/app.css">
 <script src="${resSys}/jquery.js" type="text/javascript"></script>
@@ -78,6 +77,7 @@
                                 </div>
                             	</div>
 	                        </div>
+	                        [#if content.txt??]
 	                        <div style="margin-top: -200px">
 	                            <div class="certificates_2">
 	                                <div style="font-size: 20px">摘要</div>
@@ -97,6 +97,7 @@
 	                                <p>${content.txt}</p>
 	                            </div>
 	                        </div>
+	                        [/#if]
 	                    </div>
 	                    <!--拓片内容-->
 	                    <div></div>
