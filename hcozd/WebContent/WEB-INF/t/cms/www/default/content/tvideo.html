@@ -35,11 +35,21 @@ video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 	                            <img src="${content.attr.cover}" class="book_top1" />
 	                            [#else]<img src="${resSys}/www/hcozd/img/nfvideo.png" class="book_top1" />
 	                            [/#if]
-	                            <p><span>[#if content.attr.stime??]${content.attr.stime}[/#if]</span>
-	                            <span>[#if content.attr.splace??]${content.attr.splace}[/#if]</span>
-	                            <span>${content.title}</span>
-	                            <span>[#if content.attr.publisher??]${content.attr.publisher}[/#if]</span></p>
+	                            <p><span>${content.title}</span></p>
 	                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
+	                        </div>
+	                        <div class="book_middle">
+	                            <table>
+	                            [#if content.attr.stime??]
+	                            <tr><td>时间：</td><td><span>${content.attr.stime}</span></td></tr>
+	                            [/#if]
+	                            [#if content.attr.splace??]
+	                            <tr><td>地点：</td><td><span>${content.attr.splace}</span></td></tr>
+	                            [/#if]
+	                            [#if content.attr.publisher??]
+	                                <tr><td>来源：</td><td><span>${content.attr.publisher}</span></td></tr>
+	                            [/#if]
+	                            </table>
 	                        </div>
 	                    </div>
 	                    <div class="book_info_img1"><img src="${resSys}/www/hcozd/img/bookinfo.png" ></div>

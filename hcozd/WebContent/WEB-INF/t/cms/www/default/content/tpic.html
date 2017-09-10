@@ -30,14 +30,18 @@
 	                        <div class="book_top">
 	                            <img src="${content.attr.picturePath}" class="book_top1">
 	                            <p>
-	                            [#if content.attr.stime??]<span>${content.attr.stime}</span>[/#if]
-	                            [#if content.attr.splace??]<span>${content.attr.splace}</span>[/#if]
 	                            <span>${content.title}</span>
 	                            </p>
 	                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
 	                        </div>
 	                        <div class="book_middle">
 	                            <table>
+	                            [#if content.attr.stime??]
+	                            <tr><td>时间：</td><td><span>${content.attr.stime}</span></td></tr>
+	                            [/#if]
+	                            [#if content.attr.splace??]
+	                            <tr><td>地点：</td><td><span>${content.attr.splace}</span></td></tr>
+	                            [/#if]
 	                            [#if content.attr.publisher??]
 	                                <tr><td>来源：</td><td><span>${content.attr.publisher}</span></td></tr>
 	                            [/#if]

@@ -31,8 +31,14 @@
 	                            [#else]<img src="${resSys}/www/hcozd/img/nfallscene.png" class="book_top1" />
 	                            [/#if]
 	                            <p>${content.title}</p>
-	                            [#if content.attr.publisher??]${content.attr.publisher}[/#if]<br>
 	                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
+	                        </div>
+	                        <div class="book_middle">
+	                            <table>
+	                            [#if content.attr.publisher??]
+	                                <tr><td>来源：</td><td><span>${content.attr.publisher}</span></td></tr>
+	                            [/#if]
+	                            </table>
 	                        </div>
 	                    </div>
 	                    <div class="book_info_img1"><img src="${resSys}/www/hcozd/img/bookinfo.png" ></div>
