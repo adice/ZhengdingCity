@@ -597,8 +597,8 @@ public class ContentAct{
 		bean = manager.update(bean, ext, txt,tagArr, channelIds, topicIds,
 				viewGroupIds, attachmentPaths, attachmentNames,
 				attachmentFilenames, picPaths, picDescs, attr, channelId,
-				typeId, draft, charge,chargeAmount,rewardPattern, rewardRandomMin,
-				rewardRandomMax,rewardFix,user, false);
+				typeId, draft, charge,chargeAmount,rewardPattern==null?false:rewardPattern, rewardRandomMin==null?0:rewardRandomMin,
+				rewardRandomMax==null?0:rewardRandomMax,rewardFix,user, false);
 		afterContentStatusChange(bean, list,ContentStatusChangeThread.OPERATE_UPDATE);
 		//处理之前的附件有效性
 		fileMng.updateFileByPaths(oldattachmentPaths,oldpicPaths,null,oldTitleImg,oldTypeImg,oldContentImg,false,bean);

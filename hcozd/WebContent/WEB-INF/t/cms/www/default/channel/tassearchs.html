@@ -45,7 +45,7 @@
 			alert("请选择资源类型！");
 			return;
 		}
-		var condition="channelId=${channelId}&culContentType=${culContentType}";
+		var condition="channelId=${channelId?default(0)}&culContentType=${culContentType?default('')}";
 		condition=condition+"&channelIds="+channelIds;
 		
 		condition=condition+"&title="+$('#title').val()+"&seriesName="+$('#seriesName').val();
@@ -135,8 +135,8 @@
                             <div class="name">
                             	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             	<label>主题：</label>
-                                <input type="text" id="title" name="name" placeholder="书名或题名" value="${title}" />
-                                <input type="text" id="seriesName" name="cong" value="${seriesName}" placeholder="丛书名" class="cong"/>
+                                <input type="text" id="title" name="name" placeholder="书名或题名" value="${title?default('')}" />
+                                <input type="text" id="seriesName" name="cong" value="${seriesName?default('')}" placeholder="丛书名" class="cong"/>
                             <!--责任者-->
                             <div>
                             	<label><select id="authorLogic">
@@ -145,8 +145,8 @@
                             	</select>
                             	</label>
                                 <label >责任者:</label>
-                                <input type="text" id="authorName" name="author" value="${authorName}" placeholder="名字" />
-                                <input type="text" id="authorDynasty" name="dy" value="${authorDynasty}" placeholder="朝代"/>
+                                <input type="text" id="authorName" name="author" value="${authorName?default('')}" placeholder="名字" />
+                                <input type="text" id="authorDynasty" name="dy" value="${authorDynasty?default('')}" placeholder="朝代"/>
                             	<select id="authoringMode" class="type_1">
 	                                <option value="">著作方式</option>
 	                                <option value="著">著</option>
@@ -162,10 +162,10 @@
                             	</select>
                             	</label>
                                 <label >版本:</label>
-                                <input type="text" id="publishDynasty" name="dynasty" value="${publishDynasty}" placeholder="朝代" />
-                                <input type="text" id="publishreignPeriod" name="year" value="${publishreignPeriod}" placeholder="年代"/>
-                                <input type="text" id="publisher" name="publisher" value="${publisher}" placeholder="出版者"/>
-                            	<input type="text" id="engraving" name="engraving" value="${engraving}" placeholder="版刻形式"/>
+                                <input type="text" id="publishDynasty" name="dynasty" value="${publishDynasty?default('')}" placeholder="朝代" />
+                                <input type="text" id="publishreignPeriod" name="year" value="${publishreignPeriod?default('')}" placeholder="年代"/>
+                                <input type="text" id="publisher" name="publisher" value="${publisher?default('')}" placeholder="出版者"/>
+                            	<input type="text" id="engraving" name="engraving" value="${engraving?default('')}" placeholder="版刻形式"/>
                             </div>
                             <!--类别-->
                             <div>
@@ -183,15 +183,15 @@
                             <div>
                             	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <label>拓片类型:</label>
-                            	<input id="stype" value="${stype}" type="text" />
+                            	<input id="stype" value="${stype?default('')}" type="text" />
                             </div>
                             <!--题名-->
                             <div>
                             	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <label >题名:</label>
-                                <input type="text" id="stime" name="cong" value="${stime}" placeholder="时间" />
-                                <input type="text" id="splace" name="cong" value="${splace}" placeholder="地点" />
-                                <input type="text" id="sevent" name="cong" value="${sevent}" placeholder="事件" />
+                                <input type="text" id="stime" name="cong" value="${stime?default('')}" placeholder="时间" />
+                                <input type="text" id="splace" name="cong" value="${splace?default('')}" placeholder="地点" />
+                                <input type="text" id="sevent" name="cong" value="${sevent?default('')}" placeholder="事件" />
                             </div>
                         </form>
                            <a href="javascript:search();"><div class="sub">检索</div></a>
@@ -215,7 +215,8 @@
                             <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
                         </div>
                     </div>
-                    [#if isSearch == 'true']
+
+                    [#if isSearch?default('false') == 'true']
 					[@cms_content_page count='10' orderBy='2' channelId=channelIds channelOption='0' typeId=culContentType
 					title=title s_seriesName=seriesName o_seriesName='like'
 					s_authorName=authorName o_authorName=authorLogic s_authorDynasty=authorDynasty o_authorDynasty=authorLogic 
