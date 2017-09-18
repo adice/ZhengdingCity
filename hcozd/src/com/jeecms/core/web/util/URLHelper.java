@@ -5,7 +5,6 @@ import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.util.URLEncoder;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.util.UrlPathHelper;
 

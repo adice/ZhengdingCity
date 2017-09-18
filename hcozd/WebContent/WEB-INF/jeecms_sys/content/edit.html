@@ -532,9 +532,36 @@ function setMediaType(ext){
 <span style="display: none;"><input class="cancel" id="abtnCancel" type="button" value="<@s.m "global.cancel"/>" onclick="swfu.cancelQueue();" disabled="disabled" /></span>
 <div id="afsUploadProgress" style="display: none;"></div>
 </div>
+<script>
+	//增加上传文件js
+	function addUploadFile() {
+		var atachTrObj = $('#attachTr0');
+		var tableUpload= $('#attachTable');
+		if(atachTrObj==null || atachTrObj.html()==undefined){
+			var attachTr = '<tr id="attachTr0">'+
+					'<td align="center"><a onclick="$(\'#attachTr0\').remove();" href="javascript:void(0);" class="pn-opt">删除</a></td>'+
+					'<td align="center"><input type="text" id="attachmentNames0" name="attachmentNames" value=""></td>'+
+					'<td align="center"><input type="text" id="attachmentPaths0" name="attachmentPaths" value=""></td>'+
+					'<td align="center">'+
+					'<span id="afc0" style="position:relative;display:block;width:300px;*width:300px;">'+
+					'<input type="text" id="attachmentText0">'+
+					'<input class="browse" type="button" value="浏览">'+
+					'<input onchange="$(\'#attachmentText0\').val(this.value)" size="19" type="file" name="attachmentFile" id="attachmentFile0" class="file-button-other">'+
+					'<input type="button" value="上传" onclick="uploadAttachment(0);" class="upload-button">'+
+					'</span>'+
+					'<input type="hidden" id="attachmentFilenames0" name="attachmentFilenames" value="">'+
+					'</td>'+
+					'</tr>';
+			tableUpload.append(attachTr);
+		}else {
+			$.alert("添加附件","文件已存在，不用重新添加");
+
+		}
+	}
+</script>
 <table id="attachTable" border="0">
 <tr>
-	<td align="center"></td>
+	<td align="center"><a onclick="addUploadFile()" href="javascript:void(0);" class="pn-opt">添加附件</a></td>
 	<td align="center"><@s.m "content.attachmentName"/></td>
 	<td align="center"><@s.m "content.attachmentPath"/></td>
 	<td align="center"><@s.m "content.fileUpload"/></td></tr>
