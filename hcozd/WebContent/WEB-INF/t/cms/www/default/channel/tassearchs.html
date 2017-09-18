@@ -21,7 +21,10 @@
 		var channelIds=[#if channelIds??]"${channelIds}"[#else]""[/#if];
 		if(channelIds!=""){
 			var cs=channelIds.split(',');
-			$('input[name="se"]').each(function(){    
+			for(var i=0;i<cs.length;i++){
+				$('#tab'+cs[i]).css("display","inline");
+			}
+			$('input[name="se"]').each(function(){
 				for(var i=0;i<cs.length;i++){
 					if($(this).val()==cs[i]){
 						$(this).attr({checked:'checked'});
@@ -30,12 +33,9 @@
 			});
 		}
 		
-		[#if classification?? && classification!=""]$("#classification").val("${classification}");[/#if]
-		[#if authoringMode?? && authoringMode!=""]$("#authoringMode").val("${authoringMode}");[/#if]
         [#if authorLogic?? && authorLogic!=""]$("#authorLogic").val("${authorLogic}");[/#if]
-        [#if publishLogic?? && publishLogic!=""]$("#publishLogic").val("${publishLogic}");[/#if]
 	});
-	function search(){
+	function search(showChannelId,searchType){
 		var channelIds="";    
 		$('input[name="se"]:checked').each(function(){    
 			channelIds=channelIds+$(this).val()+",";    
@@ -45,19 +45,17 @@
 			alert("请选择资源类型！");
 			return;
 		}
-		var condition="channelId=${channelId}&culContentType=${culContentType}";
-		condition=condition+"&channelIds="+channelIds;
-		
-		condition=condition+"&title="+$('#title').val()+"&seriesName="+$('#seriesName').val();
-		condition=condition+"&authorName="+$('#authorName').val()+"&authorDynasty="+$('#authorDynasty').val();
-		condition=condition+"&authoringMode="+$('#authoringMode').val();
-		condition=condition+"&publishDynasty="+$('#publishDynasty').val()+"&publishreignPeriod="+$('#publishreignPeriod').val();
-		condition=condition+"&publisher="+$('#publisher').val()+"&engraving="+$('#engraving').val();
-		condition=condition+"&classification="+$('#classification').val()+"&stype="+$('#stype').val();
+		var condition="channelId=${channelId}&culContentType=${culContentType}&showChannelId="+showChannelId;
+		condition=condition+"&channelIds="+channelIds+"&searchType="+searchType;
+		condition=condition+"&title="+$('#title').val();
+		condition=condition+"&authorName="+$('#authorName').val();
+		condition=condition+"&authorLogic="+$('#authorLogic').val();
+		[#if searchType='2']
+		condition=condition+"&publishreignPeriod="+$('#publishreignPeriod').val();
+		condition=condition+"&publisher="+$('#publisher').val();
 		condition=condition+"&stime="+$('#stime').val();
-		condition=condition+"&splace="+$('#splace').val()+"&sevent="+$('#sevent').val();
-		condition=condition+"&authorLogic="+$('#authorLogic').val()+"&publishLogic="+$('#publishLogic').val();
-
+		condition=condition+"&splace="+$('#splace').val();
+		[/#if]
 		window.location.href=encodeURI("${base}/assearch/index.jhtml?isSearch=true&"+condition);
 	}
 </script>
@@ -110,7 +108,7 @@
                 </div>
                 <!--右侧-->
                 <div class="middle_right_search" style="width: 740px;">
-                    <!--s搜索结果-->
+                    <div class="search_bread"></div>
                     <div style="border:1px solid rgba(202, 202, 202, 0.61)">
                     <div class="search_result" >
                         <div style="font-size: 19px">检索条件</div>
@@ -130,71 +128,56 @@
                     </div>
                     <!--检索条件-->
                     <div class="search_check_right">
-                        <form>
-                            <!--书名-->
-                            <div class="name">
-                            	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            	<label>主题：</label>
-                                <input type="text" id="title" name="name" placeholder="书名或题名" value="${title}" />
-                                <input type="text" id="seriesName" name="cong" value="${seriesName}" placeholder="丛书名" class="cong"/>
-                            <!--责任者-->
-                            <div>
-                            	<label><select id="authorLogic">
-	                                <option value="like_and">并且</option>
-	                                <option value="like_or">或者</option>
-                            	</select>
-                            	</label>
-                                <label >责任者:</label>
-                                <input type="text" id="authorName" name="author" value="${authorName}" placeholder="名字" />
-                                <input type="text" id="authorDynasty" name="dy" value="${authorDynasty}" placeholder="朝代"/>
-                            	<select id="authoringMode" class="type_1">
-	                                <option value="">著作方式</option>
-	                                <option value="著">著</option>
-	                                <option value="编">编</option>
-	                                <option value="修">修</option>
+                    	[#if searchType='1']
+                    	<a href="${base}/assearch/index.jhtml?isSearch=false&searchType=2&channelId=119">
+                    	<div class="sub2">高级检索</div>
+                    	</a>
+                    	[/#if]
+                       	[#if searchType='2']
+                    	<a href="${base}/assearch/index.jhtml?isSearch=false&searchType=1&channelId=119">
+                    	<div class="sub2">简单检索</div>
+                    	</a>
+                    	[/#if]
+                       	<div class="new_title1">
+	                        <div>
+	                            <label >主题:</label>
+	                            <input type="text" id="title" name="name" placeholder="书名/题名" value="${title}"/>
+	                        </div>
+	                        <div style="width:54px">
+	                            <select id="authorLogic" class="name_1" style="width:54px" onchange="a(this.options[this.selectedIndex].innerText);">
+	                                <option value="like_and_title">并且</option>
+	                                <option value="like_or_title">或者</option>
 	                            </select>
+	                        </div>
+	                        <div>
+	                            <label >责任者:</label>
+	                            <input type="text" id="authorName" name="author" value="${authorName}" placeholder="责任者" />
+	                        </div>
+                       	</div>
+                       	[#if searchType=='2']
+                       	<!--版本-->
+                        <div class="new_title_1">
+                            <label >版本:</label>
+                            <input type="text" id="publishreignPeriod" name="publishreignPeriod" placeholder="年代" value="${publishreignPeriod}"/>
+                            <input type="text" id="publisher" name="publisher" placeholder="来源" value="${publisher}"/>
+                        </div>
+                        <div class="new_title_1" style="overflow: hidden">
+                            <!--时间-->
+                            <div style="float:left">
+                                <label >时间:</label>
+                                <input type="text" id="stime" name="stime" placeholder="时间" value="${stime}" />
                             </div>
-                            <!--版本-->
-                            <div>
-                            	<label><select id="publishLogic">
-	                                <option value="like_and">并且</option>
-	                                <option value="like_or">或者</option>
-                            	</select>
-                            	</label>
-                                <label >版本:</label>
-                                <input type="text" id="publishDynasty" name="dynasty" value="${publishDynasty}" placeholder="朝代" />
-                                <input type="text" id="publishreignPeriod" name="year" value="${publishreignPeriod}" placeholder="年代"/>
-                                <input type="text" id="publisher" name="publisher" value="${publisher}" placeholder="出版者"/>
-                            	<input type="text" id="engraving" name="engraving" value="${engraving}" placeholder="版刻形式"/>
+                            <!--地点-->
+                            <div style="float:left;text-align: left">
+                                <label >地点:</label>
+                                <input type="text" id="splace" name="splace" placeholder="地点" value="${splace}"/>
                             </div>
-                            <!--类别-->
-                            <div>
-                            <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label class="type_1">类别:</label>
-                            <select id="classification" class="type_1">
-                                <option value="">请选择</option>
-                                <option value="经">经</option>
-                                <option value="史">史</option>
-                                <option value="子">子</option>
-                                <option value="集">集</option>
-                                <option value="丛">丛</option>
-                            </select>
-                            </div>
-                            <div>
-                            	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <label>拓片类型:</label>
-                            	<input id="stype" value="${stype}" type="text" />
-                            </div>
-                            <!--题名-->
-                            <div>
-                            	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <label >题名:</label>
-                                <input type="text" id="stime" name="cong" value="${stime}" placeholder="时间" />
-                                <input type="text" id="splace" name="cong" value="${splace}" placeholder="地点" />
-                                <input type="text" id="sevent" name="cong" value="${sevent}" placeholder="事件" />
-                            </div>
-                        </form>
-                           <a href="javascript:search();"><div class="sub">检索</div></a>
+                        </div>
+                       	[/#if]
+                        
+                        [#if searchType=='1']<a href="javascript:search('',1);">[/#if]
+                        [#if searchType=='2']<a href="javascript:search('',2);">[/#if]
+                        <div class="sub3" style="margin-top:14px;">检索</div></a>
                     </div>
                     </div>
                     <!--s搜索结果-->
@@ -216,17 +199,43 @@
                         </div>
                     </div>
                     [#if isSearch == 'true']
-					[@cms_content_page count='10' orderBy='2' channelId=channelIds channelOption='0' typeId=culContentType
-					title=title s_seriesName=seriesName o_seriesName='like'
-					s_authorName=authorName o_authorName=authorLogic s_authorDynasty=authorDynasty o_authorDynasty=authorLogic 
-					s_authoringMode=authoringMode o_authoringMode=authorLogic
-					s_publishDynasty=publishDynasty o_publishDynasty=publishLogic s_publishreignPeriod=publishreignPeriod o_publishreignPeriod=publishLogic
-					s_publisher=publisher o_publisher=publishLogic s_engraving=engraving o_engraving=publishLogic
-					s_classification=classification o_classification='like'
-					s_stime=stime o_stime='like' s_splace=splace o_splace='like' s_event=sevent o_event='like'
-					s_rubbingStyle=stype o_rubbingStyle='like']
+					[@cms_content_page count='10' orderBy='2' channelId=showChannelId channelOption='0' typeId=culContentType
+					title=title s_authorName=authorName o_authorName=authorLogic
+					s_publishreignPeriod=publishreignPeriod o_publishreignPeriod='like'
+					s_publisher=publisher o_publisher='like'
+					s_stime=stime o_stime='like' s_splace=splace o_splace='like']
                     <div class="search_content">
-                        <div class="house_center">
+                    	<div class="house_middle" style="border:none">
+                            <div id="tab112" [#if showChannelId=='112']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(112,1);">古籍文献</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(112,2);">古籍文献</a>[/#if]
+                            </div>
+                            <div id="tab118" [#if showChannelId=='118']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(118,1);">拓片</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(118,2);">拓片</a>[/#if]
+                            </div>
+                            <div id="tab117" [#if showChannelId=='117']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(117,1);">照片</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(117,2);">照片</a>[/#if]
+                            </div>
+                            <div id="tab116" [#if showChannelId=='116']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(116,1);">音频</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(116,2);">音频</a>[/#if]
+                            </div>
+                            <div id="tab115" [#if showChannelId=='115']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(115,1);">视频</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(115,2);">视频</a>[/#if]
+                            </div>
+                            <div id="tab113" [#if showChannelId=='113']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(113,1);">360全景</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(113,2);">360全景</a>[/#if]
+                            </div>
+                            <div id="tab114" [#if showChannelId=='114']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(114,1);">3D虚拟</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(114,2);">3D虚拟</a>[/#if]
+                            </div>
+                        </div>
+                        <div class="house_center"><div class="list show"></div>
                             <div class="all_list">
                             [#list tag_pagination.list as s]
                                 [#if s.ctgName == '古籍文献']
@@ -387,7 +396,7 @@
                        </div>
                     </div>
                     <!--分页-->
-	                <div class="page">
+	                <div class="page" style="margin-bottom: 20px;">
 	                    <div>
 	                        [#if tag_pagination.list?size > 0]
 							[@cms_pagination sysPage='1' /] [/#if]
@@ -420,22 +429,5 @@
 	[#include "../include/hcozd/footer.html"/]
 	</div>
 </body>
-<script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
 <script src="${resSys}/www/hcozd/js/style_new.js" type="text/javascript"></script>
-<script>
-    $(".house_middle>div").click(function(){
-        $(this).addClass("now").siblings().removeClass("now");
-        $('.house_center>.list').eq($(this).index()).addClass('show').siblings().removeClass('show');
-    });
-    var c=$(".middle_right_search").css("height");
-    var b=$(".middle_left_search").css("height");
-    var c_1=parseInt(c);
-    var b_1=parseInt(b);
-    if(c_1>b_1){
-        $(".middle_left_search").css("height",c_1+58);
-    }
-    else {
-        $(".middle_right_search").css("height",b_1-58);
-    }
-</script>
 </html>

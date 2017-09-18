@@ -7,7 +7,7 @@
 .search_check_right input{width:120px}
 .search_check_right input, .search_check_right select{margin-right:3px;border:1px solid rgba(159, 136, 65, 0.86);height:25px
 }
-.search_check_right div label{text-align: right;width:72px;float: left;margin-right: 7px}
+.search_check_right div label{text-align: right;width:64px;float: left;margin-right: 7px}
 .cong{display: inline;}
 .time{display: none}
 .type_1{display: inline;width:122px}
@@ -21,12 +21,11 @@
 .search_new{overflow: hidden}
 .search_new div{}
 
-.sub{cursor:pointer;font-size:14px;
-background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(208, 198, 159, 0.92)), to(#614e47));
-background: -ms-linear-gradient(top, rgba(208, 198, 159, 0.92),  #614e47);
-background:-moz-linear-gradient(top, rgba(208, 198, 159, 0.92), #614e47);
-background: -o-linear-gradient(top, rgba(208, 198, 159, 0.92), #614e47);
-width:60px;height:30px;float:right;text-align: center;color:white;line-height: 30px;margin:50px 50px 0 0;border-radius: 5px}
+.sub{
+	margin:14px 0 10px 8px;float:left;cursor:pointer;
+	font-size:14px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(208, 198, 159, 0.92)), to(#614e47));
+	width:55px;height:28px;text-align: center;color:white;line-height: 30px;border-radius: 5px}
 .sub a{color: white}
 .list{overflow: hidden}
 .book2{margin:0 0 0 0.3rem !important;}

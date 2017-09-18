@@ -226,3 +226,17 @@ font-size: .8rem}
 .shufflingPic img{height:400px;width:600px}
 .pageSearch a{color: black;}
 .book_middle  table tr td{vertical-align:top}
+
+/*新增*/
+.sub{margin:20px 0 10px 8px;float:left;cursor:pointer;font-size:14px;background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(208, 198, 159, 0.92)), to(#614e47));width:55px;height:28px;text-align: center;color:white;line-height: 30px;border-radius: 5px}
+.sub a{color: white}
+.sub2{color:white;text-align:center;width:55px;height:20px;float:right;border-radius:5px;margin-right:20px;cursor:pointer;font-size:10px;background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(203, 83, 25, 0.92)), to(#80401c));}
+.list{overflow: hidden}
+.book2{margin:0 0 0 0.3rem !important;}
+.tapian_info_1_2{height:160px !important}
+.new_title{overflow: hidden;float:left;margin:30px 0 10px 0}
+.new_title div{float:left;width:200px;}
+.new_title1{overflow: hidden;float:left;margin:20px 0 10px 0;width:800px}
+.new_title1 div{float:left;width:200px;}
+.new_title_1{margin:0 0 10px 0}
+.sub3{margin:10px 60px 10px 8px;float:right;cursor:pointer;font-size:14px;background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(208, 198, 159, 0.92)), to(#614e47));width:55px;height:28px;text-align: center;color:white;line-height: 30px;border-radius: 5px}

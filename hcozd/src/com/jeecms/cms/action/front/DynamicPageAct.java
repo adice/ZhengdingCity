@@ -181,46 +181,36 @@ public class DynamicPageAct {
 			model.addAttribute("title",title);
 		}else if("119".equals(channelId)){
 			String isSearch=request.getParameter("isSearch");
-			if(isSearch==null || isSearch.equals("") || isSearch.equals("false"))
+			String []showChannelIds=null;
+			if(isSearch==null || isSearch.equals("") || isSearch.equals("false")){
 				model.addAttribute("isSearch", "false");
+				showChannelIds=new String[]{""};
+			}
 			else{
 				String channelIds=request.getParameter("channelIds");
+				showChannelIds=channelIds.split(",");
 				model.addAttribute("channelIds", channelIds);
 				model.addAttribute("isSearch", "true");
 			}
+			String searchType=request.getParameter("searchType")!=null?request.getParameter("searchType"):"1";
+			model.addAttribute("searchType",searchType);
+			String showChannelId=request.getParameter("showChannelId")!=""?request.getParameter("showChannelId"):showChannelIds[0];
+			model.addAttribute("showChannelId",showChannelId);
 			String title=request.getParameter("title")!=null?request.getParameter("title"):"";
 			model.addAttribute("title",title);
-			String seriesName=request.getParameter("seriesName")!=null?request.getParameter("seriesName"):"";
-			model.addAttribute("seriesName",seriesName);
 			String authorName=request.getParameter("authorName")!=null?request.getParameter("authorName"):"";
 			model.addAttribute("authorName",authorName);
-			String authorDynasty=request.getParameter("authorDynasty")!=null?request.getParameter("authorDynasty"):"";
-			model.addAttribute("authorDynasty",authorDynasty);
-			String authoringMode=request.getParameter("authoringMode")!=null?request.getParameter("authoringMode"):"";
-			model.addAttribute("authoringMode", authoringMode);
-			String publishDynasty=request.getParameter("publishDynasty")!=null?request.getParameter("publishDynasty"):"";
-			model.addAttribute("publishDynasty",publishDynasty);
+			String authorLogic=request.getParameter("authorLogic")!=null?request.getParameter("authorLogic"):"";
+			model.addAttribute("authorLogic",authorLogic);
+			
 			String publishreignPeriod=request.getParameter("publishreignPeriod")!=null?request.getParameter("publishreignPeriod"):"";
 			model.addAttribute("publishreignPeriod",publishreignPeriod);
 			String publisher=request.getParameter("publisher")!=null?request.getParameter("publisher"):"";
-			model.addAttribute("publisher", publisher);
-			String engraving=request.getParameter("engraving")!=null?request.getParameter("engraving"):"";
-			model.addAttribute("engraving", engraving);
-			String classification=request.getParameter("classification")!=null?request.getParameter("classification"):"";
-			model.addAttribute("classification",classification);
-			
+			model.addAttribute("publisher",publisher);
 			String stime=request.getParameter("stime")!=null?request.getParameter("stime"):"";
 			model.addAttribute("stime",stime);
 			String splace=request.getParameter("splace")!=null?request.getParameter("splace"):"";
 			model.addAttribute("splace",splace);
-			String sevent=request.getParameter("sevent")!=null?request.getParameter("sevent"):"";
-			model.addAttribute("sevent",sevent);
-			String stype=request.getParameter("stype")!=null?request.getParameter("stype"):"";
-			model.addAttribute("stype",stype);
-			String authorLogic=request.getParameter("authorLogic")!=null?request.getParameter("authorLogic"):"";
-			model.addAttribute("authorLogic",authorLogic);
-			String publishLogic=request.getParameter("publishLogic")!=null?request.getParameter("publishLogic"):"";
-			model.addAttribute("publishLogic",publishLogic);
 		}
 		int len = paths.length;
 		if (len == 1) {
