@@ -341,7 +341,7 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			Integer inputUserId, ContentStatus status, boolean topLevel,
 			boolean recommend) {
 		if (!StringUtils.isBlank(title)) {
-			f.append(" and (bean.contentExt.title like :title");
+			f.append(" and (bean.contentExt.title like :title)");
 			f.setParam("title", "%" + title + "%");
 		}
 		if (typeId != null) {
