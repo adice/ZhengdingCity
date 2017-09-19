@@ -32,18 +32,12 @@
 	                        </div>
 	                        <div class="book_middle">
 	                            <table>
-	                                [#if content.attr.rubbingTime??]<tr><td>年代：</td><td>${content.attr.rubbingTime}</td></tr>[/#if]
+	                                [#if content.attr.rubbingTime?? && content.attr.rubbingTime?length>0]<tr><td>年代：</td><td>${content.attr.rubbingTime}</td></tr>[/#if]
 	                                <tr><td>责任者：</td><td>
 	                                [#if content.attr.authorDynasty??]<span>${content.attr.authorDynasty}</span>[/#if]
 	                                [#if content.attr.authorName??]<span>${content.attr.authorName}</span>[/#if]
 	                                [#if content.attr.rubbingStyle??]<span>${content.attr.rubbingStyle}</span>[/#if]
 	                                </td></tr>
-	                                [#if content.attr.width?? && content.attr.height??]
-	                                <tr><td>规格：</td><td><span>${content.attr.width}</span>*<span>${content.attr.height}</span></td></tr>
-	                                [/#if]
-	                                [#if content.attr.rubbingType??]
-	                                <tr><td>拓片类型：</td><td><span>${content.attr.rubbingType}</span></td></tr>
-	                                [/#if]
 	                            </table>
 	                        </div>
 	                    </div>
