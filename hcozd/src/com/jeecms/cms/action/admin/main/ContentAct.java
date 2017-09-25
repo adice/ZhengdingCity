@@ -27,6 +27,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jeecms.cms.entity.main.Channel;
@@ -78,10 +79,35 @@ import com.jeecms.core.web.WebErrors;
 import com.jeecms.core.web.util.CmsUtils;
 import com.jeecms.core.web.util.CoreUtils;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.CycleDetectionStrategy;
+
 @Controller
 public class ContentAct{
 	private static final Logger log = LoggerFactory.getLogger(ContentAct.class);
-
+	
+	@ResponseBody
+	@RequestMapping(value="/content/mapvideos.do", produces="text/json;charset=UTF-8")
+	public String getVideos(HttpServletResponse response){
+		List<Content> list=this.manager.getListByChannelIdsForTag(new Integer[]{115}, new Integer[]{1,2,3,4},
+				null, null, null, null, 2, 0, null, null);
+		StringBuffer json=new StringBuffer();
+		json.append("{\"videos\":[");
+		for(Content t:list){
+			json.append("{\"id\":"+t.getId()+",\"title\":\""+t.getTitle()+"\",\"cover\":\""+t.getAttr().get("cover")+"\"},");
+		}
+		json.deleteCharAt(json.length()-1);
+		json.append("]}");
+		try {
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().print(json.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@RequiresPermissions("content:v_left")
 	@RequestMapping("/content/v_left.do")
 	public String left(String source, ModelMap model) {

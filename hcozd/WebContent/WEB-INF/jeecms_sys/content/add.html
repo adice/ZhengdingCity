@@ -715,6 +715,206 @@ function addPicLine() {
 	<@p.submit code="global.submit" id="submit" onclick="return submitContent()"/> &nbsp; <@p.reset code="global.reset"/>
 </@p.td>
 </@p.form>
+  <style>
+     .alert2{
+       display: none;
+       z-index: 999999;
+       width:880px;
+       height:500px;
+       overflow: scroll;
+       overflow-x:hidden;
+
+       box-shadow: 0 0 10px #cbcbcb;
+       border-radius: 5px;
+       position:fixed;
+       top:7%;
+       left:17%;
+       background-color: rgb(255, 255, 255);
+     }
+     /*内容*/
+     .alert2_div_list{
+       width:120px;
+       height:130px;
+       float:left;
+       margin-bottom:10px;
+     }
+     .alert2 form{margin:20px 0 10px 20px;overflow: hidden;}
+     .top{width:30%;float:left}
+     .top1{overflow: hidden;}
+     .alert2 form input{height:22px;float:left}
+     .alert2 form button{height:28px}
+     .alert2_img{overflow: hidden}
+     .alert2_img img{
+      width:100px;
+      height:100px;
+      margin-top:2px;
+    }
+     .alert2_img p{font-size: 8px;margin:-8px 0 0 0;
+     }
+     .alert2_div{
+       text-align: center;
+       margin:5px;
+       margin-bottom: 0;
+       cursor:pointer;
+       border-style:none;
+       border-width:2px;
+       border-color:#0999FF;
+     }
+   .ok_img img{width:20px;height:20px}
+   .ok_img{position:relative;top:-123px;left:92px;display: none}
+   .search{float:left;margin-left:8px;width:40px;height:27px;background-color: #d3d3d3;border-radius: 3px;text-align: center;line-height: 27px;cursor: pointer;
+   }
+     /*按钮*/
+     .bottom{overflow: hidden;margin-top:20px;float:right;width:60%}
+     .bottom div{
+       width:55px;height:28px;
+       border-radius: 5px;
+       text-align: center;
+       line-height: 30px;
+       float:right;
+       margin:0 20px 0 0;
+       cursor:pointer;
+     }
+    .cancel{background-color: #cbcbcb;
+    }
+    .ok{background-color: #1c8de0
+    }
+    .id2{visibility:hidden}
+  </style>
+  <div class="alert2">
+         <div class="top1">
+         <div class="top">
+         <form>
+           <input type="text"  class="text2" value="">
+           <div class="search">搜索</div>
+         </form></div>
+         <!--按钮-->
+         <div class="bottom">
+           <div class="ok">确定</div>
+           <div class="cancel">取消</div>
+         </div></div>
+        <!--弹框内容-->
+         <div id="alertparent" class="alert2_img">
+         </div>
+    </div>
+<script type="text/javascript" charset="UTF-8">
+	var dvideos=document.getElementsByName("attr_3dvideoPath");
+	if(dvideos!=null && dvideos.length>0){
+		var btnMap =document.createElement("input");
+		btnMap.type="button";
+		btnMap.value="  关联视频  ";
+		btnMap.onclick=function(){
+			$('.alert2').css('display','block');
+			$.post("mapvideos.do",function(result){
+				var vs=JSON.parse(result);
+				for(var i=0;i<vs.videos.length;i++){
+					//创建div
+					var div1=document.createElement("div");
+					div1.className="alert2_div_list";
+					var div2=document.createElement("div");
+					div2.className="alert2_div";
+					var img1=document.createElement("img");
+					if(vs.videos[i].cover == ""){
+						img1.src="/hcozd/r/cms/www/hcozd/img/nf3d.png";
+					}else{
+						img1.src="/hcozd/u/cms/www/"+vs.videos[i].cover;
+					}
+					var p2=document.createElement("p");
+					p2.className="id2";
+					p2.innerHTML=vs.videos[i].id;
+					var p1=document.createElement("p");
+					p1.className="id1";
+					p1.innerHTML=vs.videos[i].title;
+					div1.appendChild(div2);
+					div2.appendChild(img1);
+					div2.appendChild(p2);
+					div2.appendChild(p1);
+					//创建选中图片的div
+					var div3=document.createElement("div");
+					div3.className="ok_img";
+					var img2=document.createElement("img");
+					img2.src="/hcozd/r/cms/www/hcozd/img/ok.png";
+					div3.appendChild(img2);
+					div1.appendChild(div3);
+					//最终添加到div
+					document.getElementById("alertparent").appendChild(div1);
+				}
+				//弹框
+			    $('.alert2_div').each(function(){
+					$(this).click(function(){
+				        //边框
+				        $(this).css('border-style','solid');
+				        $(this).parent('.alert2_div_list').siblings().children('.alert2_div').css('border-style','none');
+				        //对勾
+				        
+				        $(this).siblings().css('display','block');
+				        $(this).parent('.alert2_div_list').siblings().children('.ok_img').css('display','none');
+			      	});
+			    });
+			});
+		};
+		//添加关联按钮
+		var parent = dvideos[0].parentNode;
+	    if (parent.lastChild == dvideos[0]) {
+	        parent.appendChild(btnMap);
+	    } else {
+	        parent.insertBefore(btnMap, dvideos[0].nextSibling);
+	    }
+	}
+	//弹框
+    $('.alert2_div').each(function(){
+		$(this).click(function(){
+	        //边框
+	        $(this).css('border-style','solid');
+	        $(this).parent('.alert2_div_list').siblings().children('.alert2_div').css('border-style','none');
+	        //对勾
+	        
+	        $(this).siblings().css('display','block');
+	        $(this).parent('.alert2_div_list').siblings().children('.ok_img').css('display','none');
+      	});
+    });
+	//点击确定按钮
+    $('.ok').click(function(){
+	//关闭弹框
+    	$('.alert2').css('display','none');
+		//获取值
+      	$('.alert2_div').each(function(){
+          	if($(this).css('border-style') == 'solid'){
+           		var p1= $(this).children('.id2').html();
+           		var dvideos=document.getElementsByName("attr_3dvideoPath");
+       	   		if(dvideos!=null && dvideos.length>0){
+       		   		dvideos[0].value=p1;
+       	   		}
+          	}
+      	})
+      	$("#alertparent").empty();
+      	$('.text2').val("");
+	});
+	//点击取消按钮
+    $('.cancel').click(function(){
+	//关闭弹框
+    	$('.alert2').css('display','none');
+      	$('.alert2_div').each(function(){
+	        $(this).css('border','none');
+	        $(this).siblings().css('display','none');
+      	})
+      	$("#alertparent").empty();
+      	$('.text2').val("");
+    });
+	//搜索
+    $('.search').click(function(){
+      	//获取文本框中的值
+      	var text2=$('.text2').val();
+      	$('.alert2_div .id1').each(function(){
+        	if($(this).html().indexOf(text2)!= -1){
+        		$(this).parent().parent('.alert2_div_list').css('display','block');
+        	}
+        	else{
+          		$(this).parent().parent('.alert2_div_list').css('display','none');
+        	}
+      	});
+    });
+</script>
 </div>
 <#include "/common/alert_message.html"/>
 <div id="channelsDialog" title="<@s.m "content.selectChannels"/>" style="display:none;">
