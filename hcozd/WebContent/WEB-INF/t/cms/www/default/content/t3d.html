@@ -72,13 +72,13 @@
                                     <div id="gameContainer" style="width: 600px; height: 500px"></div>
                                     <div class="footer2">
                                         <div class="webgl-logo"></div>
-                                        <div class="d_hr">
-                                        [#if content.attr.mapVideoId??]
+                                        [#if content.attr.mapVideoId?? && content.attr.mapVideoId?length>0]
                                         [@cms_content id=content.attr.mapVideoId channelId=115]
-                                        [#if tag_bean??]<a href="${tag_bean.url}" target="_blank">3D视频</a>[/#if]
+                                        [#if tag_bean??]
+                                        <div class="d_hr"><a href="${tag_bean.url}" target="_blank">3D视频</a></div>
+                                        [/#if]
                                         [/@cms_content]
                                         [/#if]
-                                        </div>
                                         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
                                     </div>
                                 </div>
