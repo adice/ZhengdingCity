@@ -135,7 +135,7 @@ public class DynamicPageAct {
 			channelId = "112";
 		}
 		model.addAttribute("channelId", channelId);
-		//如果是112则查询古籍
+		//如果是112则查询图书
 		if("112".equals(channelId)){
 			String bookName=request.getParameter("bookName")!=null?request.getParameter("bookName"):"";
 			String authorName=request.getParameter("authorName")!=null?request.getParameter("authorName"):"";

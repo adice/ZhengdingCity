@@ -55,7 +55,7 @@ a{text-decoration: none}
 .footer div {margin-top:3rem}
 .footer p{color:rgb(100,104,131)}
 
-/*古籍搜索*/
+/*图书搜索*/
 .middle_content{overflow: hidden}
 .middle_left_search{float:left;width:18.1rem;background-color: #d1c79e;overflow: hidden}
 .search_title{text-align: center;border-bottom: 1px dashed rgb(115,93,57)}
@@ -118,7 +118,7 @@ font-size: .8rem}
 .search_tapian a{text-decoration: none;color:black;font-size: 13px}
 .search_tapian_2{border:1px solid }
 
-/*古籍详情*/
+/*图书详情*/
 .book_top{text-align: center}
 .book_top p{font-size: 20px;margin:.3rem 0 .2rem 0}
 .book_top1{width:80px;height:90px;margin-top:5rem}
@@ -191,7 +191,6 @@ font-size: .8rem}
 .tapian_info_2 a{text-decoration: none;color:#333}
 
 .shipin_content{margin:2rem 0 0 2rem}
-.vr_content{margin:18rem 0 0 17rem}
 
 .index_audio{width:55.5rem;margin-left: 3rem;margin-top: 2.5rem}
 .index_audio a{color:black}
@@ -240,3 +239,6 @@ font-size: .8rem}
 .new_title1 div{float:left;width:200px;}
 .new_title_1{margin:0 0 10px 0}
 .sub3{margin:10px 60px 10px 8px;float:right;cursor:pointer;font-size:14px;background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(208, 198, 159, 0.92)), to(#614e47));width:55px;height:28px;text-align: center;color:white;line-height: 30px;border-radius: 5px}
+
+.d_hr{overflow:hidden;width:70px;height:38px;line-height:38px;text-align:center;background-color: #974840;border-radius: 5px;float:left;margin:30px 0 0 460px;}
+.d_hr a{color:white}

@@ -94,7 +94,7 @@
                         	</div>
 	                        <form >
 	                        	<table cellspacing="8px">
-	                           		<tr><td><input type="checkbox" name="se" value="112"></td><td>古籍文献</td></tr>
+	                           		<tr><td><input type="checkbox" name="se" value="112"></td><td>图书</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="113"></td><td>360全景</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="118"></td><td>拓片</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="117"></td><td>照片</td></tr>
@@ -207,8 +207,8 @@
                     <div class="search_content">
                     	<div class="house_middle" style="border:none">
                             <div id="tab112" [#if showChannelId=='112']class="now"[/#if] style="display: none">
-                            [#if searchType=='1']<a href="javascript:search(112,1);">古籍文献</a>[/#if]
-                            [#if searchType=='2']<a href="javascript:search(112,2);">古籍文献</a>[/#if]
+                            [#if searchType=='1']<a href="javascript:search(112,1);">图书</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(112,2);">图书</a>[/#if]
                             </div>
                             <div id="tab118" [#if showChannelId=='118']class="now"[/#if] style="display: none">
                             [#if searchType=='1']<a href="javascript:search(118,1);">拓片</a>[/#if]
@@ -238,8 +238,8 @@
                         <div class="house_center"><div class="list show"></div>
                             <div class="all_list">
                             [#list tag_pagination.list as s]
-                                [#if s.ctgName == '古籍文献']
-                                <!--古籍文献-->
+                                [#if s.ctgName == '图书']
+                                <!--图书-->
                                 <div class="all_book">
 				                <div class="all_book2">
 				                    <div class="all_book_img"><a href="${s.url}" target="_blank">

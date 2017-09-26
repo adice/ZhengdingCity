@@ -72,13 +72,20 @@
                                     <div id="gameContainer" style="width: 600px; height: 500px"></div>
                                     <div class="footer2">
                                         <div class="webgl-logo"></div>
+                                        <div class="d_hr">
+                                        [#if content.attr.mapVideoId??]
+                                        [@cms_content id=content.attr.mapVideoId channelId=115]
+                                        [#if tag_bean??]<a href="${tag_bean.url}" target="_blank">3D视频</a>[/#if]
+                                        [/@cms_content]
+                                        [/#if]
+                                        </div>
                                         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
                                     </div>
                                 </div>
                             	</div>
 	                        </div>
 	                        [#if content.txt??]
-	                        <div style="margin-top: -200px">
+	                        <div style="margin-top: -300px">
 	                            <div class="certificates_2">
 	                                <div style="font-size: 20px">摘要</div>
 	                                <div class="certificates_img_1">
