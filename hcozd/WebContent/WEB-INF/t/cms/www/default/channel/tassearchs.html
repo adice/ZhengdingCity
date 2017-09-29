@@ -96,7 +96,7 @@
 	                        	<table cellspacing="8px">
 	                           		<tr><td><input type="checkbox" name="se" value="112"></td><td>图书</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="113"></td><td>360全景</td></tr>
-	                               	<tr><td><input type="checkbox" name="se" value="118"></td><td>拓片</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="118"></td><td>碑志</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="117"></td><td>照片</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="116"></td><td>音频</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="115"></td><td>视频</td></tr>
@@ -211,8 +211,8 @@
                             [#if searchType=='2']<a href="javascript:search(112,2);">图书</a>[/#if]
                             </div>
                             <div id="tab118" [#if showChannelId=='118']class="now"[/#if] style="display: none">
-                            [#if searchType=='1']<a href="javascript:search(118,1);">拓片</a>[/#if]
-                            [#if searchType=='2']<a href="javascript:search(118,2);">拓片</a>[/#if]
+                            [#if searchType=='1']<a href="javascript:search(118,1);">碑志</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(118,2);">碑志</a>[/#if]
                             </div>
                             <div id="tab117" [#if showChannelId=='117']class="now"[/#if] style="display: none">
                             [#if searchType=='1']<a href="javascript:search(117,1);">照片</a>[/#if]
@@ -263,8 +263,8 @@
 				                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
 				            	</div>
             					[/#if]
-                                [#if s.ctgName == '拓片']
-                                <!--拓片-->
+                                [#if s.ctgName == '碑志']
+                                <!--碑志-->
 					            	<div class="all_book">
 					                <div class="all_book2">
 					                    <div class="all_book_img"><a href="${s.url}" target="_blank">

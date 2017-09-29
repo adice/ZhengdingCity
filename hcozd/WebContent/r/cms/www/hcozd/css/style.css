@@ -142,7 +142,7 @@ font-size: .8rem}
 .search_left_img_2{margin-top:8.6rem}
 .search_left_img_2 img{width:18.1rem}
 
-/*拓片搜索*/
+/*碑志搜索*/
 .tapian{overflow: hidden}
 .tapian_info{border:1px solid lightgrey;width:198px;height:160px;background-color: #fcfcfc}
 .tapian_1{margin:2rem 0 0 1.5rem;float:left}
@@ -174,7 +174,7 @@ font-size: .8rem}
 .all_book_word div{width:720px;font-size: .9rem;}
 .all_book_word div p{line-height: 1.1rem; }
 
-/*拓片详情*/
+/*碑志详情*/
 .certificates_2{overflow: hidden;margin:1rem 0 0 1rem}
 .certificates_2 div{float:left;margin-right:.2rem}
 .tapian_content img{width:36rem;height:27rem;margin:2rem 0 0 3rem}
