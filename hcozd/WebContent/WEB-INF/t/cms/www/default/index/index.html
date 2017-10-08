@@ -57,9 +57,9 @@
 									<a href="${book.url}"><span title="${book.title }">
 									[@text_cut s=book.title len='10' append='...' /]</span>
 										<p>
-										[#if book.attr.authorDynasty??](${book.attr.authorDynasty })[/#if]
-										[#if book.attr.authorName??]${book.attr.authorName }[/#if]
-										[#if book.attr.authoringMode??]${book.attr.authoringMode }[/#if]</p></a>
+										[#if book.attr.authorDynasty?? && book.attr.authorDynasty?length>0](${book.attr.authorDynasty })[/#if]
+										[#if book.attr.authorName?? && book.attr.authorName?length>0]${book.attr.authorName }[/#if]
+										[#if book.attr.authoringMode?? && book.attr.authoringMode?length>0]${book.attr.authoringMode }[/#if]</p></a>
 								</div>
 							</div>
 							[/#list] [/@cms_content_list]

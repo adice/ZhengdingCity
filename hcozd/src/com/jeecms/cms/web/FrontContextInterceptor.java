@@ -111,11 +111,12 @@ public class FrontContextInterceptor extends HandlerInterceptorAdapter {
 				if(null == userAgent){  
 				    userAgent = "";  
 				}
-				if(CheckMobile.check(userAgent)){
-					ua="mobile";
-				} else {
-					ua="pc";
-				}
+//				if(CheckMobile.check(userAgent)){
+//					ua="mobile";
+//				} else {
+//					ua="pc";
+//				}
+				ua="pc";
 				session.setAttribute(request, response, "ua",ua);
 			}catch(Exception e){}
 		}
