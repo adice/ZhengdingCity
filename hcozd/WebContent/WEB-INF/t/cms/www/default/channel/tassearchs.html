@@ -243,8 +243,14 @@
                                 <div class="all_book">
 				                <div class="all_book2">
 				                    <div class="all_book_img"><a href="${s.url}" target="_blank">
-				                    [#if s.pictures?size > 0]<img src="${s.pictures[0].imgPath}">
-				                    [#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
+				                    [#if s.pictures?? && s.pictures?size > 0]
+										[#assign picPath=""]
+											[#list s.pictures as pic]
+												[#if pic.description?? && pic.description=='封面'][#assign picPath=pic.imgPath][/#if]
+											[/#list]
+										[#if picPath?? && picPath?length>0]<img src="${picPath}">
+										[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
+									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 				                    </a></div>
 				                    <div class="all_book_word">
 				                        <a href="${s.url}" target="_blank">

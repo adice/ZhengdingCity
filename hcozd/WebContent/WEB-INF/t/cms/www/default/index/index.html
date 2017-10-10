@@ -48,9 +48,15 @@
 							[#list tag_list as book]
 							<div class="middle_left_bottom_1">
 								<div>
-									<a href="${book.url}"> [#if book.pictures?? && book.pictures?size > 0]
-									<img src="${book.pictures[0].imgPath}" width="81" height="80" />
-									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80" />[/#if]
+									<a href="${book.url}">
+									[#if book.pictures?? && book.pictures?size > 0]
+										[#assign picPath=""]
+											[#list book.pictures as pic]
+												[#if pic.description?? && pic.description=='封面'][#assign picPath=pic.imgPath][/#if]
+											[/#list]
+										[#if picPath?? && picPath?length>0]<img src="${picPath}" width="81" height="80" />
+										[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80"/>[/#if]
+									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80"/>[/#if]
 									</a>
 								</div>
 								<div>
