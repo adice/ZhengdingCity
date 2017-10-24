@@ -27,7 +27,7 @@ a{text-decoration: none}
 .middle_left_top div:nth-of-type(1){float:left;}
 .middle_left_top div:nth-of-type(2){float:left;font-family: "华文行楷";font-size:1.18rem;margin:.8rem 0 0 1rem}
 .more{float:right;margin:.5rem 1rem  0 0}
-.middle_left_bottom img{width:5.1rem;height:5rem}
+.middle_left_bottom img{width:60px;height:80px}
 .middle_left_bottom_1{overflow: hidden;margin:1rem 0 0 0 }
 .middle_left_bottom_1 a{text-decoration: none;color:black}
 .middle_left_bottom_1 div:nth-of-type(1){float:left;width:28%}
@@ -39,7 +39,7 @@ a{text-decoration: none}
 .middle_right_footer1{overflow: hidden}
 .middle_right_footer1 div{width:28%;margin:1rem 1.8rem 0 0;float:left}
 
-.middle_right_footer1 div img{width:10rem;height:6rem}
+.middle_right_footer1 div img{width:160px;height:90px;}
 .tit{font-weight: bold;font-size: 1.05rem;}
 
 .middle_right_footer{margin-top:3rem}
@@ -183,7 +183,7 @@ font-size: .8rem}
 .search_left_img_3{margin-top:10rem}
 
 .shufflingPic{width:600px;height:400px;margin:0 0 0 2rem}
-.shufflingPic img{height:400px;width:600px}
+.shufflingPic img{height:400px;width:300px}
 
 .tapian_info_2{width:198px;height:30px;background-color: #fcfcfc}
 .tapian_info_2{font-size: 13px}
@@ -196,7 +196,7 @@ font-size: .8rem}
 .index_audio a{color:black}
 .middle_right_footer2{overflow: hidden;}
 .middle_right_footer2 div{width:12.7rem;margin:1rem 1.1rem 0 0;float:left}
-.middle_right_footer2 div img{width:12rem;height:8rem}
+.middle_right_footer2 div img{width:192px;height:144px}
 .index_p{overflow: hidden;margin:2.5rem 0 0 3rem}
 .index_p a{color:black}
 .index_p div{float:left}
@@ -204,7 +204,7 @@ font-size: .8rem}
 .index_rub{width:45%}
 .middle_right_footer3{overflow: hidden;}
 .middle_right_footer3 div{width:7.9rem;margin:1rem .8rem 0 0;float:left}
-.middle_right_footer3 div img{width:7.9rem;height:6rem}
+.middle_right_footer3 div img{width:127px;height:95px;}
 .middle_left_top2{overflow: hidden;border-bottom: 1px solid black;padding-left: 10px;width:27rem}
 .middle_left_top2 div:nth-of-type(1){float:left;}
 .middle_left_top2 div:nth-of-type(2){float:left;font-family: "华文行楷";font-size:1.18rem;margin:.8rem 0 0 1rem}
