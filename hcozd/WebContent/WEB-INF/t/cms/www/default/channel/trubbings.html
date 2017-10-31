@@ -112,7 +112,7 @@
                                     <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
                                     </a></div>
                                     <div class="tapian_info"><a href="${rubbing.url}" target="_blank">
-                                        <p class="search_tapian_name">${rubbing.title}</p>
+                                        <p class="search_tapian_name" title="${rubbing.title}">[@text_cut s=rubbing.title len='10' append='...' /]</p>
                                         [#if rubbing.attr.rubbingTime?? && rubbing.attr.rubbingTime?length>0]<p>年代：<span>${rubbing.attr.rubbingTime}</span></p>[/#if]
                                         <p>责任者：
                                         [#if rubbing.attr.authorDynasty??]<span>(${rubbing.attr.authorDynasty})</span>[/#if]

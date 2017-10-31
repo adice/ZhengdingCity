@@ -109,8 +109,8 @@
 	                            <div class="tapian_info_2"><a href="${video.url}" target="_blank">
 	                                <p class="search_tapian_name">
 	                                <span>[#if video.attr.stime??]${video.attr.stime}[/#if]</span>
-	                                <span> [#if video.attr.splace??]${video.attr.splace}[/#if]</span>
-	                                <span> ${video.title}</span></p>
+	                                <span> [#if video.attr.splace??]${video.attr.splace}[/#if]</span><br>
+	                                <span title="${video.title}">[@text_cut s=video.title len='10' append='...' /]</span></p>
 	                                [#if video.attr.publisher??]<p><span>来源：${video.attr.publisher}</span></p>[/#if]</a>
 	                            </div>
 	                        </div>

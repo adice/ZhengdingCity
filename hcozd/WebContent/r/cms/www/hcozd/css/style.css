@@ -144,7 +144,7 @@ font-size: .8rem}
 
 /*碑志搜索*/
 .tapian{overflow: hidden}
-.tapian_info{border:1px solid lightgrey;width:198px;height:160px;background-color: #fcfcfc}
+.tapian_info{border:1px solid lightgrey;width:198px;background-color: #fcfcfc}
 .tapian_1{margin:2rem 0 0 1.5rem;float:left}
 .taian_img{width:200px;height:130px;}
 .taian_img img{width:200px;height:130px}
@@ -153,7 +153,7 @@ font-size: .8rem}
 .tapian_info a{text-decoration: none;color:#333}
 .search_tapian_name{font-size: 15px;color:#886e43;font-weight: 500;margin:10px 0 0 0}
 
-.tapian_info_1{border:1px solid lightgrey;width:198px;height:130px;background-color: #fcfcfc}
+.tapian_info_1{border:1px solid lightgrey;width:198px;background-color: #fcfcfc}
 .tapian_info_1{font-size: 13px}
 .tapian_info_1 p{line-height: 24px;margin-left: 5px}
 .tapian_info_1 a{text-decoration: none;color:#333}
@@ -185,7 +185,7 @@ font-size: .8rem}
 .shufflingPic{width:600px;height:400px;margin:0 0 0 2rem}
 .shufflingPic img{height:400px;width:300px}
 
-.tapian_info_2{width:198px;height:30px;background-color: #fcfcfc}
+.tapian_info_2{width:198px;background-color: #fcfcfc}
 .tapian_info_2{font-size: 13px}
 .tapian_info_2 p{line-height: 24px;margin-left: 5px}
 .tapian_info_2 a{text-decoration: none;color:#333}

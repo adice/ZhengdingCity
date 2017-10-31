@@ -95,7 +95,8 @@
 									[#if allscene.attr.allPath??]
 									<img src="${allscene.attr.allPath}" width="160" height="96" />
 									[#else]<img src="${resSys}/www/hcozd/img/nfallscene.png" width="160" height="96" />[/#if]
-									</a> <a href="${allscene.url}"><p class="tit">
+									</a>
+									<a href="${allscene.url}"><p class="tit" title="${allscene.title}">
 									[@text_cut s=allscene.title len='10' append='...' /]</p>
 										<p>
 										[#if allscene.tagStr??]
@@ -132,7 +133,7 @@
 									<img src="${view3d.attr.allPath}" width="160" height="96" />
 									[#else]<img src="${resSys}/www/hcozd/img/nf3d.png" width="160" height="96" />[/#if]
 									</a> <a href="${view3d.url}">
-									<p class="tit">[@text_cut s=view3d.title len='10' append='...' /]</p>
+									<p class="tit" title="${view3d.title}">[@text_cut s=view3d.title len='10' append='...' /]</p>
 									[#if view3d.tagStr??]
 									[#list view3d.tagStr?split(",") as singleTag]
 									<a href="${base}/search.jspx?q=${singleTag}" target="_blank">${singleTag}</a>[/#list]
@@ -171,9 +172,8 @@
 								</a>
 								<a href="${audio.url}"><p class="tit">
 								<span>[#if audio.attr.stime??]${audio.attr.stime}[/#if]</span>
-								<span> [#if audio.attr.splace??]${audio.attr.splace}[/#if]</span>
-	                            <span> [#if audio.title??]${audio.title}[/#if]</span>
-	                            <span> [#if audio.attr.event??]${audio.attr.event}[/#if]</span>
+								<span> [#if audio.attr.splace??]${audio.attr.splace}[/#if]</span><br>
+	                            <span title="${audio.title}"> [#if audio.title??][@text_cut s=audio.title len='10' append='...' /][/#if]</span>
 								</p></a>
 							</div>
 						[/#list] [/@cms_content_list]
@@ -205,10 +205,9 @@
 	                            [/#if]</a>
 	                            <a href="">
 	                            <p class="tit">
-	                            <span>[#if video.attr.audioTime??]${video.attr.audioTime}[/#if]</span>
-								<span> [#if video.attr.audioPlace??]${video.attr.audioPlace}[/#if]</span>
-	                            <span> [#if video.title??]${video.title}[/#if]</span>
-	                            <span> [#if video.attr.event??]${video.attr.event}[/#if]</span>
+	                            <span>[#if video.attr.stime??]${video.attr.stime}[/#if]</span>
+								<span> [#if video.attr.splace??]${video.attr.splace}[/#if]</span><br>
+	                            <span title="${video.title}"> [#if video.title??][@text_cut s=video.title len='10' append='...' /][/#if]</span>
 	                            </p></a>
 							</div>
 						[/#list] [/@cms_content_list]
@@ -238,10 +237,9 @@
 									<img src="${pic.attr.picturePath}"></a>
 									<a href="${pic.url}">
 									<p class="tit">
-									<span>[#if pic.attr.audioTime??]${pic.attr.audioTime}[/#if]</span>
-									<span> [#if pic.attr.audioPlace??]${pic.attr.audioPlace}[/#if]</span>
-		                            <span> [#if pic.title??]${pic.title}[/#if]</span>
-		                            <span> [#if pic.attr.event??]${pic.attr.event}[/#if]</span>
+									<span>[#if pic.attr.stime??]${pic.attr.stime}[/#if]</span>
+									<span> [#if pic.attr.splace??]${pic.attr.splace}[/#if]</span><br>
+		                            <span title="${pic.title}"> [#if pic.title??][@text_cut s=pic.title len='7' append='...' /][/#if]</span>
 									</p></a>
 								</div>
 							[/#list] [/@cms_content_list]
@@ -269,7 +267,7 @@
                                     <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
 									</a>
 									<a href="${rubbing.url}">
-									<p class="tit">${rubbing.title}</p></a>
+									<p class="tit" title="${rubbing.title}">[@text_cut s=rubbing.title len='7' append='...' /]</p></a>
 								</div>
 							[/#list] [/@cms_content_list]
 							</div>
