@@ -26,7 +26,10 @@
 	                <div class="middle_left_search">
 	                    <div>
 	                        <div class="book_top">
-		                        <img src="${resSys}/www/hcozd/img/nfrubbing.png" class="book_top1">
+	                        	[#if content.attr.cover?? && content.attr.cover?length > 0]
+	                            <img src="${content.attr.cover}" class="book_top1"/>
+	                            [#else]<img src="${resSys}/www/hcozd/img/nfrubbing.png" class="book_top1"/>
+	                            [/#if]
 	                            <p>${content.title}</p>
 	                            <img src="${resSys}/www/hcozd/img/left.png" class="book_top2">
 	                        </div>

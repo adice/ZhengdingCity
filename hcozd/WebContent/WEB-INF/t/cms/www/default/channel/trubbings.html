@@ -109,7 +109,10 @@
                                 <div class="tapian_1">
                                     <div class="taian_img">
                                     <a href="${rubbing.url}" target="_blank">
-                                    <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+                                    [#if rubbing.attr.cover?? && rubbing.attr.cover?length > 0]
+		                            <img src="${rubbing.attr.cover}" />
+		                            [#else]<img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+		                            [/#if]
                                     </a></div>
                                     <div class="tapian_info"><a href="${rubbing.url}" target="_blank">
                                         <p class="search_tapian_name" title="${rubbing.title}">[@text_cut s=rubbing.title len='10' append='...' /]</p>

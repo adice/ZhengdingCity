@@ -92,8 +92,8 @@
 								[@cms_content_list count='3' orderBy='2' channelId='113' channelOption='0'] [#list tag_list as allscene]
 								<div>
 									<a href="${allscene.url}">
-									[#if allscene.attr.allPath??]
-									<img src="${allscene.attr.allPath}" width="160" height="96" />
+									[#if allscene.attr.cover?? && allscene.attr.cover?length>0]
+									<img src="${allscene.attr.cover}" width="160" height="96" />
 									[#else]<img src="${resSys}/www/hcozd/img/nfallscene.png" width="160" height="96" />[/#if]
 									</a>
 									<a href="${allscene.url}"><p class="tit" title="${allscene.title}">
@@ -129,8 +129,8 @@
 								[#list tag_list as view3d]
 								<div>
 									<a href="${view3d.url}">
-									[#if view3d.attr.allPath??]
-									<img src="${view3d.attr.allPath}" width="160" height="96" />
+									[#if view3d.attr.cover?? && view3d.attr.cover?length>0]
+									<img src="${view3d.attr.cover}" width="160" height="96" />
 									[#else]<img src="${resSys}/www/hcozd/img/nf3d.png" width="160" height="96" />[/#if]
 									</a> <a href="${view3d.url}">
 									<p class="tit" title="${view3d.title}">[@text_cut s=view3d.title len='10' append='...' /]</p>
@@ -264,7 +264,10 @@
 							[#list tag_list as rubbing]
 								<div>
 									<a href="${rubbing.url}">
-                                    <img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+									[#if rubbing.attr.cover?? && rubbing.attr.cover?length > 0]
+		                            <img src="${rubbing.attr.cover}" />
+		                            [#else]<img src="${resSys}/www/hcozd/img/nfrubbing.png" />
+		                            [/#if]
 									</a>
 									<a href="${rubbing.url}">
 									<p class="tit" title="${rubbing.title}">[@text_cut s=rubbing.title len='7' append='...' /]</p></a>
