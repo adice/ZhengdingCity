@@ -110,7 +110,11 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 			boolean topLevel, boolean recommend,ContentStatus status, 
 			Byte checkStep, Integer siteId,Integer modelId,
 			Integer channelId,int orderBy, int pageNo, int pageSize){
-		Finder f = Finder.create("select  bean from Content bean  ");
+		Finder f = Finder.create("select  bean from Content bean ");
+		//按标题排序
+		if(orderBy==24){
+			f.append(" join bean.contentExt beanext");
+		}
 		if (prepared == status || passed == status || rejected == status) {
 			f.append(" join bean.contentCheckSet check");
 		}
@@ -983,6 +987,10 @@ public class ContentDaoImpl extends HibernateBaseDao<Content, Integer>
 		case 23:
 			// 推荐级别升序、发布时间降序
 			f.append(" order by bean.recommendLevel asc, bean.sortDate desc");
+			break;
+		case 24:
+			//按标题升序，发布时间降序
+			f.append(" order by beanext.title asc");
 			break;
 		default:
 			// 默认： ID降序
