@@ -118,8 +118,8 @@
                                         <p class="search_tapian_name" title="${rubbing.title}">[@text_cut s=rubbing.title len='10' append='...' /]</p>
                                         [#if rubbing.attr.rubbingTime?? && rubbing.attr.rubbingTime?length>0]<p>年代：<span>${rubbing.attr.rubbingTime}</span></p>[/#if]
                                         <p>责任者：
-                                        [#if rubbing.attr.authorDynasty??]<span>(${rubbing.attr.authorDynasty})</span>[/#if]
-                                        [#if rubbing.attr.authorName??]<span>${rubbing.attr.authorName}</span>[/#if]
+                                        [#if rubbing.attr.authorDynasty??]<span title="${rubbing.attr.authorDynasty}">[@text_cut s=rubbing.attr.authorDynasty len='10' append='...' /]</span><br>[/#if]
+                                        [#if rubbing.attr.authorName??]<span title="${rubbing.attr.authorName}">[@text_cut s=rubbing.attr.authorName len='10' append='...' /]</span>[/#if]
                                         [#if rubbing.attr.rubbingStyle??]<span>${rubbing.attr.rubbingStyle}</span>[/#if]
                                         </p>
                                         </a>

@@ -1,7 +1,7 @@
 *{margin:0;padding:0 !important;font-family: "微软雅黑"}
 a{text-decoration: none}
 /*首页*/
-.top{background:url("../img/header_bg.jpg");overflow: hidden}
+.top{background:url("../img/header_bg.png") no-repeat center top #e4e5e9;overflow: hidden;al}
 .nav{overflow: hidden;margin:10% auto 0 auto;width:1000px}
 
 /*.nav ul{margin:10% auto 0 auto}*/
