@@ -55,9 +55,9 @@ $(function() {
                               <tr><td>卷数：</td><td>${content.attr.volumeCount}</td></tr>
                               [/#if]
                               <tr><td>责任者：</td><td>
-                              [#if content.attr.authorDynasty??]<span>(${content.attr.authorDynasty})</span>[/#if]
-                              [#if content.attr.authorName??]<span>${content.attr.authorName}</span>[/#if]
-                              [#if content.attr.authoringMode??]<span>${content.attr.authoringMode}</span>[/#if]
+                              [#if content.attr.authorDynasty?? && content.attr.authorDynasty?length>0]<span>(${content.attr.authorDynasty})</span>[/#if]
+                              [#if content.attr.authorName?? && content.attr.authorName?length>0]<span>${content.attr.authorName}</span>[/#if]
+                              [#if content.attr.authoringMode?? && content.attr.authoringMode?length>0]<span>${content.attr.authoringMode}</span>[/#if]
                               </td></tr>
                               <tr><td>版本：</td><td>
                               [#if content.attr.publishDynasty??]<span>${content.attr.publishDynasty}</span>[/#if]
