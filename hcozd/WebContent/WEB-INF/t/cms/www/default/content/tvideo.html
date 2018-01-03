@@ -40,13 +40,13 @@ video::-webkit-media-controls-panel {width: calc(100% + 30px);}
 	                        </div>
 	                        <div class="book_middle">
 	                            <table>
-	                            [#if content.attr.stime??]
+	                            [#if content.attr.stime?? && content.attr.stime?length>0]
 	                            <tr><td>时间：</td><td><span>${content.attr.stime}</span></td></tr>
 	                            [/#if]
-	                            [#if content.attr.splace??]
+	                            [#if content.attr.splace?? && content.attr.splace?length>0]
 	                            <tr><td>地点：</td><td><span>${content.attr.splace}</span></td></tr>
 	                            [/#if]
-	                            [#if content.attr.publisher??]
+	                            [#if content.attr.publisher?? && content.attr.publisher?length>0]
 	                                <tr><td>来源：</td><td><span>${content.attr.publisher}</span></td></tr>
 	                            [/#if]
 	                            </table>

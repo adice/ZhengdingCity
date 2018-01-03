@@ -5,7 +5,6 @@
 <meta http-equiv="keywords" content="${site.keywords!}" />
 <meta http-equiv="description" content="${site.description!}" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!--<link rel="stylesheet" href="css/bootstrap.css">-->
 <link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
 <link rel="stylesheet" href="${resSys}/www/hcozd/css/swiper-3.4.2.css">
 <script src="${resSys}/jquery.js" type="text/javascript"></script>
@@ -54,18 +53,26 @@ $(function() {
                               [#if content.volumeCount??]
                               <tr><td>卷数：</td><td>${content.attr.volumeCount}</td></tr>
                               [/#if]
+                              [#if (content.attr.authorDynasty?? && content.attr.authorDynasty?length>0) 
+                              	|| (content.attr.authorName?? && content.attr.authorName?length>0)]
                               <tr><td>责任者：</td><td>
                               [#if content.attr.authorDynasty?? && content.attr.authorDynasty?length>0]<span>(${content.attr.authorDynasty})</span>[/#if]
                               [#if content.attr.authorName?? && content.attr.authorName?length>0]<span>${content.attr.authorName}</span>[/#if]
                               [#if content.attr.authoringMode?? && content.attr.authoringMode?length>0]<span>${content.attr.authoringMode}</span>[/#if]
                               </td></tr>
+                              [/#if]
+                              [#if content.attr.publishDynasty?? && content.attr.publishDynasty?length>0 
+                              	&& content.attr.publishreignPeriod?? && content.attr.publishreignPeriod?length>0 
+                              	&& content.attr.publisher?? && content.attr.publisher?length>0
+                              	&& content.attr.engraving?? && content.attr.engraving?length>0]
                               <tr><td>版本：</td><td>
                               [#if content.attr.publishDynasty??]<span>${content.attr.publishDynasty}</span>[/#if]
                               [#if content.attr.publishreignPeriod??]<span>${content.attr.publishreignPeriod}</span>[/#if]
                               [#if content.attr.publisher??]<span>${content.attr.publisher}</span>[/#if]
                               [#if content.attr.engraving??]<span>${content.attr.engraving}</span>[/#if]
                               </td></tr>
-                              [#if content.attr.classification??]
+                              [/#if]
+                              [#if content.attr.classification?? && content.attr.classification?length>0]
                               <tr><td>分类：</td><td><span>${content.attr.classification}</span></td></tr>
                               [/#if]
                               [#if content.attr.collectionHall1?length>0]
@@ -164,8 +171,11 @@ $(function() {
                         <iframe src="${base}/thirdparty/pdf/viewer.html?file=${content.attachments[0].path}" id="iframepage" width="100%" height="700px" frameborder="0" scrolling="no"></iframe>
                         [/#if]
                         <div style="width:100px;margin:10px 0 0 560px">
+                        [#if content.attachments[0]??]
                         <a id="zoomPdf" href="${base}/thirdparty/pdf/viewer.html?file=${content.attachments[0].path}" target="_blank">
-                        <img src="${resSys}/www/hcozd/3d/TemplateData/fullscreen.png" id="fu"></a></div>
+                        <img src="${resSys}/www/hcozd/3d/TemplateData/fullscreen.png" id="fu"></a>
+                        [/#if]
+                        </div>
                         </div>
                         [#if content.txt??]
                        	<div>

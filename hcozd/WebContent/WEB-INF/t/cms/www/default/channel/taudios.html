@@ -107,10 +107,10 @@
 	                            </a></div>
 	                            <div class="tapian_info_2"><a href="${audio.url}" target="_blank">
 	                                <p class="search_tapian_name">
-	                                <span>[#if audio.attr.stime??]${audio.attr.stime}[/#if]</span>
-	                                <span> [#if audio.attr.splace??]${audio.attr.splace}[/#if]</span><br>
+	                                [#if audio.attr.stime?? && audio.attr.stime?length>0]<span>${audio.attr.stime}</span>[/#if]
+	                                [#if audio.attr.splace?? && audio.attr.splace?length>0]<span>${audio.attr.splace}</span><br>[/#if]
 	                                <span title="${audio.title}">[@text_cut s=audio.title len='10' append='...' /]</span></p>
-	                                [#if audio.attr.publisher??]<p><span>来源：${audio.attr.publisher}</span></p>[/#if]</a>
+	                                [#if audio.attr.publisher?? && audio.attr.publisher?length>0]<p><span>来源：${audio.attr.publisher}</span></p>[/#if]</a>
 	                            </div>
 	                        </div>
                             [/#list]

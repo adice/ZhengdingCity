@@ -35,7 +35,7 @@
 	                        </div>
 	                        <div class="book_middle">
 	                            <table>
-	                            [#if content.attr.publisher??]
+	                            [#if content.attr.publisher?? && content.attr.publisher?length>0]
 	                                <tr><td>来源：</td><td><span>${content.attr.publisher}</span></td></tr>
 	                            [/#if]
 	                            </table>

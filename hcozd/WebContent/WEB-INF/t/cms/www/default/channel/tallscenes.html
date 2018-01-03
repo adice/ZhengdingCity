@@ -114,7 +114,7 @@
                                     <div class="tapian_info2">
                                     	<a href="${allscene.url}" target="_blank">
                                         <p class="search_tapian_name" title="${allscene.title}">[@text_cut s=allscene.title len='10' append='...' /]</p>
-                                        [#if allscene.attr.publisher??]<p>${allscene.attr.publisher}</p>[/#if]
+                                        [#if allscene.attr.publisher?? && allscene.attr.publisher?length>0]<p>${allscene.attr.publisher}</p>[/#if]
                                         </a>
                                 	</div>
 	                            </div>

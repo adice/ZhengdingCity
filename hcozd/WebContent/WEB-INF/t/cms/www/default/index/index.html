@@ -5,7 +5,6 @@
 <title>首页</title>
 <meta http-equiv="keywords" content="${site.keywords!}" />
 <meta http-equiv="description" content="${site.description!}" />
-<!--<link rel="stylesheet" href="css/bootstrap.css">-->
 <link rel="stylesheet" href="${resSys}/www/hcozd/css/style.css">
 <script src="${resSys}/jquery.js" type="text/javascript"></script>
 <script src="${resSys}/front.js" type="text/javascript"></script>
@@ -64,8 +63,10 @@
 									[@text_cut s=book.title len='10' append='...' /]</span>
 										<p>
 										[#if book.attr.authorDynasty?? && book.attr.authorDynasty?length>0](${book.attr.authorDynasty })[/#if]
-										[#if book.attr.authorName?? && book.attr.authorName?length>0]${book.attr.authorName }[/#if]
-										[#if book.attr.authoringMode?? && book.attr.authoringMode?length>0]${book.attr.authoringMode }[/#if]</p></a>
+										[#if book.attr.authorName?? && book.attr.authorName?length>0]${book.attr.authorName }
+										[#if book.attr.authoringMode?? && book.attr.authoringMode?length>0]${book.attr.authoringMode }[/#if]
+										[/#if]
+										</p></a>
 								</div>
 							</div>
 							[/#list] [/@cms_content_list]
@@ -171,8 +172,8 @@
 	                            [/#if]
 								</a>
 								<a href="${audio.url}"><p class="tit">
-								<span>[#if audio.attr.stime??]${audio.attr.stime}[/#if]</span>
-								<span> [#if audio.attr.splace??]${audio.attr.splace}[/#if]</span><br>
+								[#if audio.attr.stime?? && audio.attr.stime?length>0]<span>${audio.attr.stime}</span>[/#if]
+								[#if audio.attr.splace?? && audio.attr.splace?length>0]<span>${audio.attr.splace}</span><br>[/#if]
 	                            <span title="${audio.title}"> [#if audio.title??][@text_cut s=audio.title len='10' append='...' /][/#if]</span>
 								</p></a>
 							</div>
@@ -205,8 +206,8 @@
 	                            [/#if]</a>
 	                            <a href="">
 	                            <p class="tit">
-	                            <span>[#if video.attr.stime??]${video.attr.stime}[/#if]</span>
-								<span> [#if video.attr.splace??]${video.attr.splace}[/#if]</span><br>
+	                            [#if video.attr.stime?? && video.attr.stime?length>0]<span>${video.attr.stime}</span>[/#if]
+								[#if video.attr.splace?? && video.attr.splace?length>0]<span>${video.attr.splace}</span><br>[/#if]
 	                            <span title="${video.title}"> [#if video.title??][@text_cut s=video.title len='10' append='...' /][/#if]</span>
 	                            </p></a>
 							</div>
@@ -237,8 +238,6 @@
 									<img src="${pic.attr.picturePath}"></a>
 									<a href="${pic.url}">
 									<p class="tit">
-									<span>[#if pic.attr.stime??]${pic.attr.stime}[/#if]</span>
-									<span> [#if pic.attr.splace??]${pic.attr.splace}[/#if]</span><br>
 		                            <span title="${pic.title}"> [#if pic.title??][@text_cut s=pic.title len='7' append='...' /][/#if]</span>
 									</p></a>
 								</div>
@@ -302,7 +301,6 @@
 				</div>
 				<div class="kong2"></div>
 			</div>
-			<div class="kong5"></div>
 		</div>
 		<div class="kong4"></div>
 		<!--底部-->
