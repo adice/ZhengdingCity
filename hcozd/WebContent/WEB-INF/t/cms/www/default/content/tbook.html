@@ -17,6 +17,22 @@ $(function() {
   Cms.siteFlow("${base}", location.href, document.referrer,"${site.config.flowSwitch?string}");
   Cms.viewCount("${base}","${content.id}");
 });
+$(document).ready(function(){ 
+	 console.log($("#swiper-pic").height());
+	 var imgtemp = new Image();
+	 imgtemp.src = $("#swiper-img").attr("src");
+	 imgtemp.onload = function(){//图片加载完成后执行
+		 var _stemp = this;//将当前指针复制给新的变量，不然会导致变量共用
+		 realWidth = this.width;
+		 realHeight = this.height;
+		 var h = 500 * realHeight / realWidth ;
+		 $("#swiper-pic").css("height",h);
+		 $("#swiper-pic img").css("width",500);
+		 $("#swiper-pic img").css("height",h);
+		 $(".middle_left_search").css("height",1384-400+h);
+	 }
+	 
+});
 </script>
 </head>
 <body>
@@ -124,11 +140,11 @@ $(function() {
                       </div>
                         <!--书影的内容-->
                         <!--轮播图-->
-                        <div class="shufflingPic">
+                        <div id="swiper-pic" class="shufflingPic">
 			            	<div class="swiper-container">
 			               		<div class="swiper-wrapper" style="text-align:center">
                                     [#list content.pictures as pics]
-                                    <div class="swiper-slide"><img src="${pics.imgPath}"></div>
+                                    <div class="swiper-slide"><img id="swiper-img" src="${pics.imgPath}"></div>
 		                        	[/#list]
 			                   </div>
 			                   <div class="swiper-button-prev" style="color:gray"></div>
@@ -215,7 +231,7 @@ $(function() {
         // 如果需要前进后退按钮
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
-    })
+    });
 </script>
 <script src="${resSys}/www/hcozd/js/style.js" type="text/javascript"></script>
 </html>
