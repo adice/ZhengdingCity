@@ -15,7 +15,7 @@ public abstract class ImageUtils {
 	 * 图片的后缀
 	 */
 	public static final String[] IMAGE_EXT = new String[] { "jpg", "jpeg",
-			"gif", "png", "bmp" };
+			"gif", "png", "bmp", "tif"};
 
 	/**
 	 * 是否是图片

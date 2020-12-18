@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>图书内容</title>
+<title>文献内容</title>
 <meta http-equiv="keywords" content="${site.keywords!}" />
 <meta http-equiv="description" content="${site.description!}" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -117,7 +117,7 @@ $(document).ready(function(){
                 <div class="middle_right_search">
                     <!--面包屑-->
                     <div class="search_bread">
-                        <div class="bread_word"> <ul><li><a href="${base }">首页></a></li> <li><a href="">图书</a></li></ul></div>
+                        <div class="bread_word"> <ul><li><a href="${base }">首页></a></li> <li><a href="">文献</a></li></ul></div>
                         <div>当前位置：</div>
                     </div>
                     <!--书影-->
@@ -144,7 +144,8 @@ $(document).ready(function(){
 			            	<div class="swiper-container">
 			               		<div class="swiper-wrapper" style="text-align:center">
                                     [#list content.pictures as pics]
-                                    <div class="swiper-slide"><img id="swiper-img" src="${pics.imgPath}"></div>
+                                    <div class="swiper-slide">
+                                    <img id="swiper-img" src="${pics.imgPath}" ></div>
 		                        	[/#list]
 			                   </div>
 			                   <div class="swiper-button-prev" style="color:gray"></div>
@@ -156,7 +157,7 @@ $(document).ready(function(){
                     <!--书籍-->
                     <div class="certificates">
                         <div class="certificates_1">
-                            <div style="font-size: 20px">图书</div>
+                            <div style="font-size: 20px">文献</div>
                             <div class="certificates_img_1">
                                 <img src="${resSys}/www/hcozd/img/bj_listpage.png" >
                                 <img src="${resSys}/www/hcozd/img/bj_listpage.png" >

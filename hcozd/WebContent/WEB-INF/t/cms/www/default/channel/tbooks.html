@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-图书
+文献
 </title>
 <meta http-equiv="keywords" content="${site.keywords!}" />
 <meta http-equiv="description" content="${site.description!}" />
@@ -50,7 +50,7 @@
 							[#if culContentType == '2']乡土文化[/#if]
 							[#if culContentType == '3']古代建筑[/#if]
 							[#if culContentType == '4']民俗风貌[/#if]
-							[#if culContentType == '1,2,3,4']图书[/#if]
+							[#if culContentType == '1,2,3,4']文献[/#if]
 							</p>
 							<p>查询条件</p>
 						</div>
@@ -91,7 +91,7 @@
 									[#if culContentType == '2']乡土文化[/#if]
 									[#if culContentType == '3']古代建筑[/#if]
 									[#if culContentType == '4']民俗风貌[/#if]
-									[#if culContentType == '1,2,3,4']图书[/#if]
+									[#if culContentType == '1,2,3,4']文献[/#if]
 									</a></li>
 								</ul>
 							</div>
@@ -119,13 +119,10 @@
 						<!--content-->
 						<div class="search_content">
 							<div class="house_middle">
-							<div class="now"><a href="#">图书</a></div>
-                            <div><a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118">碑志</a></div>
-                            <div><a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117">照片</a></div>
-                            <div><a href="${base}/audio/index.jhtml?culContentType=${culContentType}&channelId=116">音频</a></div>
-                            <div><a href="${base}/video/index.jhtml?culContentType=${culContentType}&channelId=115">视频</a></div>
-                            <div><a href="${base}/allscene/index.jhtml?culContentType=${culContentType}&channelId=113">360全景</a></div>
-                            <div><a href="${base}/3d/index.jhtml?culContentType=${culContentType}&channelId=114">3D虚拟</a></div>
+							<div class="now"><a href="#">文献</a></div>
+                            <a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118"><div>碑志</div></a>
+                            <a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117"><div>照片</div></a>
+                            <a href="${base}/multimedia/index.jhtml?culContentType=${culContentType}&channelId=120"><div>音视频</div></a>
 							</div>
 							<div class="house_center">
 								<div class="list show book">
@@ -138,7 +135,9 @@
 													[#list book.pictures as pic]
 														[#if pic.description?? && pic.description=='封面'][#assign picPath=pic.imgPath][/#if]
 													[/#list]
-												[#if picPath?? && picPath?length>0]<img src="${picPath}">
+												[#if picPath?? && picPath?length>0]
+												<img src="${picPath ?substring(0,picPath?last_index_of('/')+1)}/sl/s_${picPath ?substring(picPath?last_index_of('/')+1,picPath?length)}"
+													onerror="this.src='${picPath}';this.οnerrοr=null;" />
 												[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 											[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 											</a>

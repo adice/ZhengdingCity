@@ -179,6 +179,10 @@ public class DynamicPageAct {
 		}else if("114".equals(channelId)){
 			String title=request.getParameter("title")!=null?request.getParameter("title"):"";
 			model.addAttribute("title",title);
+		}else if("120".equals(channelId)){
+			String title=request.getParameter("title")!=null?request.getParameter("title"):"";
+			model.addAttribute("title",title);
+			model.addAttribute("channelIds", "113,115,116,114");
 		}else if("119".equals(channelId)){
 			String isSearch=request.getParameter("isSearch");
 			String []showChannelIds=null;
@@ -195,6 +199,8 @@ public class DynamicPageAct {
 			String searchType=request.getParameter("searchType")!=null?request.getParameter("searchType"):"1";
 			model.addAttribute("searchType",searchType);
 			String showChannelId=request.getParameter("showChannelId")!=""?request.getParameter("showChannelId"):showChannelIds[0];
+			if(showChannelId!=null && showChannelId.equals("120"))
+				showChannelId = "113,114,115,116";
 			model.addAttribute("showChannelId",showChannelId);
 			String title=request.getParameter("title")!=null?request.getParameter("title"):"";
 			model.addAttribute("title",title);

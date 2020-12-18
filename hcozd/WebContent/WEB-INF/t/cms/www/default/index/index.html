@@ -34,7 +34,7 @@
 							<div>
 								<img src="${resSys}/www/hcozd/img/channelico/book.png" width="36" height="36" />
 							</div>
-							<div>图书</div>
+							<div>文献</div>
 							<div class="more">
 								<a href="${base}/gjwx/index.jhtml?culContentType=1,2,3,4&channelId=112">
 									<img src="${resSys}/www/hcozd/img/more.png">
@@ -53,7 +53,9 @@
 											[#list book.pictures as pic]
 												[#if pic.description?? && pic.description=='封面'][#assign picPath=pic.imgPath][/#if]
 											[/#list]
-										[#if picPath?? && picPath?length>0]<img src="${picPath}" width="81" height="80" />
+										[#if picPath?? && picPath?length>0]
+											<img src="${picPath ?substring(0,picPath?last_index_of('/')+1)}sl/s_${picPath ?substring(picPath?last_index_of('/')+1,picPath?length)}"
+											onerror="this.src='${picPath}';this.οnerrοr=null;" width="81" height="80" />
 										[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80"/>[/#if]
 									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80"/>[/#if]
 									</a>
@@ -79,31 +81,29 @@
 							<!--右侧上上-->
 							<div class="middle_left_top">
 								<div>
-									<img src="${resSys}/www/hcozd/img/channelico/360.png" width="36" height="36" />
+									<img src="${resSys}/www/hcozd/img/channelico/rub.png" width="36" height="36" />
 								</div>
-								<div>360全景</div>
+								<div>碑志</div>
 								<div class="more">
-									<a href="${base}/allscene/index.jhtml?culContentType=1,2,3,4&channelId=113">
+									<a href="${base}/rubbing/index.jhtml?culContentType=1,2,3,4&channelId=118">
 										<img src="${resSys}/www/hcozd/img/more.png">
 									</a>
 								</div>
 							</div>
 							<!--右侧上下-->
 							<div class="middle_right_footer1">
-								[@cms_content_list count='3' orderBy='2' channelId='113' channelOption='0'] [#list tag_list as allscene]
+								[@cms_content_list count='3' orderBy='2' channelId='118' channelOption='0']
+								[#list tag_list as rubbing]
 								<div>
-									<a href="${allscene.url}">
-									[#if allscene.attr.cover?? && allscene.attr.cover?length>0]
-									<img src="${allscene.attr.cover}" width="160" height="96" />
-									[#else]<img src="${resSys}/www/hcozd/img/nfallscene.png" width="160" height="96" />[/#if]
+									<a href="${rubbing.url}">
+									[#if rubbing.attr.cover?? && rubbing.attr.cover?length>0]
+									<img src="${rubbing.attr.cover}" width="160" height="96" />
+									[#else]<img src="${resSys}/www/hcozd/img/nfrubbing.png" width="160" height="96" />[/#if]
 									</a>
-									<a href="${allscene.url}"><p class="tit" title="${allscene.title}">
-									[@text_cut s=allscene.title len='10' append='...' /]</p>
-										<p>
-										[#if allscene.tagStr??]
-											[#list allscene.tagStr?split(",") as singleTag]
-											<a href="${base}/search.jspx?q=${singleTag}" target="_blank">${singleTag}</a>[/#list]
-										[/#if]
+									<a href="${rubbing.url}"><p class="tit" title="${rubbing.title}">
+									[@text_cut s=rubbing.title len='7' append='...' /]</p>
+										<p title="${rubbing.attr.authorName}">
+										[#if rubbing.attr.authorName??][@text_cut s=rubbing.attr.authorName len='7' append='...' /][/#if]
 										</p></a>
 								</div>
 								[/#list]
@@ -115,30 +115,27 @@
 							<!--右侧上上-->
 							<div class="middle_left_top">
 								<div>
-									<img src="${resSys}/www/hcozd/img/channelico/3D.png" width="36" height="36" />
+									<img src="${resSys}/www/hcozd/img/channelico/pic.png" width="36" height="36" />
 								</div>
-								<div>3D虚拟</div>
+								<div>照片</div>
 								<div class="more">
-									<a href="${base}/3d/index.jhtml?culContentType=1,2,3,4&channelId=114">
+									<a href="${base}/pic/index.jhtml?culContentType=1,2,3,4&channelId=117">
 									<img src="${resSys}/www/hcozd/img/more.png">
 									</a>
 								</div>
 							</div>
 							<!--右侧上下-->
 							<div class="middle_right_footer1">
-								[@cms_content_list count='3' orderBy='2' channelId='114' channelOption='0']
-								[#list tag_list as view3d]
+								[@cms_content_list count='3' orderBy='2' channelId='117' channelOption='0']
+								[#list tag_list as pic]
 								<div>
-									<a href="${view3d.url}">
-									[#if view3d.attr.cover?? && view3d.attr.cover?length>0]
-									<img src="${view3d.attr.cover}" width="160" height="96" />
-									[#else]<img src="${resSys}/www/hcozd/img/nf3d.png" width="160" height="96" />[/#if]
-									</a> <a href="${view3d.url}">
-									<p class="tit" title="${view3d.title}">[@text_cut s=view3d.title len='10' append='...' /]</p>
-									[#if view3d.tagStr??]
-									[#list view3d.tagStr?split(",") as singleTag]
-									<a href="${base}/search.jspx?q=${singleTag}" target="_blank">${singleTag}</a>[/#list]
-									[/#if]
+									<a href="${pic.url}">
+									<img src="${pic.attr.picturePath ?substring(0,pic.attr.picturePath?last_index_of('/')+1)}sl/s_${pic.attr.picturePath ?substring(pic.attr.picturePath?last_index_of('/')+1,pic.attr.picturePath?length)}"
+										onerror="this.src='${pic.attr.picturePath}';this.οnerrοr=null;" width="81" height="80" />
+									</a>
+									<a href="${pic.url}">
+									<p class="tit">
+		                            <span title="${pic.title}"> [#if pic.title??][@text_cut s=pic.title len='7' append='...' /][/#if]</span>
 									</p></a>
 								</div>
 								[/#list] [/@cms_content_list]
@@ -147,132 +144,35 @@
 					</div>
 				</div>
 				<div>
-					<!--音频-->
+					<!--多媒体-->
 					<div class="index_audio">
 						<!--右侧上上-->
 						<div class="middle_left_top">
 							<div>
-								<img src="${resSys}/www/hcozd/img/channelico/audio.png" width="36" height="36" />
+								<img src="${resSys}/www/hcozd/img/channelico/multimedia.png" width="36" height="36" />
 							</div>
-							<div>音频</div>
+							<div>音视频</div>
 							<div class="more">
-								<a href="${base}/audio/index.jhtml?culContentType=1,2,3,4&channelId=116">
+								<a href="${base}/multimedia/index.jhtml?culContentType=1,2,3,4&channelId=120">
 								<img src="${resSys}/www/hcozd/img/more.png">
 								</a>
 							</div>
 						</div>
 						<!--右侧上下-->
 						<div class="middle_right_footer2">
-						[@cms_content_list count='4' orderBy='2' channelId='116' channelOption='0']
-						[#list tag_list as audio]
+						[@cms_content_list count='8' orderBy='2' channelId='113,115,116,114' channelOption='0']
+						[#list tag_list as mm]
 							<div>
-								<a href="${audio.url}">
-								[#if audio.attr.cover?? && audio.attr.cover?length > 0]<img src="${audio.attr.cover}" />
+								<a href="${mm.url}">
+								[#if mm.attr.cover?? && mm.attr.cover?length > 0]<img src="${mm.attr.cover}" />
 	                            [#else]<img src="${resSys}/www/hcozd/img/nfaudio.png" />
 	                            [/#if]
 								</a>
-								<a href="${audio.url}"><p class="tit">
-								[#if audio.attr.stime?? && audio.attr.stime?length>0]<span>${audio.attr.stime}</span>[/#if]
-								[#if audio.attr.splace?? && audio.attr.splace?length>0]<span>${audio.attr.splace}</span><br>[/#if]
-	                            <span title="${audio.title}"> [#if audio.title??][@text_cut s=audio.title len='10' append='...' /][/#if]</span>
+								<a href="${mm.url}"><p class="tit">
+								<span title="${mm.title}">[#if mm.title??][@text_cut s=mm.title len='10' append='...' /][/#if]</span>
 								</p></a>
 							</div>
 						[/#list] [/@cms_content_list]
-						</div>
-					</div>
-					<!--视频-->
-					<div class="index_audio">
-						<!--右侧上上-->
-						<div class="middle_left_top">
-							<div>
-								<img src="${resSys}/www/hcozd/img/channelico/video.png" width="36" height="36" />
-							</div>
-							<div>视频</div>
-							<div class="more">
-								<a href="${base}/video/index.jhtml?culContentType=1,2,3,4&channelId=115">
-								<img src="${resSys}/www/hcozd/img/more.png">
-								</a>
-							</div>
-						</div>
-						<!--右侧上下-->
-						<div class="middle_right_footer2">
-						[@cms_content_list count='4' orderBy='2' channelId='115' channelOption='0']
-						[#list tag_list as video]
-							<div>
-								<a href="${video.url}">
-								[#if video.attr.cover?? && video.attr.cover?length > 0]
-	                            <img src="${video.attr.cover}" />
-	                            [#else]<img src="${resSys}/www/hcozd/img/nfvideo.png" />
-	                            [/#if]</a>
-	                            <a href="">
-	                            <p class="tit">
-	                            [#if video.attr.stime?? && video.attr.stime?length>0]<span>${video.attr.stime}</span>[/#if]
-								[#if video.attr.splace?? && video.attr.splace?length>0]<span>${video.attr.splace}</span><br>[/#if]
-	                            <span title="${video.title}"> [#if video.title??][@text_cut s=video.title len='10' append='...' /][/#if]</span>
-	                            </p></a>
-							</div>
-						[/#list] [/@cms_content_list]
-						</div>
-					</div>
-					<!--照片 & 碑志-->
-					<div class="index_p">
-						<div class="index_pic">
-							<!--右侧上上-->
-							<div class="middle_left_top2">
-								<div>
-									<img src="${resSys}/www/hcozd/img/channelico/pic.png" width="36" height="36" />
-								</div>
-								<div>照片</div>
-								<div class="more2">
-									<a href="${base}/pic/index.jhtml?culContentType=1,2,3,4&channelId=117">
-									<img src="${resSys}/www/hcozd/img/more.png">
-									</a>
-								</div>
-							</div>
-							<!--右侧上下-->
-							<div class="middle_right_footer3">
-							[@cms_content_list count='3' orderBy='2' channelId='117' channelOption='0']
-							[#list tag_list as pic]
-								<div>
-									<a href="${pic.url}">
-									<img src="${pic.attr.picturePath}"></a>
-									<a href="${pic.url}">
-									<p class="tit">
-		                            <span title="${pic.title}"> [#if pic.title??][@text_cut s=pic.title len='7' append='...' /][/#if]</span>
-									</p></a>
-								</div>
-							[/#list] [/@cms_content_list]
-							</div>
-						</div>
-						<div class="index_rub">
-							<!--右侧上上-->
-							<div class="middle_left_top2">
-								<div>
-									<img src="${resSys}/www/hcozd/img/channelico/rub.png" width="36" height="36" />
-								</div>
-								<div>碑志</div>
-								<div class="more2">
-									<a href="${base}/rubbing/index.jhtml?culContentType=1,2,3,4&channelId=118">
-									<img src="${resSys}/www/hcozd/img/more.png">
-									</a>
-								</div>
-							</div>
-							<!--右侧上下-->
-							<div class="middle_right_footer3">
-							[@cms_content_list count='3' orderBy='2' channelId='118' channelOption='0']
-							[#list tag_list as rubbing]
-								<div>
-									<a href="${rubbing.url}">
-									[#if rubbing.attr.cover?? && rubbing.attr.cover?length > 0]
-		                            <img src="${rubbing.attr.cover}" />
-		                            [#else]<img src="${resSys}/www/hcozd/img/nfrubbing.png" />
-		                            [/#if]
-									</a>
-									<a href="${rubbing.url}">
-									<p class="tit" title="${rubbing.title}">[@text_cut s=rubbing.title len='7' append='...' /]</p></a>
-								</div>
-							[/#list] [/@cms_content_list]
-							</div>
 						</div>
 					</div>
 				</div>
@@ -299,7 +199,39 @@
 						</a>
 					</div>
 				</div>
-				<div class="kong2"></div>
+				<div class="kong2">
+				<div style="text-align:center;color:#DAA520;font-size: 14px;margin-top: 40px;">
+					<span style="margin-left: 20px;">正定文献资源链接：</span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://202.206.108.2:8080/opac/openlink.php?title=%E6%AD%A3%E5%AE%9A&amp;with_ebook=on" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	河北师范大学图书馆
+				    </a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://www.nssd.org/articles/articlesearch.aspx?invokemethod=search&amp;q=eyJzZWFyY2giOiLmraPlrprljr8iLCJzVHlwZSI6ImFsbCJ9" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	国家哲学社会科学学术期刊数据库</a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://vip.wenjinguan.com/BookList.aspx?u=1&amp;pSet=2&amp;SearchKeyword=%u6B63%u5B9A" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	中国数字方志库</a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://qikan.cqvip.com/Qikan/Search/Index?key=M%3d%e6%ad%a3%e5%ae%9a%e5%8e%bf" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	中文期刊服务平台</a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="https://www.nstl.gov.cn/search.html?t=JournalPaper,ProceedingsPaper,DegreePaper&q=5q2j5a6a" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	国家科技数字图书馆</a></span><br><br>
+				    <span>
+				    <a href="http://www.modernhistory.org.cn/result.htm?searchType=1&search=%E6%AD%A3%E5%AE%9A&typeRange=0" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	抗日战争与近代中日关系文献数据平台</a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://www.koovin.com/?q=%E6%AD%A3%E5%AE%9A" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	库问搜索</a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://opac.calis.edu.cn/opac/simpleSearch.do" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	CALIS联合目录公共检索系统</a></span>
+				    <span style="margin-left: 20px;">
+				    <a href="http://c.sou-yun.com/QueryPoem.aspx" target="_blank" style="color:#DAA520; text-decoration:underline;">
+				    	诗词检索</a></span>
+				</div>
+				</div>
 			</div>
 		</div>
 		<div class="kong4"></div>
