@@ -7,17 +7,12 @@ import static  com.jeecms.cms.Constants.TPLDIR_INDEX;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.bouncycastle.util.encoders.UrlBase64Encoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +21,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.ibm.db2.jcc.am.un;
 import com.jeecms.cms.entity.main.Channel;
 import com.jeecms.cms.entity.main.Content;
 import com.jeecms.cms.entity.main.ContentCheck;
