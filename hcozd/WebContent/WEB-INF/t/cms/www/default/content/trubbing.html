@@ -36,10 +36,10 @@
 	                        <div class="book_middle">
 	                            <table>
 	                                [#if content.attr.rubbingTime?? && content.attr.rubbingTime?length>0]<tr><td>年代：</td><td>${content.attr.rubbingTime}</td></tr>[/#if]
-	                                <tr><td>责任者：</td><td>
-	                                [#if content.attr.authorDynasty??]<span>${content.attr.authorDynasty}</span>[/#if]
-	                                [#if content.attr.authorName??]<span>${content.attr.authorName}</span>[/#if]
-	                                [#if content.attr.rubbingStyle??]<span>${content.attr.rubbingStyle}</span>[/#if]
+	                                <tr>[#if content.attr.authorName?? && content.attr.authorName?length>0]<td>责任者：</td>[/#if]<td>
+	                                [#if content.attr.authorDynasty?? && content.attr.authorDynasty?length>0]<span>${content.attr.authorDynasty}</span>[/#if]
+	                                [#if content.attr.authorName?? && content.attr.authorName?length>0]<span>${content.attr.authorName}</span>[/#if]
+	                                [#if content.attr.rubbingStyle?? && content.attr.rubbingStyle?length>0]<span>${content.attr.rubbingStyle}</span>[/#if]
 	                                </td></tr>
 	                            </table>
 	                        </div>

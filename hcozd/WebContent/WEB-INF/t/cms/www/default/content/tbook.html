@@ -17,8 +17,7 @@ $(function() {
   Cms.siteFlow("${base}", location.href, document.referrer,"${site.config.flowSwitch?string}");
   Cms.viewCount("${base}","${content.id}");
 });
-$(document).ready(function(){ 
-	 console.log($("#swiper-pic").height());
+$(document).ready(function(){
 	 var imgtemp = new Image();
 	 imgtemp.src = $("#swiper-img").attr("src");
 	 imgtemp.onload = function(){//图片加载完成后执行

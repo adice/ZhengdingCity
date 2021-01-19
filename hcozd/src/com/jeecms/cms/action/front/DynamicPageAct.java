@@ -173,6 +173,18 @@ public class DynamicPageAct {
 		}else if("114".equals(channelId)){
 			String title=request.getParameter("title")!=null?request.getParameter("title"):"";
 			model.addAttribute("title",title);
+		}else if("121".equals(channelId)){
+			String journalName=request.getParameter("journalName")!=null?request.getParameter("journalName"):"";
+			model.addAttribute("journalName",journalName);
+		}else if("122".equals(channelId)){
+			String archiveName=request.getParameter("archiveName")!=null?request.getParameter("archiveName"):"";
+			model.addAttribute("archiveName",archiveName);
+		}else if("123".equals(channelId)){
+			String mapName=request.getParameter("mapName")!=null?request.getParameter("mapName"):"";
+			model.addAttribute("mapName",mapName);
+		}else if("124".equals(channelId)){
+			String researchName=request.getParameter("researchName")!=null?request.getParameter("researchName"):"";
+			model.addAttribute("researchName",researchName);
 		}else if("120".equals(channelId)){
 			String title=request.getParameter("title")!=null?request.getParameter("title"):"";
 			model.addAttribute("title",title);

@@ -12,6 +12,11 @@
 <script src="${resSys}/jquery.js" type="text/javascript"></script>
 <script src="${resSys}/front.js" type="text/javascript"></script>
 <script type="text/javascript">
+	function nofind(imgPath){
+		var img=event.srcElement;
+		img.src=imgPath;
+		img.onerror=null;
+	}
 	$(function() {
 		Cms.siteFlow("${base}", location.href, document.referrer,
 				"${site.config.flowSwitch?string}");
@@ -96,8 +101,14 @@
 	                        	<table cellspacing="8px">
 	                           		<tr><td><input type="checkbox" name="se" value="112"></td><td>文献</td></tr>
 	                               	<tr><td><input type="checkbox" name="se" value="118"></td><td>碑志</td></tr>
-	                               	<tr><td><input type="checkbox" name="se" value="117"></td><td>照片</td></tr>
-	                               	<tr><td><input type="checkbox" name="se" value="120"></td><td>音视频</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="117"></td><td>图片</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="116"></td><td>音频</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="115"></td><td>视频</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="114"></td><td>3D制作</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="121"></td><td>报刊</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="122"></td><td>档案</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="123"></td><td>地图</td></tr>
+	                               	<tr><td><input type="checkbox" name="se" value="124"></td><td>相关研究</td></tr>
 	                        	</table>
 	                        </form >
                     	</div>
@@ -171,7 +182,6 @@
                             </div>
                         </div>
                        	[/#if]
-                        
                         [#if searchType=='1']<a href="javascript:search('',1);">[/#if]
                         [#if searchType=='2']<a href="javascript:search('',2);">[/#if]
                         <div class="sub3" style="margin-top:14px;">检索</div></a>
@@ -212,12 +222,36 @@
                             [#if searchType=='2']<a href="javascript:search(118,2);">碑志</a>[/#if]
                             </div>
                             <div id="tab117" [#if showChannelId=='117']class="now"[/#if] style="display: none">
-                            [#if searchType=='1']<a href="javascript:search(117,1);">照片</a>[/#if]
-                            [#if searchType=='2']<a href="javascript:search(117,2);">照片</a>[/#if]
+                            [#if searchType=='1']<a href="javascript:search(117,1);">图片</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(117,2);">图片</a>[/#if]
                             </div>
-                            <div id="tab120" [#if showChannelId=='113,114,115,116']class="now"[/#if] style="display: none">
-                            [#if searchType=='1']<a href="javascript:search(120,1);">音视频</a>[/#if]
-                            [#if searchType=='2']<a href="javascript:search(120,2);">音视频</a>[/#if]
+                            <div id="tab116" [#if showChannelId=='116']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(116,1);">音频</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(116,2);">音频</a>[/#if]
+                            </div>
+                            <div id="tab115" [#if showChannelId=='115']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(115,1);">视频</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(115,2);">视频</a>[/#if]
+                            </div>
+                            <div id="tab114" [#if showChannelId=='114']class="now"[/#if] style="display: none; width: 64px;">
+                            [#if searchType=='1']<a href="javascript:search(114,1);">3D制作</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(114,2);">3D制作</a>[/#if]
+                            </div>
+                            <div id="tab121" [#if showChannelId=='121']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(121,1);">报刊</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(121,2);">报刊</a>[/#if]
+                            </div>
+                            <div id="tab122" [#if showChannelId=='122']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(122,1);">档案</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(122,2);">档案</a>[/#if]
+                            </div>
+                            <div id="tab123" [#if showChannelId=='123']class="now"[/#if] style="display: none">
+                            [#if searchType=='1']<a href="javascript:search(123,1);">地图</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(123,2);">地图</a>[/#if]
+                            </div>
+                            <div id="tab124" [#if showChannelId=='124']class="now"[/#if] style="display: none; width: 74px;">
+                            [#if searchType=='1']<a href="javascript:search(124,1);">相关研究</a>[/#if]
+                            [#if searchType=='2']<a href="javascript:search(124,2);">相关研究</a>[/#if]
                             </div>
                         </div>
                         <div class="house_center"><div class="list show"></div>
@@ -235,21 +269,21 @@
 											[/#list]
 										[#if picPath?? && picPath?length>0]
 										<img src="${picPath ?substring(0,picPath?last_index_of('/')+1)}sl/s_${picPath ?substring(picPath?last_index_of('/')+1,picPath?length)}"
-											onerror="this.src='${picPath}';this.οnerrοr=null;" />
+											onerror="nofind('${picPath}')" />
 										[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 				                    </a></div>
 				                    <div class="all_book_word">
 				                        <a href="${s.url}" target="_blank">
-				                            <p class="book_title">${s.title}</p>
-				                            <p>丛书名：<span>[#if s.attr.seriesName??]${s.attr.seriesName}[/#if]</span></p>
-				                            <p>责任者：<span>${s.attr.authorDynasty} </span>
+				                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
+				                            [#if s.attr.seriesName?? && s.attr.seriesName?length>0]<p>丛书名：<span>${s.attr.seriesName}</span></p>[/#if]
+				                            [#if s.attr.authorDynasty?? && s.attr.authorDynasty?length>0]<p>责任者：<span>${s.attr.authorDynasty} </span>
 				                            <span>${s.attr.authorName} </span>
-				                            <span>${s.attr.authoringMode} </span></p>
-				                            <p>版本：<span>${s.attr.publishDynasty} </span>
+				                            <span>${s.attr.authoringMode} </span></p>[/#if]
+				                            [#if s.attr.publishDynasty?? && s.attr.publishDynasty?length>0]<p>版本：<span>${s.attr.publishDynasty} </span>
 				                            <span>${s.attr.publishreignPeriod} </span>
-				                            <span>${s.attr.publisher} </span></p>
-				                            <p>类别：<span>${s.attr.classification} </span></p>
+				                            <span>${s.attr.publisher} </span></p>[/#if]
+				                            [#if s.attr.classification?? && s.attr.classification?length>0]<p>类别：<span>${s.attr.classification} </span></p>[/#if]
 				                        </a>
 				                    </div>
 				                </div>
@@ -262,30 +296,31 @@
 					                <div class="all_book2">
 					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
 					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
-					                    	<img src="${s.attr.cover?substring(0,s.attr.cover?last_index_of('/')+1)}sl/s_${s.attr.cover ?substring(s.attr.cover?last_index_of('/')+1,s.attr.cover?length)}" onerror="this.src='${s.attr.cover}';this.οnerrοr=null;" />
+					                    	<img src="${s.attr.cover?substring(0,s.attr.cover?last_index_of('/')+1)}sl/s_${s.attr.cover ?substring(s.attr.cover?last_index_of('/')+1,s.attr.cover?length)}"
+												onerror="nofind('${s.attr.cover}')" />
 					                    [#else]<img src="${resSys}/www/hcozd/img/nfrubbing.png" />
 					                    [/#if]
 					                    </a></div>
 					                    <div class="all_book_word">
 					                        <a href="${s.url}" target="_blank">
-					                            <p class="book_title">${s.title}</p>
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
 					                            <p>责任者：<span>${s.attr.authorDynasty} </span>
 					                            <span>${s.attr.authorName} </span>
 					                            <span>${s.attr.rubbingStyle} </span></p>
 					                        </a>
 					                    </div>
 					                </div>
-					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					                <a href="${s.ctgUrl}"><div class="all_type">类型：<span>碑志</span></div></a>
 					            	</div>
 					            [/#if]
 					            [#if s.ctgName == '图片']
-					            <!--照片-->
+					            <!--图片-->
 					            	<div class="all_book">
 					                <div class="all_book2">
 					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
 						               	[#if s.attr.picturePath?? && s.attr.picturePath?length > 0]
-						                     <img src="${s.attr.picturePath?substring(0,s.attr.picturePath?last_index_of('/')+1)}sl/s_${s.attr.picturePath ?substring(s.attr.picturePath?last_index_of('/')+1,s.attr.picturePath?length)}"
-												onerror="this.src='${s.attr.picturePath}';this.οnerrοr=null;" />
+						                	<img src="${s.attr.picturePath?substring(0,s.attr.picturePath?last_index_of('/')+1)}sl/s_${s.attr.picturePath ?substring(s.attr.picturePath?last_index_of('/')+1,s.attr.picturePath?length)}"
+												onerror="nofind('${s.attr.picturePath}')" />
 						               	[/#if]
 					                    </a></div>
 					                    <div class="all_book_word">
@@ -293,7 +328,7 @@
 					                            <p class="book_title">
 					                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
 					                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span><br>
-					                            <span>${s.title}</span>
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
 					                            </p>
 					                        </a>
 					                    </div>
@@ -316,7 +351,7 @@
 					                            <p class="book_title">
 					                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
 					                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span><br>
-					                            <span>${s.title}</span>
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
 					                            </p>
 					                        </a>
 					                    </div>
@@ -339,7 +374,7 @@
 					                            <p class="book_title">
 					                            <span>[#if s.attr.stime??]${s.attr.stime}[/#if] </span>
 					                            <span>[#if s.attr.splace??]${s.attr.splace}[/#if] </span><br>
-					                            <span>${s.title}</span>
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
 					                            </p>
 					                        </a>
 					                    </div>
@@ -359,7 +394,7 @@
 					                    </a></div>
 					                    <div class="all_book_word">
 					                        <a href="${s.url}" target="_blank">
-					                            <p class="book_title">${s.title}</p>
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
 					                        </a>
 					                    </div>
 					                </div>
@@ -378,7 +413,83 @@
 					                    </a></div>
 					                    <div class="all_book_word">
 					                        <a href="${s.url}" target="_blank">
-					                            <p class="book_title">${s.title}</p>
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="#"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '报刊']
+					            <!--报刊-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover?substring(0,s.attr.cover?last_index_of('/')+1)}sl/s_${s.attr.cover ?substring(s.attr.cover?last_index_of('/')+1,s.attr.cover?length)}"
+												onerror="nofind('${s.attr.cover}')" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="#"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '档案']
+					            <!--档案-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover?substring(0,s.attr.cover?last_index_of('/')+1)}sl/s_${s.attr.cover ?substring(s.attr.cover?last_index_of('/')+1,s.attr.cover?length)}"
+												onerror="nofind('${s.attr.cover}')" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                           <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="#"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '地图']
+					            <!--地图-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover?substring(0,s.attr.cover?last_index_of('/')+1)}sl/s_${s.attr.cover ?substring(s.attr.cover?last_index_of('/')+1,s.attr.cover?length)}"
+												onerror="nofind('${s.attr.cover}')" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                           <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
+					                        </a>
+					                    </div>
+					                </div>
+					                <a href="#"><div class="all_type">类型：<span>${s.ctgName}</span></div></a>
+					            </div>
+					            [/#if]
+					            [#if s.ctgName == '相关研究']
+					            <!--相关研究-->
+					            <div class="all_book">
+					                <div class="all_book2">
+					                    <div class="all_book_img"><a href="${s.url}" target="_blank">
+					                    [#if s.attr.cover?? && s.attr.cover?length > 0]
+					                    <img src="${s.attr.cover?substring(0,s.attr.cover?last_index_of('/')+1)}sl/s_${s.attr.cover ?substring(s.attr.cover?last_index_of('/')+1,s.attr.cover?length)}"
+												onerror="nofind('${s.attr.cover}')" />
+					                    [/#if]
+					                    </a></div>
+					                    <div class="all_book_word">
+					                        <a href="${s.url}" target="_blank">
+					                            <p class="book_title" title="${s.title}">[@text_cut s=s.title len='26' append='...' /]</p>
 					                        </a>
 					                    </div>
 					                </div>

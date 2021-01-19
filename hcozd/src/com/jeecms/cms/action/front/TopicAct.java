@@ -27,10 +27,13 @@ public class TopicAct {
 	public static final String TOPIC_INDEX = "tpl.topicIndex";
 	public static final String TOPIC_CHANNEL = "tpl.topicChannel";
 	public static final String TOPIC_DEFAULT = "tpl.topicDefault";
+	public static final String TOPIC_REVOLUTION = "tpl.topicRevolution";// 革命史
+	public static final String TOPIC_REVOLUTION_INDEX = "tpl.topicRevolutionIndex";// 革命史
+	public static final String TOPIC_EDUCATION = "tpl.topicEducation";// 教育
+	public static final String TOPIC_CHOROGRAPHY = "tpl.topicChorography";// 地方志
 
 	@RequestMapping(value = "/topic*.jspx", method = RequestMethod.GET)
-	public String index(Integer channelId, Integer topicId,
-			HttpServletRequest request, HttpServletResponse response,
+	public String index(Integer channelId, Integer topicId, HttpServletRequest request, HttpServletResponse response,
 			ModelMap model) {
 		// 全部？按站点？按栏目？要不同模板？
 		CmsSite site = CmsUtils.getSite(request);
@@ -44,8 +47,7 @@ public class TopicAct {
 			model.addAttribute("topic", topic);
 			String tpl = topic.getTplContent();
 			if (StringUtils.isBlank(tpl)) {
-				tpl = FrontUtils.getTplPath(request, site.getSolutionPath(),
-						TPLDIR_TOPIC, TOPIC_DEFAULT);
+				tpl = FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_DEFAULT);
 			}
 			return tpl;
 		} else if (channelId != null) {
@@ -55,39 +57,62 @@ public class TopicAct {
 			} else {
 				return FrontUtils.pageNotFound(request, response, model);
 			}
-			return FrontUtils.getTplPath(request, site.getSolutionPath(),
-					TPLDIR_TOPIC, TOPIC_CHANNEL);
+			return FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_CHANNEL);
 		} else {
-			return FrontUtils.getTplPath(request, site.getSolutionPath(),
-					TPLDIR_TOPIC, TOPIC_INDEX);
+			return FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_INDEX);
 		}
 	}
 
-	@RequestMapping(value = "/topic/{id}.jspx", method = RequestMethod.GET)
-	public String topic(@PathVariable String id, HttpServletRequest request,
-			HttpServletResponse response, ModelMap model) {
+	@RequestMapping(value = "/topic/{id}_*.jspx", method = RequestMethod.GET)
+	public String topic(@PathVariable String id, HttpServletRequest request, HttpServletResponse response,
+			ModelMap model) {
 		CmsSite site = CmsUtils.getSite(request);
 		if (id == null) {
 			return FrontUtils.pageNotFound(request, response, model);
 		}
-		Integer topicId=null;
+		Integer topicId = null;
 		try {
-			topicId=Integer.parseInt(id);
+			topicId = Integer.parseInt(id);
 		} catch (Exception e) {
 			return FrontUtils.pageNotFound(request, response, model);
 		}
-		CmsTopic topic=null;
-		if(topicId!=null){
+		CmsTopic topic = null;
+		if (topicId != null) {
 			topic = cmsTopicMng.findById(topicId);
 		}
 		if (topic == null) {
 			return FrontUtils.pageNotFound(request, response, model);
 		}
 		model.addAttribute("topic", topic);
+		// 检索参数
+		String searchParam = request.getParameter("searchParam") != null ? request.getParameter("searchParam") : "";
+		model.addAttribute("searchParam", searchParam);
 		String tpl = topic.getTplContent();
 		if (StringUtils.isBlank(tpl)) {
-			tpl = FrontUtils.getTplPath(request, site.getSolutionPath(),
-					TPLDIR_TOPIC, TOPIC_DEFAULT);
+			if (topic.getId() == 1) {
+				String topicTitle = request.getParameter("topicTitle");
+				if (topicTitle != null && !topicTitle.equals("")) {
+					String channelId = request.getParameter("channelId") != null ? request.getParameter("channelId") : "";
+					model.addAttribute("channelId", channelId);
+					model.addAttribute("topicTitle", topicTitle);
+					if ("报刊".equals(topicTitle) || "档案".equals(topicTitle)) {
+						model.addAttribute("allParam", searchParam);
+					} else {
+						if (!"".equals(searchParam)) {
+							model.addAttribute("allParam", topicTitle + "%" + searchParam);
+						} else {
+							model.addAttribute("allParam", topicTitle);
+						}
+					}
+					tpl = FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_REVOLUTION);
+				} else {
+					tpl = FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_REVOLUTION_INDEX);
+				}
+			} else if (topic.getId() == 2) {
+				tpl = FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_EDUCATION);
+			} else if (topic.getId() == 3) {
+				tpl = FrontUtils.getTplPath(request, site.getSolutionPath(), TPLDIR_TOPIC, TOPIC_CHOROGRAPHY);
+			}
 		}
 		FrontUtils.frontData(request, model, site);
 		FrontUtils.frontPageData(request, model);

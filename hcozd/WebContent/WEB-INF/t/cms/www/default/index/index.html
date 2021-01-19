@@ -11,22 +11,88 @@
 <script type="text/javascript">
 	$(function() {
 		Cms.siteFlow("${base}", location.href, document.referrer,
-				"${site.config.flowSwitch?string}");
+			"${site.config.flowSwitch?string}");
 	});
+	function nofind(imgPath){
+		var img=event.srcElement;
+		img.src=imgPath;
+		img.onerror=null;
+	}
 </script>
+<style>
+.mid {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 20px;
+	height: 90px;
+	margin-bottom: 20px;
+}
+.mid .sub1 {
+	float: left;
+	position: relative;
+}
+.sub1 .img1 {
+	position: absolute;
+	left: 0;
+	width: 40px;
+	height: 90px;
+}
+.sub1 .wenzi {
+	position: absolute;
+	height: 90px;
+	font-size: 22px;
+	color: #794918;
+	line-height: 90px;
+	top: 0;
+	left: 60px;
+	font-weight: bold;
+}
+.mid .edu {
+	float: right;
+	position: relative;
+}
+.mid img {
+	width: 419px;
+	height: 90px;
+}
+.edu .wenzi1 {
+	position: absolute;
+	height: 90px;
+	font-size: 22px;
+	color: #a4190e;
+	line-height: 90px;
+	top: 0;
+	left: 60px;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
 	<div class="all">
 		<!--顶部-->
 		[#include "../include/hcozd/header.html"/]
-		<!--中间-->
-		<!--background:灰色-->
+		<!--中间--><!--background:灰色-->
 		<div class="middle">
 			<!--背景：白色-->
 			<div class="middle_1">
-				<div class="kong"></div>
 				<!--模块-->
 				<div class="middle_content">
+					<!-- 专题 -->
+					<div class="mid">
+						<a href="${base}/topic/1_1.jspx">
+							<div class="sub1">
+								<img src="${resSys}/www/subject/images/index_03.png" class="img1">
+								<img src="${resSys}/www/subject/images/index_04.jpg" />
+								<div class="wenzi">华北数据库-革命史</div>
+							</div>
+						</a>
+						<a href="${base}/topic/2_1.jspx">
+							<div class="edu">
+								<img src="${resSys}/www/subject/images/index_06.jpg">
+								<div class="wenzi1">华北数据库-教育</div>
+							</div>
+						</a>
+					</div>
 					<!--左侧-->
 					<div class="middle_left">
 						<!--左侧上-->
@@ -55,7 +121,7 @@
 											[/#list]
 										[#if picPath?? && picPath?length>0]
 											<img src="${picPath ?substring(0,picPath?last_index_of('/')+1)}sl/s_${picPath ?substring(picPath?last_index_of('/')+1,picPath?length)}"
-											onerror="this.src='${picPath}';this.οnerrοr=null;" width="81" height="80" />
+											onerror="nofind('${picPath}')" width="81" height="80" />
 										[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80"/>[/#if]
 									[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" width="81" height="80"/>[/#if]
 									</a>
@@ -117,7 +183,7 @@
 								<div>
 									<img src="${resSys}/www/hcozd/img/channelico/pic.png" width="36" height="36" />
 								</div>
-								<div>照片</div>
+								<div>图片</div>
 								<div class="more">
 									<a href="${base}/pic/index.jhtml?culContentType=1,2,3,4&channelId=117">
 									<img src="${resSys}/www/hcozd/img/more.png">
@@ -131,7 +197,7 @@
 								<div>
 									<a href="${pic.url}">
 									<img src="${pic.attr.picturePath ?substring(0,pic.attr.picturePath?last_index_of('/')+1)}sl/s_${pic.attr.picturePath ?substring(pic.attr.picturePath?last_index_of('/')+1,pic.attr.picturePath?length)}"
-										onerror="this.src='${pic.attr.picturePath}';this.οnerrοr=null;" width="81" height="80" />
+										onerror="nofind('${pic.attr.picturePath}')" width="81" height="80" />
 									</a>
 									<a href="${pic.url}">
 									<p class="tit">
@@ -144,35 +210,238 @@
 					</div>
 				</div>
 				<div>
-					<!--多媒体-->
+					<!--音频-->
 					<div class="index_audio">
-						<!--右侧上上-->
 						<div class="middle_left_top">
 							<div>
-								<img src="${resSys}/www/hcozd/img/channelico/multimedia.png" width="36" height="36" />
+								<img src="${resSys}/www/hcozd/img/channelico/audio.png" width="36" height="36" />
 							</div>
-							<div>音视频</div>
+							<div>音频</div>
 							<div class="more">
-								<a href="${base}/multimedia/index.jhtml?culContentType=1,2,3,4&channelId=120">
+								<a href="${base}/audio/index.jhtml?culContentType=1,2,3,4&channelId=116">
 								<img src="${resSys}/www/hcozd/img/more.png">
 								</a>
 							</div>
 						</div>
-						<!--右侧上下-->
 						<div class="middle_right_footer2">
-						[@cms_content_list count='8' orderBy='2' channelId='113,115,116,114' channelOption='0']
-						[#list tag_list as mm]
+						[@cms_content_list count='4' orderBy='2' channelId='116' channelOption='0']
+						[#list tag_list as audio]
 							<div>
-								<a href="${mm.url}">
-								[#if mm.attr.cover?? && mm.attr.cover?length > 0]<img src="${mm.attr.cover}" />
+								<a href="${audio.url}">
+								[#if audio.attr.cover?? && audio.attr.cover?length > 0]<img src="${audio.attr.cover}" />
 	                            [#else]<img src="${resSys}/www/hcozd/img/nfaudio.png" />
 	                            [/#if]
 								</a>
-								<a href="${mm.url}"><p class="tit">
-								<span title="${mm.title}">[#if mm.title??][@text_cut s=mm.title len='10' append='...' /][/#if]</span>
+								<a href="${audio.url}"><p class="tit">
+								[#if audio.attr.stime?? && audio.attr.stime?length>0]<span>${audio.attr.stime}</span>[/#if]
+								[#if audio.attr.splace?? && audio.attr.splace?length>0]<span>${audio.attr.splace}</span><br>[/#if]
+	                            <span title="${audio.title}"> [#if audio.title??][@text_cut s=audio.title len='10' append='...' /][/#if]</span>
 								</p></a>
 							</div>
 						[/#list] [/@cms_content_list]
+						</div>
+					</div>
+					<!--视频-->
+					<div class="index_audio">
+						<div class="middle_left_top">
+							<div>
+								<img src="${resSys}/www/hcozd/img/channelico/video.png" width="36" height="36" />
+							</div>
+							<div>视频</div>
+							<div class="more">
+								<a href="${base}/video/index.jhtml?culContentType=1,2,3,4&channelId=115">
+								<img src="${resSys}/www/hcozd/img/more.png">
+								</a>
+							</div>
+						</div>
+						<div class="middle_right_footer2">
+						[@cms_content_list count='4' orderBy='2' channelId='115' channelOption='0']
+						[#list tag_list as video]
+							<div>
+								<a href="${video.url}">
+								[#if video.attr.cover?? && video.attr.cover?length > 0]
+	                            <img src="${video.attr.cover}" />
+	                            [#else]<img src="${resSys}/www/hcozd/img/nfvideo.png" />
+	                            [/#if]</a>
+	                            <a href="">
+	                            <p class="tit">
+	                            [#if video.attr.stime?? && video.attr.stime?length>0]<span>${video.attr.stime}</span>[/#if]
+								[#if video.attr.splace?? && video.attr.splace?length>0]<span>${video.attr.splace}</span><br>[/#if]
+	                            <span title="${video.title}"> [#if video.title??][@text_cut s=video.title len='10' append='...' /][/#if]</span>
+	                            </p></a>
+							</div>
+						[/#list] [/@cms_content_list]
+						</div>
+					</div>
+					<!--报刊 & 档案-->
+					<div class="index_p">
+						<div class="index_pic">
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/journal.png" width="36" height="36" />
+								</div>
+								<div>报刊</div>
+								<div class="more2">
+									<a href="${base}/journal/index.jhtml?culContentType=1,2,3,4&channelId=121">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='121' channelOption='0']
+							[#list tag_list as journal]
+								<div>
+									<a href="${journal.url}">
+									<img src="${journal.attr.cover ?substring(0,journal.attr.cover?last_index_of('/')+1)}sl/s_${journal.attr.cover ?substring(journal.attr.cover?last_index_of('/')+1,journal.attr.cover?length)}"
+										onerror="nofind('${journal.attr.cover}')" width="81" height="80" />
+									</a>
+									<a href="${journal.url}">
+									<p class="tit">
+		                            <span title="${journal.title}"> [#if journal.title??][@text_cut s=journal.title len='7' append='...' /][/#if]</span>
+									</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
+						</div>
+						<div class="index_rub">
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/archive.png" width="36" height="36" />
+								</div>
+								<div>档案</div>
+								<div class="more2">
+									<a href="${base}/archive/index.jhtml?culContentType=1,2,3,4&channelId=122">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='122' channelOption='0']
+							[#list tag_list as archive]
+								<div>
+									<a href="${archive.url}">
+		                            <img src="${archive.attr.cover ?substring(0,archive.attr.cover?last_index_of('/')+1)}sl/s_${archive.attr.cover ?substring(archive.attr.cover?last_index_of('/')+1,archive.attr.cover?length)}"
+										onerror="nofind('${archive.attr.cover}')" width="81" height="80" />
+									</a>
+									<a href="${archive.url}">
+									<p class="tit" title="${archive.title}">[@text_cut s=archive.title len='7' append='...' /]</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
+						</div>
+					</div>
+					<!--地图 & 相关研究-->
+					<div class="index_p">
+						<div class="index_pic">
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/map.png" width="36" height="36" />
+								</div>
+								<div>地图</div>
+								<div class="more2">
+									<a href="${base}/map/index.jhtml?culContentType=1,2,3,4&channelId=123">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='123' channelOption='0']
+							[#list tag_list as map]
+								<div>
+									<a href="${map.url}">
+									<img src="${map.attr.cover ?substring(0,map.attr.cover?last_index_of('/')+1)}sl/s_${map.attr.cover ?substring(map.attr.cover?last_index_of('/')+1,map.attr.cover?length)}"
+										onerror="nofind('${map.attr.cover}')" width="81" height="80" />
+									</a>
+									<a href="${map.url}">
+									<p class="tit">
+		                            <span title="${map.title}"> [#if map.title??][@text_cut s=map.title len='7' append='...' /][/#if]</span>
+									</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
+						</div>
+						<div class="index_rub">
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/research.png" width="36" height="36" />
+								</div>
+								<div>研究</div>
+								<div class="more2">
+									<a href="${base}/research/index.jhtml?culContentType=1,2,3,4&channelId=124">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='124' channelOption='0']
+							[#list tag_list as research]
+								<div>
+									<a href="${research.url}">
+		                            <img src="${research.attr.cover ?substring(0,research.attr.cover?last_index_of('/')+1)}sl/s_${research.attr.cover ?substring(research.attr.cover?last_index_of('/')+1,research.attr.cover?length)}"
+										onerror="nofind('${research.attr.cover}')" width="81" height="80" />
+									</a>
+									<a href="${research.url}">
+									<p class="tit" title="${research.title}">[@text_cut s=research.title len='7' append='...' /]</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
+						</div>
+					</div>
+					<!--3D制作 & 地方志-->
+					<div class="index_p">
+						<div class="index_pic">
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/3D.png" width="36" height="36" />
+								</div>
+								<div>3D制作</div>
+								<div class="more2" style="margin-left: 266px;">
+									<a href="${base}/3d/index.jhtml?culContentType=1,2,3,4&channelId=114">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelId='114' channelOption='0']
+								[#list tag_list as view3d]
+								<div>
+									<a href="${view3d.url}">
+									[#if view3d.attr.cover?? && view3d.attr.cover?length>0]
+									<img src="${view3d.attr.cover}" width="160" height="96" />
+									[#else]<img src="${resSys}/www/hcozd/img/nf3d.png" width="81" height="80" />[/#if]
+									</a>
+									<a href="${view3d.url}">
+									<p class="tit" title="${view3d.title}">[@text_cut s=view3d.title len='10' append='...' /]</p>
+									</a>
+								</div>
+								[/#list] [/@cms_content_list]
+							</div>
+						</div>
+						<div class="index_rub">
+							<div class="middle_left_top2">
+								<div>
+									<img src="${resSys}/www/hcozd/img/channelico/place.png" width="36" height="36" />
+								</div>
+								<div>地方志</div>
+								<div class="more2" style="margin-left: 266px;">
+									<a href="${base}/topic/3_1.jspx">
+									<img src="${resSys}/www/hcozd/img/more.png">
+									</a>
+								</div>
+							</div>
+							<div class="middle_right_footer3">
+							[@cms_content_list count='3' orderBy='2' channelOption='1' topicId='3']
+							[#list tag_list as place]
+								<div>
+									<a href="${place.url}">
+		                            <img src="${place.attr.cover ?substring(0,place.attr.cover?last_index_of('/')+1)}sl/s_${place.attr.cover ?substring(place.attr.cover?last_index_of('/')+1,place.attr.cover?length)}"
+										onerror="nofind('${place.attr.cover}')" width="81" height="80" />
+									</a>
+									<a href="${place.url}">
+									<p class="tit" title="${place.title}">[@text_cut s=place.title len='7' append='...' /]</p></a>
+								</div>
+							[/#list] [/@cms_content_list]
+							</div>
 						</div>
 					</div>
 				</div>

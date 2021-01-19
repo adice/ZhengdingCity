@@ -95,11 +95,21 @@
                     <!--content-->
                     <div class="search_content">
                         <div class="house_middle">
-                            <a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112"><div>文献</div></a>
-                            <div class="now"><a href="#">碑志</a></div>
-                            <a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117"><div>照片</div></a>
-                            <a href="${base}/multimedia/index.jhtml?culContentType=${culContentType}&channelId=120"><div>音视频</div></a>
-                        </div>
+							<div><a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112">文献</a></div>
+							<div class="now"><a href="#">碑志</a></div>
+                            <div><a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117">图片</a></div>
+                            <div><a href="${base}/audio/index.jhtml?culContentType=${culContentType}&channelId=116">音频</a></div>
+                            <div><a href="${base}/video/index.jhtml?culContentType=${culContentType}&channelId=115">视频</a></div>
+							[#if culContentType != '2' && culContentType != '4']
+                            <div style="width:60px;"><a href="${base}/3d/index.jhtml?culContentType=${culContentType}&channelId=114">3D制作</a></div>
+                            [/#if]
+                           	[#if culContentType == '1' || culContentType == '1,2,3,4']                            
+                            <div><a href="${base}/journal/index.jhtml?culContentType=${culContentType}&channelId=121">报刊</a></div>
+                            <div><a href="${base}/archive/index.jhtml?culContentType=${culContentType}&channelId=122">档案</a></div>
+                            <div><a href="${base}/map/index.jhtml?culContentType=${culContentType}&channelId=123">地图</a></div>
+							[/#if]
+                            <div style="width:80px;"><a href="${base}/research/index.jhtml?culContentType=${culContentType}&channelId=124">相关研究</a></div>
+						</div>
                         <div class="house_center">
                             <div class="list show tapian">
                             [#list tag_pagination.list as rubbing]
@@ -114,11 +124,11 @@
                                     <div class="tapian_info"><a href="${rubbing.url}" target="_blank">
                                         <p class="search_tapian_name" title="${rubbing.title}">[@text_cut s=rubbing.title len='10' append='...' /]</p>
                                         [#if rubbing.attr.rubbingTime?? && rubbing.attr.rubbingTime?length>0]<p>年代：<span>${rubbing.attr.rubbingTime}</span></p>[/#if]
-                                        <p>责任者：
+                                        [#if rubbing.attr.authorName?? && rubbing.attr.authorName?length>0]<p>责任者：
                                         [#if rubbing.attr.authorDynasty??]<span title="${rubbing.attr.authorDynasty}">[@text_cut s=rubbing.attr.authorDynasty len='10' append='...' /]</span><br>[/#if]
-                                        [#if rubbing.attr.authorName??]<span title="${rubbing.attr.authorName}">[@text_cut s=rubbing.attr.authorName len='10' append='...' /]</span>[/#if]
+                                        <span title="${rubbing.attr.authorName}">[@text_cut s=rubbing.attr.authorName len='10' append='...' /]</span>
                                         [#if rubbing.attr.rubbingStyle??]<span>${rubbing.attr.rubbingStyle}</span>[/#if]
-                                        </p>
+                                        </p>[/#if]
                                         </a>
                                 	</div>
 	                            </div>

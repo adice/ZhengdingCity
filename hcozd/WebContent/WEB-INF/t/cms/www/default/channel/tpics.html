@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-照片
+图片
 </title>
 <meta http-equiv="keywords" content="${site.keywords!}" />
 <meta http-equiv="description" content="${site.description!}" />
@@ -11,6 +11,11 @@
 <script src="${resSys}/jquery.js" type="text/javascript"></script>
 <script src="${resSys}/front.js" type="text/javascript"></script>
 <script type="text/javascript">
+	function nofind(imgPath){
+		var img=event.srcElement;
+		img.src=imgPath;
+		img.onerror=null;
+	}
 	function searchPic(){
 		var condition="channelId=${channelId}&culContentType=${culContentType}";
 		condition=condition+"&pictureTime="+$(pictureTime).val()+"&picturePlace="+$(picturePlace).val();
@@ -88,18 +93,28 @@
                     <!--content-->
                     <div class="search_content">
                         <div class="house_middle">
-                            <a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112"><div>文献</div></a>
-                            <a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118"><div>碑志</div></a>
-                            <div class="now"><a href="#">照片</a></div>
-                            <a href="${base}/multimedia/index.jhtml?culContentType=${culContentType}&channelId=120"><div>音视频</div></a>
-                        </div>
+							<div><a href="${base}/gjwx/index.jhtml?culContentType=${culContentType}&channelId=112">文献</a></div>
+							<div><a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118">碑志</a></div>
+                            <div class="now"><a href="#">图片</a></div>
+                            <div><a href="${base}/audio/index.jhtml?culContentType=${culContentType}&channelId=116">音频</a></div>
+                            <div><a href="${base}/video/index.jhtml?culContentType=${culContentType}&channelId=115">视频</a></div>
+                            [#if culContentType != '2' && culContentType != '4']
+                            <div style="width:60px;"><a href="${base}/3d/index.jhtml?culContentType=${culContentType}&channelId=114">3D制作</a></div>
+                            [/#if]
+                           	[#if culContentType == '1' || culContentType == '1,2,3,4']
+                            <div><a href="${base}/journal/index.jhtml?culContentType=${culContentType}&channelId=121">报刊</a></div>
+                            <div><a href="${base}/archive/index.jhtml?culContentType=${culContentType}&channelId=122">档案</a></div>
+                            <div><a href="${base}/map/index.jhtml?culContentType=${culContentType}&channelId=123">地图</a></div>
+                            [/#if]
+                            <div style="width:80px;"><a href="${base}/research/index.jhtml?culContentType=${culContentType}&channelId=124">相关研究</a></div>
+						</div>
                         <div class="house_center">
                             <div class="list show tapian">
                             [#list tag_pagination.list as pic]
                             <div class="tapian_1">
 	                            <div class="taian_img"><a href="${pic.url}" target="_blank">
 	                            <img src="${pic.attr.picturePath ?substring(0,pic.attr.picturePath?last_index_of('/')+1)}/sl/s_${pic.attr.picturePath ?substring(pic.attr.picturePath?last_index_of('/')+1,pic.attr.picturePath?length)}"
-									onerror="this.src='${pic.attr.picturePath}';this.οnerrοr=null;" /></a></div>
+									onerror="nofind('${pic.attr.picturePath}')" /></a></div>
 	                            <div class="tapian_info_1"><a href="${pic.url}" target="_blank">
 	                                <p class="search_tapian_name">
 	                                <span title="${pic.title}">[@text_cut s=pic.title len='10' append='...' /]</span>

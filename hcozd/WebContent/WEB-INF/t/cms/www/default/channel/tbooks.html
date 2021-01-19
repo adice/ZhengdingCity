@@ -18,6 +18,11 @@
 			path : '${base}'
 		});
 	});
+	function nofind(imgPath){
+		var img=event.srcElement;
+		img.src=imgPath;
+		img.onerror=null;
+	}
 	function searchBook(){
 		var condition="channelId=${channelId}&culContentType=${culContentType}";
 		condition=condition+"&bookName="+$('#bookName').val()+"&authorName="+$('#authorName').val();
@@ -120,9 +125,19 @@
 						<div class="search_content">
 							<div class="house_middle">
 								<div class="now"><a href="#">文献</a></div>
-	                            <a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118"><div>碑志</div></a>
-	                            <a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117"><div>照片</div></a>
-	                            <a href="${base}/multimedia/index.jhtml?culContentType=${culContentType}&channelId=120"><div>音视频</div></a>
+								<div><a href="${base}/rubbing/index.jhtml?culContentType=${culContentType}&channelId=118">碑志</a></div>
+	                            <div><a href="${base}/pic/index.jhtml?culContentType=${culContentType}&channelId=117">图片</a></div>
+	                            <div><a href="${base}/audio/index.jhtml?culContentType=${culContentType}&channelId=116">音频</a></div>
+	                            <div><a href="${base}/video/index.jhtml?culContentType=${culContentType}&channelId=115">视频</a></div>
+	                            [#if culContentType != '2' && culContentType != '4']
+	                            <div style="width:60px;"><a href="${base}/3d/index.jhtml?culContentType=${culContentType}&channelId=114">3D制作</a></div>
+	                            [/#if]
+	                            [#if culContentType == '1' || culContentType == '1,2,3,4']
+	                            <div><a href="${base}/journal/index.jhtml?culContentType=${culContentType}&channelId=121">报刊</a></div>
+	                            <div><a href="${base}/archive/index.jhtml?culContentType=${culContentType}&channelId=122">档案</a></div>
+	                            <div><a href="${base}/map/index.jhtml?culContentType=${culContentType}&channelId=123">地图</a></div>
+	                            [/#if]
+	                            <div style="width:80px;"><a href="${base}/research/index.jhtml?culContentType=${culContentType}&channelId=124">相关研究</a></div>
 							</div>
 							<div class="house_center">
 								<div class="list show book">
@@ -136,8 +151,8 @@
 														[#if pic.description?? && pic.description=='封面'][#assign picPath=pic.imgPath][/#if]
 													[/#list]
 												[#if picPath?? && picPath?length>0]
-												<img src="${picPath ?substring(0,picPath?last_index_of('/')+1)}/sl/s_${picPath ?substring(picPath?last_index_of('/')+1,picPath?length)}"
-													onerror="this.src='${picPath}';this.οnerrοr=null;" />
+												<img src="${picPath ?substring(0,picPath?last_index_of('/')+1)}sl/s_${picPath ?substring(picPath?last_index_of('/')+1,picPath?length)}"
+													onerror="nofind('${picPath}')" />
 												[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 											[#else]<img src="${resSys}/www/hcozd/img/nfbook.png" />[/#if]
 											</a>
